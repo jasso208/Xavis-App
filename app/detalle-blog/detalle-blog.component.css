@@ -1,0 +1,37 @@
+.h1_blog
+{
+	font-weight:bold;
+	font-size:20px;
+	text-decoration:cursive;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+.h2_blog
+{
+			
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+span
+{
+	font-weight:bold;
+	color:black;
+}
+.cls_blog_rel
+{
+	width:90%;
+	margin-left:5%; 
+}
+.cls_blog_rel a
+{
+	display:block;
+	padding-top:5px;
+	padding-bottom:5px;
+	color:gray;
+	font-size:13px;
+	padding-left:5px;
+	padding-right:5px;
+	text-decoration:none;
+}
+.cls_blog_rel a:hover
+{	
+	font-weight:bold;	
+}

@@ -1,0 +1,192 @@
+/*grid ventas*/
+/****************************************************************************************/
+	.cls_item_compras
+		{
+			padding:10px;
+			border:1px solid lightblue;
+			margin:5px;
+		}
+		.cls_item_compras span
+		{
+				font-weight:bold;
+		}
+		.cls_btn_detalle_compra
+		{			
+			margin-top:5px;
+		}
+		
+/****************************************************************************************/
+/*grid ventas*/
+
+
+.btn_panel_control
+{
+	border:1px solid gray;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
+	border-radius:5px;
+	font-family: arial;
+	font-size:15px;
+	display:block;
+	margin-top:10px;
+	text-decoration:none;
+	color:gray;
+	z-index:51;
+	
+}
+.btn_panel_control:hover
+{
+	color:black;
+	font-weight:bold;
+}
+
+#contenedor_detalle_venta
+{
+	position:fixed;
+	z-index:51;
+	top:10%;
+	width:80%;
+	left:10%;
+	background-color:white;
+	
+	max-height:80%;
+	padding:20px;
+	overflow-y:scroll;
+}
+
+#enca_detalle_venta
+{
+	text-align:center;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-weight:bold;
+    padding-left:5px;
+   
+}
+
+.cls_item_detalle_venta
+{
+    margin-top:5px;
+    padding-bottom:5px;
+    border-bottom:1px solid gray;
+    
+}
+.cls_img_prod_detalle_venta
+{
+    width:100px;
+    height:100px;
+    border:1px solid gray;
+    padding:2px;
+    
+}
+.cls_nom_prod_detalle_venta>a
+{
+    font-weight:bold;
+    font-size:12px;
+    text-decoration:none;
+    color:blue;
+    
+}
+.cls_precio_prod_detalle_venta
+{
+    color:black;
+    font-size:20px;
+    margin-top:20px;
+    font-weight:bold;
+}
+.cls_link_detalle_venta
+{
+    color:gray;
+    font-size:10px;
+    text-align:right;
+    margin-top:10px;
+}
+.cls_cantidad_prod_detalle_venta
+{
+    color:gray;
+    font-size:10px;		
+    margin-top:10px;
+}
+.cls_cantidad_prod_detalle_venta span
+{
+		
+}
+	/* .cls_col_1
+	{
+		width:49%;
+	}
+	.cls_col_2
+	{
+		width:49%;
+		
+	}
+	.cls_col_3
+	{
+		width:0%;
+		display:none;
+		overflow:hidden;
+	}
+	.cls_col_4
+	{
+		width:0%;
+		display:none;
+	}
+	.cls_col_5
+	{
+		width:0%;
+		display:none;
+	}
+	.cls_col_6
+	{
+		width:0%;
+		display:none;
+	}
+	.cls_col_7
+	{
+		width:0%;
+		display:none;
+	}*/
+@media  screen  and (min-width:500px)
+{
+
+	
+/*	.cls_col_1
+{
+	width:10%;
+	display:none;
+}
+.cls_col_2
+{
+	width:10%;
+	display:none;
+}
+.cls_col_3
+{
+	display:none;
+	width:10%;
+	overflow:hidden;
+}
+.cls_col_4
+{
+	width:10%;
+}
+.cls_col_5
+{
+	width:10%;
+}
+.cls_col_6
+{
+	width:10%;
+}
+.cls_col_7
+{
+	width:10%;
+}*/
+}
+    
+@media  screen  and (min-width:768px)
+{
+ 
+}

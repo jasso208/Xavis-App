@@ -1,0 +1,167 @@
+		<div id="div_hover_reg_cliente" class="cls_hover cls_reg_cliente_id" >
+		</div>
+		<div class="cls_form_hover cls_reg_cliente_id">			
+			<div class="pure-u-1 cls_encabezado_form_hover">
+				Registro Cliente	
+			</div>
+			<form [formGroup]="registra_cliente"  id="div_form_registra_cliente" class="pure-form pure-form-stacked ">						
+			
+				<div class="pure-u-1 ">
+					<label >
+						Nombre		        
+					</label>
+					<input class="pure-u-1" id="nombre_reg_cliente" formControlName="nombre_reg_cliente" type="text" name="nombre_reg_cliente" >			        
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('nombre_reg_cliente').hasError('required') && registra_cliente.get('nombre_reg_cliente').touched">
+						<a>El nombre es obligatorio</a>
+					</div>
+				</div>
+				
+				<div class="pure-u-1">
+					<label >
+						Apellido Paterno			        
+					</label>
+					<input  class="pure-u-1" id="apellido_p_reg_cliente" formControlName="apellido_p_reg_cliente" type="text" name="apellido_p_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('apellido_p_reg_cliente').hasError('required') && registra_cliente.get('apellido_p_reg_cliente').touched">
+						<a>El apellido paterno es obligatorio</a>
+					</div>
+				</div>			
+				<div class="pure-u-1">
+					<label >
+						Apellido Materno
+					</label>
+					<input  class="pure-u-1" id="apellido_m_reg_cliente" formControlName="apellido_m_reg_cliente" type="text" name="apellido_m_reg_cliente" >										
+				</div>
+				<div class="pure-u-1">
+					<label >
+						Telefono
+					</label>
+					<input  class="pure-u-1" id="telefono_reg_cliente" formControlName="telefono_reg_cliente" type="text" name="telefono_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('telefono_reg_cliente').hasError('required') && registra_cliente.get('telefono_reg_cliente').touched">
+						<a>Debe indicar un telefono de contacto</a>
+					</div>
+				</div>
+				<div class="pure-u-1">
+					<label >
+						RFC (Solo si requiere Factura)
+					</label>
+					<input  class="pure-u-1" id="rfc_reg_cliente" formControlName="rfc_reg_cliente" type="text" name="rfc_reg_cliente" >					
+					
+				</div>	
+				<legend></legend>
+				<div class="pure-u-1">
+					<label >
+						Correo Electronico
+					</label>
+					<input  class="pure-u-1" id="e_mail_reg_cliente" formControlName="e_mail_reg_cliente" type="text" name="e_mail_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('e_mail_reg_cliente').hasError('required') && registra_cliente.get('e_mail_reg_cliente').touched">
+						<a>Debe indicar el correo electronico</a>
+					</div>
+				</div>
+				<div class="pure-u-1">
+					<label>
+						Contraseña
+					</label>
+					<input class="pure-u-1" id="psw_reg_cliente" formControlName="psw_reg_cliente" type="password" name="psw_reg_cliente">
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('psw_reg_cliente').hasError('required') && registra_cliente.get('psw_reg_cliente').touched">
+						<a>Debe indicar una contraseña para acceder al sistema</a>
+					</div>
+				</div>
+				
+				<legend></legend>
+				<div class="pure-u-1">
+					<label >
+						Calle
+					</label>
+					<input  class="pure-u-1" id="calle_reg_cliente" formControlName="calle_reg_cliente" type="text" name="calle_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('calle_reg_cliente').hasError('required') && registra_cliente.get('calle_reg_cliente').touched">
+						<a>Debe indicar la calle del domicilio</a>
+					</div>
+				</div>	
+				<div class="pure-u-1-2">
+					<label >
+						Numero Interior
+					</label>
+					<input  class="pure-u-1" id="numero_interior_reg_cliente" formControlName="numero_interior_reg_cliente" type="text" name="numero_interior_reg_cliente" >					
+					
+				</div>
+				<div class="pure-u-1-2">
+					<label >
+						Numero Exterior
+					</label>
+					<input  class="pure-u-1" id="numero_exterior_reg_cliente" formControlName="numero_exterior_reg_cliente" type="text" name="numero_exterior_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('numero_exterior_reg_cliente').hasError('required') && registra_cliente.get('numero_exterior_reg_cliente').touched">
+						<a>Debe indicar el numero exterior del domicilio</a>
+					</div>
+				</div>
+				<div class="pure-u-1-2">
+					<label>
+						C P
+					</label>
+					<input  class="pure-u-1" id="cp_reg_cliente" formControlName="cp_reg_cliente" type="text" name="cp_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('cp_reg_cliente').hasError('required') && registra_cliente.get('cp_reg_cliente').touched">
+						<a>Debe indicar un Codigo Postal</a>
+					</div>
+				</div>
+				<div class="pure-u-1">
+					<label >
+						Municipio
+					</label>
+					<input  class="pure-u-1" id="municipio_reg_cliente" formControlName="municipio_reg_cliente" type="text" name="municipio_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('municipio_reg_cliente').hasError('required') && registra_cliente.get('municipio_reg_cliente').touched">
+						<a>Debe indicar un municipio</a>
+					</div>
+				</div>
+				<div class="pure-u-1">
+					<label >
+						Estado
+					</label>
+					<input  class="pure-u-1" id="estado_reg_cliente" formControlName="estado_reg_cliente" type="text" name="estado_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('estado_reg_cliente').hasError('required') && registra_cliente.get('estado_reg_cliente').touched">
+						<a>Debe indicar un estado</a>
+					</div>
+				</div>
+				<div class="pure-u-1">
+					<label >
+						Pais
+					</label>
+					<input  class="pure-u-1" id="pais_reg_cliente" formControlName="pais_reg_cliente" type="text" name="pais_reg_cliente" >					
+					<div
+						class=" pure-u-23-24 error"
+						*ngIf="registra_cliente.get('pais_reg_cliente').hasError('required') && registra_cliente.get('pais_reg_cliente').touched">
+						<a>Debe indicar un pais</a>
+					</div>
+				</div>
+				<div class="pure-u-1">
+					<label >
+						Referencia Domicilio
+					</label>
+					<input  class="pure-u-1" id="referencia_reg_cliente" formControlName="referencia_reg_cliente" type="text" name="referencia_reg_cliente" >									
+				</div>
+				<div class="pure-u-1 cls_final_form" >					
+					<button class="pure-button pure-button-primary " [disabled]="registra_cliente.invalid" (click)="fn_registra_cliente()">
+						Guardar
+					</button>
+				</div>
+			</form>
+			
+		</div>

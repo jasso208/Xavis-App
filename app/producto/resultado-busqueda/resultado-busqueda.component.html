@@ -1,0 +1,39 @@
+
+<div class="pure-g">
+	<div class="pure-u-1" style="width:90%;margin-left:5%;">
+		<div class="pure-g">
+			<div class="pure-u-1">
+				<div class="pure-form">
+					<fieldset>
+						<legend><h1>Resultados de tu busqueda:</h1></legend>
+					</fieldset>
+				
+				</div>
+			</div>
+		</div>
+		<div class="pure-g">
+			<div class="pure-u-1-2 pure-u-md-1-5" *ngFor="let prod of productos">
+				<div class="pure-g pure-form cls_cont_img" >
+					<div class="pure-u-1 cls_cont_img_2" >
+						<img src="../assets/img/productos/{{prod.str_id}}_1.png" class="cls_img_prod_busqueda">
+					</div>
+					<div class="pure-u-1 cls_desc_prod_busqueda" >
+						<a>{{prod.nombre}}</a>
+					</div>
+					<div class="pure-u-1 cls_precio_prom_prod_busqueda">
+						<a *ngIf="prod.muestra_descuento">Antes: {{prod.precio_antes}}</a>
+					</div>
+					<div class="pure-u-1 cls_precio_prod_busqueda">
+						<a>$ {{prod.precio}} <span>(MXN)</span></a>
+					</div>
+				<!--
+					<div class="pure-u-1 cls_tallas_prod_busqueda">
+						<a>Tallas: <span>CH</span> <span>M</span> <span>G</span> </a>
+					</div>
+				-->
+					<button type="submit" class="pure-button pure-input-1  cls_boton_primary"   routerLink="/producto/detalle/{{prod.id}}">Ver</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

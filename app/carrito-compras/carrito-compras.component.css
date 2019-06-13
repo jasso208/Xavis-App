@@ -1,0 +1,152 @@
+/*css del carrito de compras*/
+#contenedor_carrito_compras
+{
+	position:relative;
+	z-index:35;
+}
+#carrito_compras
+{
+	max-width:90%;
+    width:360px;
+    height:78%;
+    background-color:white;
+    border-left:1px solid gray;		
+    position:fixed;
+    top:0;
+    right:-400px;
+    overflow:scroll;	
+    padding:5px;
+    box-shadow:-5px 0px 5px gray;
+}
+#enca_carrito_compras
+{
+    border-bottom:1px solid white;
+    color:white;
+    padding-top:15px;
+    padding-bottom:15px;
+    font-weight:bold;
+    padding-left:5px;
+    background-color:black;
+}
+#pie_carrito
+{
+    max-width:90%;
+    width:360px;
+    height:20%;
+    position:fixed;
+    right:-400px;
+    top:80%;
+    z-index:23;	
+    border-left:1px solid gray;		
+    padding:5px;
+    border-top:1px solid gray;
+    box-shadow:-5px 0px 5px gray;
+    background-color:white;
+    
+}
+#pie_carrito >form
+{
+    margin-top:5px;
+}
+.cls_item_carrito
+{
+    margin-top:5px;
+    padding-bottom:5px;
+    border-bottom:1px solid gray;
+    
+}
+.cls_img_prod_carrito
+{
+    width:100px;
+    height:100px;
+    border:1px solid gray;
+    padding:2px;
+    
+}
+.cls_nom_prod_carrito>a
+{
+    font-weight:bold;
+    font-size:12px;
+    text-decoration:none;
+    color:blue;
+    
+}
+.cls_precio_prod_carito
+{
+    color:black;
+    font-size:20px;
+    margin-top:20px;
+    font-weight:bold;
+}
+.cls_link_carrito
+{
+    color:gray;
+    font-size:10px;
+    text-align:right;
+    margin-top:10px;
+}
+.cls_cantidad_prod_carrito
+{
+    color:gray;
+    font-size:10px;		
+    margin-top:10px;
+}
+.cls_cantidad_prod_carrito span
+{
+    border:1px solid gray;
+    padding-top:4px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:4px;		
+}
+#btn_cerrar_carrito
+{
+    position:fixed;
+    top:0;
+    right:0;
+    z-index:24;
+    padding-top:3px;
+    padding-bottom:3px;
+    padding-left:5px;
+    padding-right:5px;
+    border:1px solid white;
+    color:white;
+    display:none;
+	width:100%;
+	height:100%;
+}
+
+@media  screen  and (min-width:736px)
+    {
+    
+        #carrito_compras
+        {
+            width:390px;
+            height:77%;
+        }
+        
+        #pie_carrito
+        {
+            width:390px;
+        }
+    }
+    
+    @media  screen  and (min-width:768px)
+    {
+        #carrito_compras
+        {
+            width:390px;
+            height:79%;
+        }
+        #pie_carrito
+        {
+            width:390px;
+        }
+        .cls_row_pie_carrito
+        {
+            margin-top:20px;
+        }
+        
+    }
+/*css del carrito de compras*/
+/****************************************************************************************************/

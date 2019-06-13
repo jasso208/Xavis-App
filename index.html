@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <title>Xavis</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!--fuentes--> 
+ 
+<link href="https://fonts.googleapis.com/css?family=Gruppo|Source+Sans+Pro|Srisakdi" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Amatic+SC|Pathway+Gothic+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/detalle.component.js"></script>
+
+<!--
+<script src="https://www.paypalobjects.com/api/checkout.js">
+</script>
+-->
+<!--fuentes-->
+<script>//-Script para controlar elmensaje de errir-->
+		$(document).ready(
+
+		function()
+		{
+			
+			$("#div_cerrar_msj_error").click(
+					function()
+					{
+						$("#div_msj_error").hide();
+						$("#div_cerrar_msj_error").hide();
+					}
+				);			
+				
+			
+				
+		}
+		);
+
+			  function fn_muestra_error_boton(boton,mensaje)
+			  {	
+			  
+			  $("#a_msj_error").text(mensaje);
+			  var elemento=document.getElementById(boton);						
+			  var ancho_elemento=$("#"+boton).width()+30;
+			  
+			  //establecemos el ancho del msj
+			  $("#div_msj_error").width(ancho_elemento);
+			  //obtenemos el alto del mensaje
+			  var alto_msj=$("#div_msj_error").height();						
+			  
+			  var posicion=elemento.getBoundingClientRect();	
+			  //definimos en donde estara el elemento
+			  var top=parseInt(posicion.top)-alto_msj-30;
+			  var left=parseInt(posicion.left);
+			  $("#div_msj_error").css({"top":top.toString()+"px","left":left.toString()+"px"});						
+			  $("#div_cerrar_msj_error").show();
+			  $("#div_msj_error").show();
+			  
+			  }
+			  
+			  
+			  
+		  </script><!--Script para controlar elmensaje de errir-->
+
+	<!--pure css-->
+		<link rel="stylesheet" href="assets/css/pure-min.css">    
+		<!--[if lte IE 8]>
+			<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
+		<![endif]-->
+		<!--[if gt IE 8]><!-->
+			<link rel="stylesheet" href="assets/css/grids-responsive-min.css">
+		<!--<![endif]-->
+		<link rel="stylesheet" href="assets/css/general.css">
+		
+	<!--pure css-->
+	<style>
+	#div_cargando
+		{
+			position: fixed;
+			z-index: 20;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			background-color:black;
+			opacity: 0.7;
+		}
+		#div_text_cargando
+		{
+			width: 100%;
+			position:fixed;
+			top:30%;
+			left: 0;
+			z-index: 21;
+			text-align: center;
+			font-size:20px;
+			color:white;
+			font-weight: bold;
+		}
+
+        /*Tablet Vertical*/
+        @media only screen  and (min-width: 768px)
+        {
+		#div_text_cargando
+			{
+				width: 30%;
+				position:fixed;
+				top:30%;
+				left: 40%;
+				z-index: 21;
+				text-align: center;
+				font-size:40px;
+				color:white;
+				font-weight: bold;
+			}
+		}
+	</style>
+</head>
+<body>
+
+			<app-root>
+				<div id="div_cargando"></div>
+				<div id="div_text_cargando">Cargando . . .</div>
+			</app-root>
+			
+			
+<script>
+$(document).ready(
+function(){
+$("#btnMuestraMenu").click(
+    function()
+    {
+        $("#menu_lateral").show();
+        $("#menu_lateral").animate({left:"0px"},"slow");
+    }
+);
+$("#btnCerrarMenu").click(
+    function()
+    {
+        $("#menu_lateral").animate({left:"-90%"},"slow");
+    
+    }
+);
+$(".clsItemMenuLateral").click(
+	function()
+	{
+		$("#menu_lateral").animate({left:"-90%"},"slow");
+	}
+
+);
+}
+);
+//span_1	
+</script>
+
+
+<script>/*funcionalidades delmenu principal*/
+	$(document).ready(
+		function()
+		{
+			$("#control_menu_disp_movil>div").click(
+				function()
+				{
+					$("#menu_encabezado").animate({left:'0'}).promise().done(function(){$("#cerrar_menu_encabezado").show();});						
+				}
+			);
+			$("#cerrar_menu_encabezado").click(
+				function()
+				{
+					fn_cerrar_menu();
+				}
+			);
+			$(".clsBotonMenu").click(
+				function()
+				{
+					fn_cerrar_menu();
+				}
+			);
+		}
+	);
+	function fn_cerrar_menu()
+	{
+		$("#menu_encabezado").animate({left:'-70%'});
+		$("#cerrar_menu_encabezado").hide();
+	}
+	/*funcionalidades delmenu principal*/
+	/*Funcionalidades del carrito de compras*/
+	$(document).ready(
+		function()
+		{
+			$("#btn_muestra_carrito").click(
+				function()
+				{					
+					$("#carrito_compras").animate({right:'0'}).promise().done(
+						function(){
+							$("#btn_cerrar_carrito").show();
+						
+						}
+					);
+					$("#pie_carrito").animate({right:'0'});						
+				}
+			);
+			
+			
+			//evento del carrito de compras que requiere ocultarlo
+			$("#btn_cerrar_carrito").click(
+				function()
+				{
+					fn_oculta_carrito();
+				}
+			);
+			//evento del carrito de compras que requiere ocultarlo
+			$(".cls_nom_prod_carrito").click(
+				function()
+				{
+					fn_oculta_carrito();
+				}
+			);
+			//evento del carrito de compras que requiere ocultarlo
+			$("#btn_terminar_compra").click(
+				function()
+				{
+					fn_oculta_carrito();
+				}
+			);
+		}
+	);
+	
+	
+	function fn_oculta_carrito()
+	{
+				$("#carrito_compras").animate({right:'-400px'}).promise().done(
+						function(){
+							$("#btn_cerrar_carrito").hide();
+							}
+					);
+					$("#pie_carrito").animate({right:'-400px'});
+	}
+	
+	/*Funcionalidades del carrito de compras*/
+	
+	/* 	funcionalidad para el login */
+	$(document).ready(
+		function()
+		{
+			
+			$("#btn_cancelar").click(
+				function()
+				{
+					$(".cls_login_id").hide();
+				}
+			);
+			$("#btn_registrate_login").click(
+				function()
+				{
+					$(".cls_reg_cliente_id").show();
+					$(".cls_login_id").hide();
+				}
+			);
+		}
+	);
+	/*Funcioanlidad para el login*/
+	/*
+		funcionalidad para form de registro cliente
+	*/
+	$(document).ready(
+		function()
+		{
+			$("#div_hover_reg_cliente").click(
+				function()
+				{
+					$(".cls_reg_cliente_id").hide();
+					
+				}
+			);
+		}
+	);
+	/*
+		funcionalidad para form de registro cliente
+	*/
+	</script>
+	<!--
+	<script>
+		paypal.Buttons(
+			{
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '100.02',
+			currency:'MXN'
+          }
+        }]
+      });
+    },
+    onApprove: function(data, actions) {
+      // Capture the funds from the transaction
+      return actions.order.capture().then(function(details) {
+        // Show a success message to your buyer
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }
+		).render('#paypal-button-container');
+	</script>
+	-->
+</body>
+</html>

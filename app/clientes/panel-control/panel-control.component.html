@@ -1,0 +1,309 @@
+<div clasS="pure-g cls_form_component">	
+	<legend>
+		<h1>
+			Administra tu cuenta.
+		</h1>
+	</legend>
+	<div class="pure-u-1">
+			
+		<legend>
+			<a class="btn_panel_control" id="btn_ventas" (click)="fn_mostrar_ventas()" >
+				Ventas
+				<span *ngIf="mostrar_ventas"> -</span>
+				<span *ngIf="!mostrar_ventas"> ˅</span>
+			</a>
+			<br>
+			<div *ngIf="mostrar_ventas">
+			<!--
+				<table class="pure-table" >
+				<thead>
+					<tr>
+						<th style="cls_col_1">#</th>
+						<th style="cls_col_2">Fecha</th>
+						<th style="cls_col_3">Sub-Total</th>
+						<th style="cls_col_4">Descuento</th>
+						<th style="cls_col_5">IVA</th>
+						<th style="cls_col_6">Total</th>
+						<th style="cls_col_7">Sigue Tu Pedido</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let v of ventas">
+						<td style="cls_col_1"><a class="pure-button pure-button-secondary" (click)="fn_consulta_detalle_ventas(v.id_venta)">Detalle</a></td>
+						<td style="cls_col_2">{{v.fecha | date:'dd-MM-yyyy hh:mm:ss'}}</td>
+						<td style="cls_col_3">{{v.sub_total}}</td>
+						<td style="cls_col_4">{{v.descuento}}</td>
+						<td style="cls_col_5">{{v.iva}}</td>
+						<td style="cls_col_6">{{v.total}}</td>
+						<td style="cls_col_7"><button class="pure-button pure-button-primary">Seguir Envio</button></td>
+					</tr>				
+				</tbody>
+			</table>-->
+			</div>
+		</legend>
+		<div *ngIf="mostrar_ventas" >
+			<div class="pure-g cls_item_compras" *ngFor="let v of ventas">
+				<div class="pure-u-2-3 pure-u-sm-4-5"> 
+					<h3>Entregado</h3>
+				</div>				
+				<div class="pure-u-1-3 pure-u-sm-1-5"> 
+					<button class="pure-button pure-button-primary">Seguir Envio</button>
+				</div>
+				<div class="pure-u-1">
+					<div class="pure-g">
+						<div class="pure-u-1-3 pure-u-sm-3-5">
+							<a><span>Fecha Venta: </span>{{v.fecha | date:'dd-MM-yyyy hh:mm:ss'}}</a>
+						</div>
+						<div class="pure-u-1-3 pure-u-sm-1-5">
+							<div class="pure-g">
+								<div class="pure-u-1">
+									<a><span>Sub-Total</span>
+										
+									</a>
+								</div>
+								<div class="pure-u-1">
+									<a><span>Descuent</span>
+										
+									</a>
+								</div>
+								<div class="pure-u-1">
+								<a><span>IVA</span>
+										
+									</a>
+								</div>
+								<div class="pure-u-1">
+									<a><span>Total</span>
+										
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="pure-u-1-3 pure-u-sm-1-5">
+							<div class="pure-g">
+								<div class="pure-u-1">
+									<a>
+										{{v.sub_total}}
+									</a>
+								</div>
+								<div class="pure-u-1">
+									<a>
+										{{v.descuento}}
+									</a>
+								</div>
+								<div class="pure-u-1">
+								<a>
+										{{v.iva}}
+									</a>
+								</div>
+								<div class="pure-u-1">
+									<a>
+										{{v.total}}
+									</a>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+				<div clasS="pure-u-1 cls_btn_detalle_compra" >
+					<div class="pure-g">
+							<div class="pure-u-2-3 pure-u-sm-4-5"> 
+								
+							</div>				
+							<div class="pure-u-1-3 pure-u-sm-1-5"> 
+								<button class="pure-button pure-button-secondary" (click)="fn_consulta_detalle_ventas(v.id_venta)">
+									Detalle
+								</button>
+							</div>
+					</div>
+					
+				</div>
+				
+			</div>	
+		</div>
+	</div>
+	<div class="pure-u-1">			
+		<legend>
+			<a  class="btn_panel_control" (click)="fn_mostrar_cuenta()">
+				Tu Cuenta
+				<span *ngIf="mostrar_cuenta"> -</span>
+				<span *ngIf="!mostrar_cuenta"> ˅</span>
+			</a>
+		</legend>
+		<div class="pure-g" *ngIf="mostrar_cuenta">
+			<div class="pure-u-1">
+				<form  [formGroup]="cliente" class="pure-form pure-form-stacked">
+					<fieldset>						
+						<legend><h2>Informacion Personal</h2></legend>
+						<div class="pure-g">
+				
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Nombre (s).</label>
+								<input id="nombre" class="pure-u-23-24" type="text" formControlName="nombre" name="nombre">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('nombre').hasError('required') && cliente.get('nombre').touched">
+								  <a>Nombre requerido</a>
+								</div>
+							</div>
+							
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Apellido Paterno</label>
+								<input id="apellido_p" class="pure-u-23-24" type="text" formControlName="apellido_p" name="apellido_p">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('apellido_p').hasError('required') && cliente.get('apellido_p').touched">
+								  <a>El apellido paterno es requerido</a>
+								</div>
+							</div>
+							
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Apellido Materno</label>
+								<input id="apellido_m" class="pure-u-23-24" type="text" formControlName="apellido_m" name="apellido_m">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('apellido_m').hasError('required') && cliente.get('apellido_m').touched">
+								  <a>El apellido Materno es requerido</a>
+								</div>
+							</div>		
+							<div class="pure-u-1 pure-u-md-1-3" >
+								<label>Telefono</label>
+								<input class="pure-u-23-24" type="text"  formControlName="telefono" name="telefono">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('telefono').hasError('required') && cliente.get('telefono').touched">
+								  <a>El telefono es requerido</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3" >
+								<label>RFC</label>
+								<input class="pure-u-23-24" type="text"  formControlName="rfc" name="rfc">
+								
+							</div>
+							<div class="pure-u-1 pure-u-md-3-3">
+								<label>E-Mail</label>
+								<input class="pure-u-23-24" type="text" formControlName="e_mail" name="e_mail">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('e_mail').hasError('required') && cliente.get('e_mail').touched">
+								  <a>El e-Mail es requerido</a>
+								</div>
+							</div>
+						</div>
+						
+						<legend><h2>Informacion de Envio</h2></legend>
+						<div class="pure-g">
+					
+							<div class="pure-u-1 pure-u-md-3-3">
+								<label>Calle</label>
+								<input id="calle" class="pure-u-23-24" type="text" formControlName="calle" name="calle">				
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('calle').hasError('required') && cliente.get('calle').touched">
+								  <a>La calle es requerida</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Numero Interior</label>
+								<input type="text" name="numero_interior" class="pure-u-23-24" formControlName="numero_interior">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('numero_interior').hasError('required') && cliente.get('numero_interior').touched">
+								  <a>El numero es requerido</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Numero Exterior</label>
+								<input type="text" name="numero_exterior" class="pure-u-23-24" formControlName="numero_exterior">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('numero_exterior').hasError('required') && cliente.get('numero_exterior').touched">
+								  <a>El numero es requerido</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>C.P.</label>
+								<input id="codigo_postal" class="pure-u-1-3" type="text" formControlName="cp" name="cp">
+								<div
+								  class="pure-u-1-3 error"
+								  *ngIf="cliente.get('cp').hasError('required') && cliente.get('cp').touched">
+								  <a>El codigo postal es requerido</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Municipio</label>
+								<input type="text" class="pure-u-23-24" formControlName="municipio" name="municipio">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('municipio').hasError('required') && cliente.get('municipio').touched">
+								  <a>El municipio es requerido</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Estado</label>
+								<input type="text" class="pure-u-23-24" formControlName="estado" name="estado">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('estado').hasError('required') && cliente.get('estado').touched">
+								  <a>El estado es requerido</a>
+								</div>
+							</div>
+							<div class="pure-u-1 pure-u-md-1-3">
+								<label>Pais</label>
+								<input type="text" class="pure-u-23-24" formControlName="pais" name="pais">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('pais').hasError('required') && cliente.get('pais').touched">
+								  <a>El pais es requerido</a>
+								</div>
+							</div>
+							
+							<div class="pure-u-1">
+								<label>Referencias de Domicilio</label>
+								<input type="text" class="pure-u-23-24" formControlName="referencia" name="referencia">
+								<div
+								  class=" pure-u-23-24 error"
+								  *ngIf="cliente.get('referencia').hasError('required') && cliente.get('referencia').touched">
+								  <a>Debe indicar las referencias de la direccion</a>
+								</div>
+							</div>
+						</div>
+						
+						<button class="pure-button-primary pure-button"  style="margin-top:30px;width:30%;margin-left:35%;" [disabled]="cliente.invalid" (click)="fn_actualiza_cliente()" >
+							Guardar
+						</button>
+						
+					</fieldset>
+				</form>
+			</div>
+		</div>			
+	</div>	
+</div>
+<div *ngIf="mostrar_detalle" class="cls_div_hover" (click)="fn_cerrar_detalle()">
+</div>
+
+<div class="pure-g" *ngIf="mostrar_detalle" id="contenedor_detalle_venta">
+	<div class="pure-u-1">	
+			<div class="pure-g">
+				<div class="pure-u-1"  id="enca_detalle_venta">
+					<h1>Detalle de Venta</h1>
+				</div>	
+				
+				<div class="pure-u-1 cls_item_detalle_venta" *ngFor="let prod of detalle_venta " >
+					<div class="pure-u-2-5">
+						<img src="../assets/img/productos/{{prod.nom_img}}_1.png" class="cls_img_prod_detalle_venta">
+					</div>
+					<div class="pure-u-2-5">
+						<div class="pure-u-1 cls_nom_prod_detalle_venta"><a >{{prod.nombre}}</a></div>
+						<div class="pure-u-1 cls_precio_prod_detalle_venta"><a>${{prod.precio_unitario}}</a></div>							
+						<div class="pure-u-1 cls_cantidad_prod_detalle_venta"><a>Talla: {{prod.talla}}  </a></div>
+						<div class="pure-u-1-2 cls_cantidad_prod_detalle_venta"><a>Cantidad: <span>{{prod.cantidad}}</span>  </a></div>															
+					</div>
+				</div>					
+												
+			</div>				
+	</div>
+</div>
+
+		

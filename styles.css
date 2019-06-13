@@ -1,0 +1,476 @@
+	.cls_div_hover
+	{
+		position:fixed;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		background-color:black;
+		opacity:0.7;
+		z-index:50;
+		
+	}
+	.cls_form_component
+	{
+		width:90%; 
+		margin-left:5%;
+	}
+	.cls_div_msj_hover
+	{
+		position:fixed;		
+		
+		z-index:55;
+		width:50%;
+		left:25%; 
+		top:30px;
+		text-align:center;
+		border:1px solid white;
+		padding:20px;
+	}
+	.cls_div_msj_hover >h1
+	{
+		color:white;
+		
+		
+	}
+	.error
+	{
+
+		padding-top:5px;
+		padding-bottom:5px;
+		background-color:red;
+		color:white;		
+		
+	}
+	.error a
+	{
+		margin-left:5px;
+		margin-right:5px;			
+		font-family: arial;
+		font-size:15px;
+		font-weight:bold;
+	}
+	.pure-form label
+	{
+					font-family:arial;
+					font-size:15px;
+					font-weight:bold;
+					color:gray;
+	}
+
+	.cls_contenedor>div
+	{
+		width:90%;
+		margin-left:5%;	
+	}
+
+	.clsLink1
+	{
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	.clsLegendaEncabezado
+	{
+			display:none;
+			font-size:10px;
+			color:gray;
+	}
+
+	#fondo-emergente
+	{
+		position: fixed;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 9;
+		background-color: gray;
+		opacity: 0.7;
+		display: none;
+	}
+	#login/*css del menu login*/
+	{
+		width: 80%;
+		margin: 0 auto;           
+		box-shadow: 1px 1px 1px black;
+		padding: 10px;
+		position: fixed;
+		z-index: 10;
+		top:10%;
+		left: 5%;
+		background-color: white;
+		border-radius: 10px;
+		display: none;
+	}   
+
+	.clsLink_a
+	{
+		font-size:10px;
+		text-decoration:none;
+	}
+
+        /*Iphone horizontal*/
+        @media only screen and (min-width: 667px )
+        {
+        	
+        }
+        /*Tablet Vertical*/
+        @media only screen  and (min-width: 768px)
+        {
+            
+        
+			.clsLegendaEncabezado
+			{
+				display:block;
+			}
+		
+			
+        }
+/* You can add global styles to this file, and also import other style files */
+
+
+h1
+{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:black;
+	letter-spacing:2px;
+}
+h2
+{
+	font-family: arial;
+	font-size:15px;
+
+}
+
+h3
+{
+	font-family: arial;
+	font-size:15px;
+    font-weight:normal;
+
+}
+h4
+{
+	font-family: arial;
+	font-size:15px;
+    font-weight:normal;
+
+}
+.clsImgProdRelacionado
+{
+    text-align:center;
+}
+
+.cls_cont_img_2
+{
+	min-height:100px;
+}
+
+.cls_cont_img
+{
+	padding:10px;
+}
+
+.cls_cont_img:hover .cls_boton_primary
+{
+	background-color:black;
+	color:white;
+}
+
+.cls_boton_primary
+{
+    /*	background-color:black;
+		color:white;
+	*/
+	background-color:white;
+	color:black;
+	border:1px solid gray;
+    max-width:90%;
+    margin-left:5%;
+    margin-top:10px;
+    
+}
+
+.clsParrafo
+{    
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:17px;
+	color:gray;	
+    text-align:justify;
+	
+    
+}
+.clsParrafo>img
+{
+	width:90%;
+	margin-left:5%;
+}
+.clsParrafo >div
+{
+    padding-right:20px;
+}
+/*Esta clase es usada cuando se quiere dar espacio entre un div u otro*/
+.clsMargenBloque
+{
+    margin-top:100px;
+}
+.clsParrafo2
+{    
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size:10px;
+}
+
+.input_checkbox
+{
+	font-family: arial;
+	font-size:10px;   
+	color:gray;
+}
+.clsPrecioProdPromo
+{
+	font-family: arial;
+	font-size:10px;
+   text-decoration: line-through;	
+	color:gray;
+}
+
+.clsPrecioProd
+{
+	font-family: arial;
+	font-size:20px;
+	font-weight:bold;
+	color:red;
+}
+.clsLink
+{
+    font-family: arial;
+	font-size:10px;
+    
+}
+.cls-form-component
+{
+		
+	
+    font-size:15px;
+}
+
+
+    /**********************************************************************************************************************/
+    /*css producto busqueda y relacionados*/
+    .cls_img_prod_busqueda
+    {
+        width:80%;
+        margin-top:10%;
+        margin-left:10%;
+    }
+    .cls_desc_prod_busqueda
+    {
+        text-align:center;
+		min-height:40px;
+    }
+    .cls_desc_prod_busqueda a
+    {
+        font-size:12px;
+        color:black;
+        font-weight:bold;
+    }		
+    .cls_precio_prod_busqueda
+    {
+        text-align:center;
+    }
+    .cls_precio_prod_busqueda a
+    {
+            color:red;
+            font-weight:bold;
+            font-size:15px;
+    }
+    .cls_precio_prod_busqueda a span
+    {
+        font-size:10px;
+        margin-bottom:5px;
+        color:red;
+    }
+    .cls_precio_prom_prod_busqueda
+    {
+        text-align:center;
+		min-height:20px;
+        
+    }
+    .cls_precio_prom_prod_busqueda a
+    {
+        font-size:10px;
+        color:gray;			
+        
+    }
+    .cls_tallas_prod_busqueda
+    {
+        text-align:center;
+    }
+    .cls_tallas_prod_busqueda a
+    {
+        font-weight:bold;
+        color:gray;
+        font-size:10px;
+        
+    }
+    .cls_tallas_prod_busqueda a span
+    {
+        padding-top:2px;
+        padding-left:5px;
+        padding-right:5px;
+        padding-bottom:2px;
+        border:1px solid gray;
+    }
+    /*css producto busqueda y relacionados*/
+    /*******************************************************************************/
+    /*Estilos para el mensaje de error*/
+    #div_msj_error
+    {			
+        display: none;
+        position:fixed;
+        border:1px solid gray;
+        text-align:center;			
+        background-color:white;
+        padding-bottom:10px;
+        padding-top:10px;
+        box-shadow:-5px 5px 5px gray;
+        font-family:arial;
+        font-size:10px;
+        font-weight:bold;
+        z-index:30;
+        
+
+        background: white;
+        border-radius: 15px;			
+        padding: 1em;
+        position: absolute;
+        text-align: center;			
+        max-width:500px;
+        color:black;
+    }	
+    #div_msj_error:after
+    {
+         bottom: -15px;
+         left:40%;
+         border-bottom: 8px solid transparent;
+         border-left:8px solid transparent;
+         border-right: 8px solid transparent;
+         border-top: 8px solid white;
+         content: " ";
+         position: absolute;
+    }
+      
+    #div_cerrar_msj_error	
+    {
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        z-index:31;
+      display:none;
+    }
+    /*Estilos para el mensaje de error*/
+    /*******************************************************************************/
+    
+	
+	
+	/*
+	Estilos para pantalla emergente
+	************************************************************************************************
+	*/
+			.cls_hover
+			{
+				position: fixed;
+				top:0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: black;
+				opacity: 0.7;
+				z-index: 30;
+				display:none;
+			}	
+			.cls_form_hover
+			{				
+				display:none;
+				width: 90%;								
+				position: fixed;
+				top:5%;
+				left:5%;
+				background-color: white;								
+				z-index: 31;
+				border-radius: 5px 5px 5px;
+				box-shadow: -5px 5px 5px gray;
+				
+				
+			}
+			.cls_row_form_hover
+			{
+				padding:10px;
+			}
+			.cls_final_form
+			{
+				padding-bottom:20px;
+			}
+			.cls_encabezado_form_hover
+			{
+				background-color: black;
+				color: white;
+				font-family: arial;
+				height: 30px;
+				font-size: 20px;
+				border-top-right-radius: 5px;
+				border-top-left-radius: 5px;
+				padding-left: 10px;
+				padding-top:3px;
+				width:100%;
+			}
+			
+			.cls_form_hover > *
+			{		
+			
+				width: 90%;
+				margin-left: 5%;
+				margin-top: 5%;
+				
+			}
+			
+			.cls_form_hover .pure-button
+			{
+					width: 90%;
+					margin-left: 5%;
+					margin-top: 5%;				
+			}
+			
+			@media  screen  and (min-width:736px)
+			{
+				.cls_form_hover
+				{
+					
+					width: 50%;						
+					left:25%;
+				}
+			}
+			
+			@media  screen  and (min-width:1100px)
+			{
+				.cls_form_hover
+				{				
+					width: 30%;												
+					left:35%;
+				}
+				.cls_form_hover .pure-button
+				{
+						
+						margin-left: 3%;
+						margin-top: 3%;				
+				}
+			}
+	/*
+	Estilos para pantalla emergente
+	************************************************************************************************
+	*/
