@@ -1,3 +1,4 @@
-<input type="text"  [(ngModel)]="txt_busqueda" id="txt_busqueda">
-<a routerLink="./de_paso_busqueda/1/2/{{txt_busqueda}}" class="pure-button" style="color:white;background-color:black;font-size:10;padding-left:2px;padding-right:2px;padding-top:4px;padding-bottom:4px;margin-top:-3px; " >Buscar</a>
-
+<div id="div_cont_buscar_encabezado">
+	<input type="text"  [(ngModel)]="txt_busqueda" id="txt_busqueda" style="border:0px;">
+	<a routerLink="./de_paso_busqueda/1/2/{{txt_busqueda}}" class="pure-button" id="btn_buscar_encabezado" >Buscar</a>
+</div>

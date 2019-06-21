@@ -5,9 +5,10 @@
     position:fixed;
     top:0;
     left:-70%;				
-   
+	height:100%;
     width:70%;
     z-index:21;
+	background-color:white;
     
 }
 #menu_encabezado #menu_encabezado2
@@ -30,23 +31,26 @@
 
 .clsBotonMenu
 {			
-    text-align:left;			
-    
-    padding-top:5px;
+    text-align:left;			    
+    padding-top:10px;
     
 }
 .clsBotonMenu a
 {
-    font-family: 'Open Sans Condensed', sans-serif;
-	letter-spacing:2px;
-	padding-bottom:5px;	
-	color:gray;	
+    font-family: 'Open Sans Condensed', sans-serif;	
+	padding-bottom:10px;	
+	color:BLACK;	
     border-radius:2px;
     text-decoration:none;    
     padding-left:5%;
-    font-weight:bold;    
+        
 }
+.clsBotonMenu a:hover
+{
+	border-bottom:1px solid black;
+	font-weight:bold;
 
+}
 
 .clsBotonMenu:hover
 {		    
@@ -133,7 +137,8 @@
 		left:0;
 		z-index:20;		
 		display:none;
-		
+		background-color:black;
+		opacity:0.7;
     }
 	#div_encabezado_2
 	{
