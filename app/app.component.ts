@@ -81,7 +81,7 @@ export class AppComponent {
 	  }
 	  
   }
-  public fn_prueba ()
+  /*public fn_prueba ()
   {
 	 if (this.esta_logueado==1)
 	 {
@@ -90,7 +90,7 @@ export class AppComponent {
 		 
 	 }
   }
-  
+  */
   public fn_funciones_jquery()
   {
 	  $(document).ready(
