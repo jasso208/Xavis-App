@@ -6,6 +6,8 @@ import { VarGlobalesService } from './var-globales.service';
 import { ValidaUsrLogueadoService } from './clientes/valida-usr-logueado.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+import { EMailNotificacionService } from './e-mail-notificacion.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,10 +18,11 @@ export class AppComponent {
   public nombre_empresa:string="";
   public btn_login_txt:string="Entrar";
   public btn_salir_txt:string="";
+  public e_mail:string="";
   contador_carrito:number=0;
   public esta_logueado:number=0;
   public usuario_logueado:string="";
-  constructor(private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private globales_service:VarGlobalesService)
+  constructor(private dbs:EMailNotificacionService,private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private globales_service:VarGlobalesService)
   {}
   ngOnInit()
   {
@@ -71,7 +74,6 @@ export class AppComponent {
   }
   public fn_cerrar_session()
   {
-	console.log(this.esta_logueado);
 	//solo generamos un nuevo token cuando el usuario este logueado.
 	  if(this.esta_logueado==1)
 	  {
@@ -130,4 +132,21 @@ export class AppComponent {
 		}
 	  );
   }
+  
+  fn_guarda_e_mail_notificacion()
+  {
+		this.dbs.fn_guarda_e_mail_notificacion(this.e_mail)
+		.subscribe(
+			data=>
+			{
+				alert(data[0].msj);
+				this.e_mail="";
+			}
+			
+		);
+		
+		
+  }
+  
+  
 }

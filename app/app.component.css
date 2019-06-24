@@ -106,7 +106,41 @@
 {
     max-width: 90%;
     margin-left:5%;
-	margin-bottom:30px;
+	margin-bottom:20px;
+	
+}
+#div_subscribete
+{
+	width:100%;
+	margin-bottom:20px;
+	background-color:#F0F8FF;
+	padding-top:30px;
+	padding-bottom:30px;
+
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:15px;
+	text-align:center;
+}
+#div_subscribete a
+{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size:20px;
+}
+#btn_subscribete
+{
+	font-family: 'Open Sans Condensed', sans-serif;
+	width:90%;
+	margin-right:5%;
+	border:1px solid black;
+}
+#txt_subscribete
+{
+	font-family: 'Open Sans Condensed', sans-serif;
+	background-color:white;
+	border:1px solid black;
+	width:90%;
+	margin-left:5%;
+	
 }
 .cls_pie_pagina legend
 {
@@ -297,9 +331,14 @@
 
 	@media  screen  and (min-width:736px)
 	{
-	
-    
+		#div_subscribete
+		{
+			width:90%;
+			margin-left:5%;	
+		}
 	}
+    
+	
 
 
 	@media  screen  and (min-width:768px)

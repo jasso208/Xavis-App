@@ -32,11 +32,12 @@
 		width:30%;
 		
 	}
+	#btn_buscar_encabezado:hover
+	{
+		background-color:white;
+		font-weight:bold;
+	}
 
-/*Solo para tablets y cel*/
-@media( min-width: 567px)
-{
-	
 	#txt_busqueda
 	{
 		width:65%; 
@@ -44,5 +45,31 @@
 		height:80%;
 		margin-top:0px;
 	}
+	
 
-}
+
+
+
+	@media  screen  and (min-width:414px)
+	{
+		
+	}
+
+
+	@media  screen  and (min-width:736px)
+	{
+			
+		#btn_buscar_encabezado
+		{
+			width:35%;
+			
+		}   
+	}
+
+
+	@media  screen  and (min-width:768px)
+	{
+    
+	}
+
+

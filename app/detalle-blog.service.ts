@@ -19,7 +19,7 @@ export class DetalleBlogService {
 			}
 		}
 	  )
-	  .pipe(map((res:Response)=>res.json()))
+	  .pipe(map((res:Response)=>res.json()));
 	  
   }
 }
