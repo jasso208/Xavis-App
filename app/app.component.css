@@ -73,22 +73,22 @@
 #control_menu_disp_movil
 {
     width:100%;
-    height:20px;
+    height:25px;
     
 }
 #control_menu_disp_movil >div
 {
-    width:20px;
-    height:20px;
-    border:1px solid black;
+    width:26px;
+    height:26px;
+    border:2px solid black;
     
 }
 #control_menu_disp_movil >div>div
 {
-    width:90%;
-    margin-left:5%;
+    width:20px;
+    margin-left:3px;
     height:2px;
-    margin-top:3px;
+    margin-top:5px;
     background-color:black;
 }
 
@@ -160,7 +160,7 @@
 {
 	font-family:arial;
 	font-size:15px;
-	color:gray;
+	color:black;
 	text-decoration:none;
 }
 #cerrar_menu_encabezado
@@ -208,10 +208,11 @@
 		color:blue;
 		font-weight:bold;
 	}
-	.cls_links_encabezado_img
+	#btn_muestra_carrito> img
 	{
-		width:20px;
-		height:20px;
+		width:30px;
+		height:30px;
+		margin-right:20px;
 	}
 	#link_enca_1
 	{
@@ -263,26 +264,7 @@
 		margin-left:5%;
 		margin-top:10px;
 	}
-	.cls_div_logo
-	{
-		text-align:center;		
-		font-family: 'Open Sans Condensed', sans-serif;
-		font-weight:bold;
-		font-size:40px;	
-		letter-spacing:3px;				
-		margin-top:-10px;
-		padding-bottom:10px;
-	}	
-    .cls_div_logo a
-    {
-        text-decoration:none;
-        color:black;
-		
-    }
-	.cls_div_logo a >span
-	{
-		display:none;
-	}
+	
 	.cls_links_encabezado
 	{
 		font-size:10px;
@@ -316,6 +298,49 @@
 	#div_btn_busqueda
 	{
 		text-align:right;		
+	}
+	
+	.cls_div_logo,.cls_div_logo2
+	{
+		/*text-align:center;		
+		margin-top:-10px;
+		padding-bottom:10px;
+		*/
+		font-family: 'Open Sans Condensed', sans-serif;
+		font-weight:bold;
+		font-size:40px;	
+		letter-spacing:3px;				
+		margin-top:-25px;
+		text-align:left;
+	}	
+    .cls_div_logo,.cls_div_logo2 a
+    {
+        text-decoration:none;
+        color:black;
+		text-align:left;
+		
+    }
+	.cls_div_logo,.cls_div_logo2 a >span
+	{
+			display:inline-block;
+	}
+	.cls_div_logo2
+	{
+		display:none;
+	}
+	.cls_div_logo
+	{
+		margin-top:10px;
+		margin-bottom:10px;
+		display:block;
+		text-align:center;
+		
+	}
+	
+	.cls_div_logo >a
+	{
+		text-decoration:none;
+		color:black;
 	}
 	
 	@media  screen  and (min-width:414px)
@@ -371,9 +396,10 @@
     }
     .clsBotonMenu a
     {
-        border-radius:2px;
+        border-radius:3px;
         text-decoration:none;
-        
+        color:gray;
+		font-weight:bold;
         padding-left:10px;
         padding-right:10px;
         
@@ -407,7 +433,30 @@
 	{
 		margin-top:15px;
 	}
+	.cls_div_logo2
+	{
+		display:block;
+		
+		font-weight:bold;
+	}
+	.cls_div_logo2 >a
+	{
+		color:black;
+	}
+	.cls_div_logo >a
+	{		
+		display:none;		
 	
+	}
+	#logo_encabezado
+	{
+		margin-top:2px;
+	}
+	#btn_muestra_carrito> img
+	{
+		width:17px;
+		height:17px;
+	}
 }
 	
 	
