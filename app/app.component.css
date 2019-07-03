@@ -74,6 +74,8 @@
 {
     width:100%;
     height:25px;
+	margin-left:20px;
+	padding:2px;
     
 }
 #control_menu_disp_movil >div
@@ -454,8 +456,8 @@
 	}
 	#btn_muestra_carrito> img
 	{
-		width:17px;
-		height:17px;
+		width:25px;
+		height:25px;
 	}
 }
 	

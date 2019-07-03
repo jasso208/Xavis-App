@@ -5,8 +5,8 @@
 export const environment = {
     production: false,
     myVarForImageURLS: 'http://localhost:4200/assets/',
-	api_url:'http://127.0.0.1:8080/'
-	//api_url:'http://pollo146.pythonanywhere.com/',
+	//api_url:'http://127.0.0.1:8080/'
+	api_url:'http://pollo146.pythonanywhere.com/',
 };
 
 /*
