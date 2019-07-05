@@ -13,17 +13,17 @@
 	{
 		color:black;	
 		font-size:12px;
-		padding-left:4px;
-		padding-right:4px;
-		padding-top:2px;
-		padding-bottom:2px;
-		margin-top:-3px; 
+		
 		background-color:white;
 		border-left:2px solid black;
-		width:30%;
-		height:100%;
+		display:inline-block;
+		width:25%;
+		text-align:center;
+		color:black;
+		font-weight:bold;
 		text-decoration:none;
 		color:gray;
+		
 		
 	}
 	#btn_buscar_encabezado:hover
@@ -36,6 +36,8 @@
 	
 	#txt_busqueda
 	{
+		
+		display:inline-block;
 		
 		margin-top:0px;
 		outline: none;				
@@ -62,7 +64,7 @@
 		
 		#btn_buscar_encabezado
 		{
-			width:35%;
+			width:13%;
 			
 		}   
 		#txt_busqueda
@@ -83,8 +85,7 @@
 			text-align:center;
 			padding-top:2px;
 			padding-bottom:5px;
-			padding-left:5px;
-			padding-right:5px;
+			
 			width:25%;
 			
 		} 

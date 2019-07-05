@@ -2,6 +2,13 @@
 	{
 		max-width:1000px;
 		margin:0 auto;
+		background-color:gray;
+	}
+	
+	body>div
+	{
+		
+		height:100%; background-color:white;
 	}
 	.cls_div_hover
 	{

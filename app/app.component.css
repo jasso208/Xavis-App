@@ -1,5 +1,4 @@
 /*css del menu principal*/
-
 #menu_encabezado
 {
     position:fixed;
@@ -15,7 +14,7 @@
 {
     margin-left:0;						
     background-color:white;
- 
+	margin-top:10px;
     
     
 }
@@ -39,7 +38,9 @@
 {
     font-family: 'Open Sans Condensed', sans-serif;	
 	padding-bottom:10px;	
-	color:BLACK;	
+	color:black;
+	font-weight:bold;
+	letter-spacing:2px;
     border-radius:2px;
     text-decoration:none;    
     padding-left:5%;
@@ -313,13 +314,13 @@
 		font-size:40px;	
 		letter-spacing:3px;				
 		margin-top:-25px;
-		text-align:left;
+		
 	}	
     .cls_div_logo,.cls_div_logo2 a
     {
         text-decoration:none;
         color:black;
-		text-align:left;
+		
 		
     }
 	.cls_div_logo,.cls_div_logo2 a >span
@@ -328,7 +329,7 @@
 	}
 	.cls_div_logo2
 	{
-		display:none;
+		
 	}
 	.cls_div_logo
 	{
@@ -358,6 +359,7 @@
 
 	@media  screen  and (min-width:736px)
 	{
+		
 		#div_subscribete
 		{
 			width:90%;
@@ -435,21 +437,25 @@
 	{
 		margin-top:15px;
 	}
-	.cls_div_logo2
+	.cls_div_logo
 	{
-		display:block;
-		
+		display:block;		
 		font-weight:bold;
+		text-align:left;
+		margin-left:0px;
+		
 	}
-	.cls_div_logo2 >a
+	
+		.cls_div_logo2
+		{
+			display:none;
+		}
+		
+	.cls_div_logo >a
 	{
 		color:black;
 	}
-	.cls_div_logo >a
-	{		
-		display:none;		
 	
-	}
 	#logo_encabezado
 	{
 		margin-top:2px;
