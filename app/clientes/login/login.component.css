@@ -9,6 +9,12 @@
 	width:100%;
 	height:100%;
 }
+
+#div_form_tipo_compra h1
+{
+	text-align:center;
+	font-family: 'Nunito', sans-serif;
+}
 .cls_login_id
 {
 	display:none;

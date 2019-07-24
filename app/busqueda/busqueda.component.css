@@ -1,6 +1,6 @@
 	#div_cont_buscar_encabezado
 	{
-		border:2px solid black;
+		border:1px solid black;
 		width:100%;		
 		padding:2px;
 		height:25px;
@@ -12,17 +12,18 @@
 	#btn_buscar_encabezado
 	{
 		color:black;	
-		font-size:12px;
+		font-size:10px;		
 		
-		background-color:white;
-		border-left:2px solid black;
+		font-family: 'Nunito', sans-serif;
+		background-color:#F0F8FF;
+		border-left:1px solid black;
 		display:inline-block;
 		width:25%;
 		text-align:center;
 		color:black;
 		font-weight:bold;
 		text-decoration:none;
-		color:gray;
+		color:black;
 		
 		
 	}
@@ -39,6 +40,7 @@
 		
 		display:inline-block;
 		
+ font-family: 'Nunito', sans-serif;
 		margin-top:0px;
 		outline: none;				
 		font-size:12px;
@@ -48,7 +50,8 @@
 		width:70%;
 		border:0px;
 		height:80%;
-		color:gray;
+		color:black;
+		background-color:#F0F8FF;
 	}
 
 
@@ -65,12 +68,15 @@
 		#btn_buscar_encabezado
 		{
 			width:13%;
-			
+			background-color:white;
 		}   
 		#txt_busqueda
 		{
 			width:85%;
+			background-color:white;
 		}
+			
+		
 	}
 
 
@@ -79,13 +85,13 @@
 		#btn_buscar_encabezado
 		{
 			
-			font-size:15px;
+			font-size:10px;
 			height:10px;			
-			border-left:2px solid gray;
+			border-left:1px solid black;
 			text-align:center;
 			padding-top:2px;
 			padding-bottom:5px;
-			
+			padding-left:5px;
 			width:25%;
 			
 		} 
@@ -105,36 +111,14 @@
 		}
 		#div_cont_buscar_encabezado
 		{			
-			border:2px solid gray;	
+			border:1px solid black;	
 			height:20px;
 			
 		}
 	}
 	@media screen and (min-width:1024px)
 	{
-		#btn_buscar_encabezado
-		{
-			width:20%;
-			
-			padding:0px;
-		}
-		#btn_buscar_encabezado
-		{
-			
-			font-size:15px;
-			height:10px;			
-			border-left:2px solid gray;
-			text-align:center;
-			padding-top:0px;
-			padding-bottom:0px;
-			padding-left:0px;
-			padding-right:0px;
-			width:28%;
-			height:95%;
-			display:inline-block;
-			
-			
-		} 
+		
 	}
 
 

@@ -1,20 +1,31 @@
+<div class="pure-g">
+	<div class="pure-u-1" id="baner-superior">
+		<h1 >Solo por hoy!!! <span>Gran Barata</span> (Baner de Prueba)</h1>
+	</div>
+</div>
 
-<!--Encabezado-->
-<div class="pure-g" id="logo_encabezado">
-	<!--<div class="pure-u-1 pure-u-md-5-5 pure-u-lg-2-5 "></div>-->
+
+<div class="pure-g" id="logo_encabezado" >
+	
 	<div class="pure-u-1 pure-u-sm-1 pure-u-md-3-5 pure-u-lg-2-5 cls_div_logo"  >
 		<a routerLink="./home">X<span>avi</span>'S</a>
 	</div>
+	
 	<div class="pure-u-1 pure-u-sm-1 pure-u-md-2-5 pure-u-lg-3-5" id="div_encabezado_2"  >
+	
 		<div class="pure-g">			
+		
 			<div class="pure-u-1-5 pure-u-sm-1-5 pure-u-md-1-5 pure-u-lg-3-5"  id="div_btn_carrito">
 				<a id="btn_muestra_carrito">
 					<img   src="assets/img/carrito-compras.png" (click)="recarga_carrito();">
 				</a>
 			</div>
+		
 			<div class="pure-u-3-5 pure-u-sm-3-5 pure-u-md-4-5 pure-u-lg-2-5"  id="div_btn_busqueda">				
-				<app-busqueda></app-busqueda>
+				<app-busqueda>
+				</app-busqueda>
 			</div>
+		
 			<div class="pure-u-1-5 pure-u-sm-1-5">				
 				<div id="control_menu_disp_movil">
 					<div>
@@ -24,40 +35,34 @@
 					</div>
 				</div>
 			</div>
+	
 		</div>
+	
 	</div>
+	
 </div>
-<!--Encabezado-->
 
 <div id="cerrar_menu_encabezado">
 </div>
-
-	<div class="pure-g">
-		<div class="pure-u-1" style="width:90%;margin-left:5%;text-align:right;">	
-			<a >{{usuario_logueado}}</a>
-		</div>
-
-	</div>
-
-<!--Menu Principal-->
+	
 <div class="pure-g" id="menu_encabezado">
-	<div class="pure-u-4-5" id="menu_encabezado2" >
+	<div class="pure-u-1" id="menu_encabezado2" >
 		<div class="pure-g">	
 			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu cls_div_logo2"  >
-				<a routerLink="./home">X<span>avi</span>'S</a>
+				<a routerLink="./home" style="font-family: 'Lobster', cursive;">X<span>avi</span>'S</a>
 			</div>								
-			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a routerLink="./de_paso_busqueda/1/1/1"><span>></span> CALZADO</a></div>								
-			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu" ><a routerLink="./de_paso_busqueda/1/1/2"><span>></span> JEANS</a></div>
-			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a  routerLink="./de_paso_busqueda/1/1/3"><span>></span> BOLSOS</a></div>			
-			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a  routerLink="./de_paso_busqueda/1/1/4"><span>></span> ACCESORIOS</a></div>
+			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a routerLink="./de_paso_busqueda/1/1/1"><span><img class="cls_img_menu" src="assets/img/asterisco.png"></span> Niño</a></div>								
+			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu" ><a routerLink="./de_paso_busqueda/1/1/2"><span><img class="cls_img_menu" src="assets/img/asterisco.png"></span> Niña</a></div>
+			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a  routerLink="./de_paso_busqueda/1/1/3"><span><img class="cls_img_menu" src="assets/img/asterisco.png"></span> Hombre</a></div>			
+			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a  routerLink="./de_paso_busqueda/1/1/4"><span><img class="cls_img_menu" src="assets/img/asterisco.png"></span> Mujer</a></div>
 			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a  routerLink="./de_paso_busqueda/1/1/4"><span></span> </a></div>
 			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a  routerLink="./de_paso_busqueda/1/1/4"><span></span> </a></div>
 			
-			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"><a routerLink="./blog"><span>></span> BLOG</a></div>			
+			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu"></div>			
 					
 			<div class="pure-u-1 pure-u-md-1-8 clsBotonMenu">
 				<a id="btn_login" >
-					<span>></span> {{btn_login_txt}}
+					<span><img class="cls_img_menu" src="assets/img/usuario.png"></span> {{btn_login_txt}}
 					<div >
 						<a routerLink="./cliente/panel-control">Panel de Control</a>
 						<a (click)="fn_cerrar_session()" href="#">Salir</a>
@@ -69,7 +74,6 @@
 </div>
 
 
-<!--Menu Principal--> 
 <app-carrito-compras></app-carrito-compras>
 <app-login></app-login>
 <app-registra-clientes></app-registra-clientes>
@@ -156,6 +160,5 @@
 	</div>
 	
 </div>
-
 
 
