@@ -1,6 +1,8 @@
 import { Component, OnInit,NgZone } from '@angular/core';
 import {CarritoComprasService} from './../producto/carrito-compras.service';
 import {Router} from '@angular/router';
+import * as $ from 'jquery';
+
 @Component({
   selector: 'app-carrito-compras',
   templateUrl: './carrito-compras.component.html',
@@ -11,6 +13,7 @@ export class CarritoComprasComponent implements OnInit {
   cont_productos:number=0;
 	public msj:string="";
 	public mostrar:boolean;
+	public btn_terminar_venta:boolean;
     public subtotal_aux:number=0;
     public subtotal:string="0";
     public iva_aux:number=0;
@@ -18,6 +21,7 @@ export class CarritoComprasComponent implements OnInit {
     public envio:number=0;
     public total_aux:number=0;
     public total:string="0";
+	
   constructor(private car_service:CarritoComprasService,private router:Router,private zone:NgZone) {	
 		window['angularComponentReference'] = {
 			zone: this.zone,
@@ -27,8 +31,11 @@ export class CarritoComprasComponent implements OnInit {
 	 }
 
   ngOnInit() {
-	this.mostrar=true;
+	this.fn_jquery(); 
+	this.mostrar=false;
+	this.btn_terminar_venta=false;
     this.consultaCarrito();
+	
   }
 
   public consultaCarrito()
@@ -54,7 +61,12 @@ export class CarritoComprasComponent implements OnInit {
 		this.subtotal=parseFloat((this.subtotal_aux).toString()).toFixed(2);
 		this.iva=parseFloat((this.iva_aux).toString()).toFixed(2);
 		this.total=parseFloat((this.subtotal_aux).toString()).toFixed(2);
-	
+		//en caso de estar logueado, mostramos el boton para terminar venta.
+		if (localStorage.getItem("esta_logueado")=="1")
+		{
+			this.btn_terminar_venta=true;
+		}
+		
     });
   }
   public eliminaProductoCarrito(id:string)
@@ -65,19 +77,40 @@ export class CarritoComprasComponent implements OnInit {
 		data=>{
 			if(data[0].estatus==0)
 			{
-				this.msj=data[0].msj;
-				//alert(data[0].msj);
+				//this.msj=data[0].msj;
+				this.msj=data[0].msj;				
 			}
 			else
 			{				
-				alert("Se elimino correctamente.");
+				this.msj="Se elimino correctamente.";				
 				this.consultaCarrito();
+				
 			}
+			this.mostrar=true;
 		}
 	);
 	this.mostrar=false;
   }
 
-
+public fn_aceptar_msj()
+	{
+		this.mostrar=false;
+	}
+	
+	public fn_jquery()
+	{
+		$(document).ready(function()
+			{
+				$("#btn_login_c").click(
+					function()
+					{
+						$(".cls_login_id").show();
+						$("#contenedor_carrito_compras").hide();
+						$("#contenedor_carrito_compras").hide();
+					}
+				);
+			}
+		);
+	}
 
 }

@@ -58,3 +58,11 @@
 			</form>
 			
 		</div>
+		
+<div *ngIf="mostrar" class="cls_div_hover">
+</div>
+<div *ngIf="mostrar" class="cls_div_msj_hover" >
+	<h1>{{msj}}</h1>
+	<button class="pure-button pure-button-primary" (click)="fn_aceptar_msj()">Aceptar</button>
+</div>
+		

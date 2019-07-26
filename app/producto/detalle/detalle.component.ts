@@ -13,6 +13,7 @@ declare var $:any;
 })
 export class DetalleComponent implements OnInit {
 	public mostrar:boolean;
+	
   prod:any;
   
   rutaActiva:any;

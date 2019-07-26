@@ -40,17 +40,18 @@
 {			
     text-align:left;			    
     padding-top:10px;
+	
     
 }
 .clsBotonMenu a
 {
- font-family: 'Nunito', sans-serif;
+	font-family: 'Nunito', sans-serif;
 	padding-bottom:10px;	
 	color:black;
 	letter-spacing:2px;
     text-decoration:none;    
     padding-left:5%;
-        
+     display:block;
 }
 .clsBotonMenu a:hover
 {
@@ -225,37 +226,7 @@
 	{
 		text-align:right;
 	}
-	#btn_login
-	{
-		position:relative;
-		z-index:30;
-	}
-	#btn_login>div
-	{
-		position:absolute;
-		background-color:white;
-		box-shadow:2px 2px 2px black;
-		width:200px;
-		text-align:left;
-		display:none;		
-		z-index:30;
-	}
-	#btn_login:hover>div
-	{
-		display:block;		
-	}
-	#btn_login>div>a
-	{
-		padding-top:10px;
-		padding-bottom:10px;
-		display:block;
-	}
-	#btn_login>div>a:hover
-	{
-		background-color:white;
-		color:black;
-		
-	}
+	
     /*css de encabezado logo*/
     /*************************************************************************************************/
 
@@ -345,7 +316,39 @@
 		text-decoration:none;
 		color:black;
 	}
-	
+	#btn_login
+	{
+		position:relative;
+		z-index:30;
+	}
+	#btn_login>div
+	{
+		position:absolute;
+		background-color:white;
+		box-shadow:2px 2px 2px black;
+		width:100%;
+		
+		text-align:left;
+		display:none;		
+		z-index:30;
+		margin-left:-15px;
+	}
+	#btn_login:hover>div
+	{
+		display:block;		
+	}
+	#btn_login>div>a
+	{
+		padding-top:10px;
+		padding-bottom:10px;
+		display:block;
+	}
+	#btn_login>div>a:hover
+	{
+		background-color:white;
+		color:black;
+		
+	}
 	@media  screen  and (min-width:414px)
 	{
 		
@@ -392,6 +395,8 @@
 		{
 			color:red;
 		}
+		
+	
 	}
     
 	
@@ -399,100 +404,108 @@
 
 	@media  screen  and (min-width:768px)
 	{
-    #menu_encabezado
-    {
-        position:static;
-        height:auto;        
-        width:100%;
-    }
-    #menu_encabezado #menu_encabezado2
-    {
-        width:90%;
-        margin-left:5%;				
-        color:white;
-        
-    }
-    #cerrar_menu_encabezado
-    {
-        display:none;
-    }
-    #encabezado_menu
-    {
-        display:none;
-        
-    }
-    .clsBotonMenu
-    {
-        text-align:center;
-    }
-    .clsBotonMenu a
-    {
-        
-        text-decoration:none;
-        
-		
-        padding-left:10px;
-        padding-right:10px;
-        
-    }
-    .clsBotonMenu a span
-    {
-        display:none;
-    }
-    .clsBotonMenu a:hover
-    {		
-        
-        color:#c0c0c0;		
-        color:black;
-    }
-    #control_menu_disp_movil
-    {
-        display:none;
-    }
-	
-	
-	#div_btn_carrito
-	{
-		text-align:right;		
-	}
-	#div_btn_busqueda
-	{
-		text-align:left;		
-	}
-	
-	#div_encabezado_2
-	{
-		margin-top:15px;
-	}
-	.cls_div_logo
-	{
-		display:block;		
-		font-weight:bold;
-		text-align:left;
-		margin-left:0px;
-		
-	}
-	
-		.cls_div_logo2
+		#menu_encabezado
+		{
+			position:static;
+			height:auto;        
+			width:100%;
+		}
+		#menu_encabezado #menu_encabezado2
+		{
+			width:90%;
+			margin-left:5%;				
+			color:white;
+			
+		}
+		#cerrar_menu_encabezado
+		{
+			display:none;
+		}
+		#encabezado_menu
+		{
+			display:none;
+			
+		}
+		.clsBotonMenu
+		{
+			text-align:center;
+			
+			
+		}
+		.clsBotonMenu a
+		{
+			
+			text-decoration:none;
+			
+			
+			padding-left:10px;
+			padding-right:10px;
+			
+		}
+		.clsBotonMenu a span
+		{
+			display:none;
+		}
+		.clsBotonMenu a:hover
+		{		
+			
+			color:#c0c0c0;		
+			color:black;
+		}
+		#control_menu_disp_movil
 		{
 			display:none;
 		}
 		
-	.cls_div_logo >a
-	{
-		color:black;
+		
+		#div_btn_carrito
+		{
+			text-align:right;		
+		}
+		#div_btn_busqueda
+		{
+			text-align:left;		
+		}
+		
+		#div_encabezado_2
+		{
+			margin-top:15px;
+		}
+		.cls_div_logo
+		{
+			display:block;		
+			font-weight:bold;
+			text-align:left;
+			margin-left:0px;
+			
+		}
+		
+			.cls_div_logo2
+			{
+				display:none;
+			}
+			
+		.cls_div_logo >a
+		{
+			color:black;
+		}
+		
+		#logo_encabezado
+		{
+			margin-top:2px;
+		}
+		#btn_muestra_carrito> img
+		{
+			width:25px;
+			height:25px;
+		}
+		#btn_login>div
+		{
+			
+			width:200px;
+			margin-left:0;
+		}
 	}
-	
-	#logo_encabezado
-	{
-		margin-top:2px;
-	}
-	#btn_muestra_carrito> img
-	{
-		width:25px;
-		height:25px;
-	}
-}
 	
 	
 	

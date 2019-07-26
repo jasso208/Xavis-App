@@ -12,8 +12,11 @@ export class LoginComponent implements OnInit {
 
 	public e_mail_login:string;
 	public psw_login:string;
-
+	public mostrar:boolean;	
+	public msj:string="";
+	
 	login:FormGroup;
+	
 	constructor(private ls:LoginService) { }
 
 	ngOnInit() {
@@ -21,10 +24,12 @@ export class LoginComponent implements OnInit {
 			{
 				
 				e_mail_login:new FormControl('',[Validators.required]),
+				
 				psw_login:new FormControl('',[Validators.required])
 				
 			}
 		);
+		this.mostrar=false;
 	}
 	
 	fn_login()
@@ -35,18 +40,27 @@ export class LoginComponent implements OnInit {
 					{		
 						if (data[0].estatus=="1")
 						{
-							alert("Logueado correctamente");
+							//alert("Logueado correctamente");
+							this.msj="Bienvenido"
+							this.mostrar=true;							
+							
 							window.location.reload();
 							
 						}
 						else
 						{
-							alert(data[0].msj);
+							this.msj=data[0].msj;
+							//alert(data[0].msj);
+							this.mostrar=true;							
+							
 						}
 					}
 				);	  
 	}
   
-
+	public fn_aceptar_msj()
+	{
+		this.mostrar=false;
+	}
 
 }

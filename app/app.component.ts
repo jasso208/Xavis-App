@@ -6,6 +6,7 @@ import { VarGlobalesService } from './var-globales.service';
 import { ValidaUsrLogueadoService } from './clientes/valida-usr-logueado.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
+
 import { EMailNotificacionService } from './e-mail-notificacion.service';
 
 @Component({
@@ -14,26 +15,29 @@ import { EMailNotificacionService } from './e-mail-notificacion.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'xavis-app';
-  public nombre_empresa:string="";
-  public btn_login_txt:string="Entrar";
-  public btn_salir_txt:string="";
-  public e_mail:string="";
-  contador_carrito:number=0;
-  public esta_logueado:number=0;
-  public usuario_logueado:string="";
-  constructor(private dbs:EMailNotificacionService,private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private globales_service:VarGlobalesService)
-  {}
-  ngOnInit()
-  {
+	public msj:string="";
+	public mostrar:boolean;
+	
+	title = 'xavis-app';
+	public nombre_empresa:string="";
+	public btn_login_txt:string="Entrar";
+	public btn_salir_txt:string="";
+	public e_mail:string="";
+	contador_carrito:number=0;
+	public esta_logueado:number=0;
+	public usuario_logueado:string="";
+	constructor(private dbs:EMailNotificacionService,private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private globales_service:VarGlobalesService)
+	{}
+	ngOnInit()
+	{
 	 
-	this.fn_funciones_jquery();
-	 this.nombre_empresa=this.globales_service.get_nombre_empresa()
+		this.fn_funciones_jquery();
+		this.nombre_empresa=this.globales_service.get_nombre_empresa()
       //esta funcion ejecuta el algoritmo para generar la session, solo en caso de que no exista
-      this.session.setSession();
-	  
+		this.session.setSession();
+		this.mostrar=false;
 	  //validamos si el usuario esta logueado o no
-	  this.vul.fn_valida_usr_logueado()
+		this.vul.fn_valida_usr_logueado()
 		.subscribe(
 			data=>
 			{				
@@ -68,6 +72,11 @@ export class AppComponent {
 		) ;
 		
   }
+  public fn_cerrar_menu()
+  {
+	 	$("#menu_encabezado").animate({left:'-70%'});
+		$("#cerrar_menu_encabezado").hide();
+  }
   public recarga_carrito()
   {
     this.c_c.consultaCarrito();
@@ -83,16 +92,7 @@ export class AppComponent {
 	  }
 	  
   }
-  /*public fn_prueba ()
-  {
-	 if (this.esta_logueado==1)
-	 {
-		
-		this.router.navigate(['cliente/panel-control']);
-		 
-	 }
-  }
-  */
+
   public fn_funciones_jquery()
   {
 	  $(document).ready(
@@ -132,14 +132,19 @@ export class AppComponent {
 		}
 	  );
   }
-  
+  public fn_aceptar_msj()
+	{
+		this.mostrar=false;
+	}
+	
   fn_guarda_e_mail_notificacion()
   {
 		this.dbs.fn_guarda_e_mail_notificacion(this.e_mail)
 		.subscribe(
 			data=>
 			{
-				alert(data[0].msj);
+				this.msj=data[0].msj;
+				this.mostrar=true;
 				this.e_mail="";
 			}
 			
