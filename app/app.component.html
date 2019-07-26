@@ -84,7 +84,7 @@
 <div id="barra_antes_pie">
 
 </div>
-<div class="pure-g" id="div_subscribete">
+<div class="pure-g" id="div_subscribete" >
 	<div class="pure-u-1 pure-u-md-3-5" style="margin-bottom:20px;">
 		<a>
 			Subscribete y obten notificaciones de nuestras novedades.
@@ -96,7 +96,7 @@
 				<input type="text"  id="txt_subscribete" [(ngModel)]="e_mail" >
 			</div>
 			<div class="pure-u-1-3" >
-				<button class="pure-button pure-button-primary"  id="btn_subscribete" (click)="fn_guarda_e_mail_notificacion()">Subscribete</button>
+				<button class="pure-button pure-button-primary"  id="btn_subscribete" (click)="fn_guarda_e_mail_notificacion()">Enviar</button>
 			</div>
 		
 		
@@ -162,11 +162,15 @@
 </div>
 
 <div *ngIf="mostrar" class="cls_div_hover">
+
 </div>
 
+
 <div *ngIf="mostrar" class="cls_div_msj_hover" >
+
 	<h1>{{msj}}</h1>
 	<button class="pure-button pure-button-primary" (click)="fn_aceptar_msj()">Aceptar</button>
+	
 </div>
 
 

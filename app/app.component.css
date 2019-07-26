@@ -55,7 +55,7 @@
 }
 .clsBotonMenu a:hover
 {
-	border-bottom:1px solid black;
+	
 	font-weight:bold;
 
 }
@@ -126,7 +126,6 @@
 	background-color:#F0F8FF;
 	padding-top:30px;
 	padding-bottom:30px;
-
 	font-family: 'Nunito', sans-serif;
 	font-size:15px;
 	text-align:center;
@@ -326,12 +325,12 @@
 		position:absolute;
 		background-color:white;
 		box-shadow:2px 2px 2px black;
-		width:100%;
-		
+		width:100%;		
 		text-align:left;
 		display:none;		
 		z-index:30;
 		margin-left:-15px;
+		right:0;
 	}
 	#btn_login:hover>div
 	{
@@ -362,18 +361,12 @@
 
 	@media  screen  and (min-width:736px)
 	{
-		/*css de encabezado logo*/
-	#logo_encabezado
-	{
-		background-color:white;
-		width:90%;
-		margin-left:5%;
 	
-	}
-		#div_subscribete
+		#logo_encabezado
 		{
 			width:90%;
-			margin-left:5%;	
+			margin-left:5%;
+			background-color:white;
 		}
 		#baner-superior
 		{
@@ -412,8 +405,8 @@
 		}
 		#menu_encabezado #menu_encabezado2
 		{
-			width:90%;
-			margin-left:5%;				
+			width:100%;
+			
 			color:white;
 			
 		}

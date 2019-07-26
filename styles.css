@@ -1,14 +1,15 @@
 	body
 	{
 		margin:0 auto;
-		background-color:#edeef2;
-		max-width:1000px;
+		background-color:#edeef2;		
 		background-color:white;
+		
 	}
 
 	body>div
 	{
-		max-width:1000px;
+		margin:0 auto;
+		max-width:1200px;
 	}
 
 	.cls_div_hover
