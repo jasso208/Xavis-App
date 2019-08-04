@@ -1,15 +1,16 @@
 	body
 	{
-		margin:0 auto;
+		
 		background-color:#edeef2;		
 		background-color:white;
-		
+
 	}
 
 	body>div
 	{
 		margin:0 auto;
-		max-width:1200px;
+		
+		
 	}
 
 	.cls_div_hover
@@ -149,11 +150,8 @@
 
 h1
 {
-	font-family: 'Open Sans Condensed', sans-serif;
+	text-align:center;
 	font-size:20px;
-	font-weight:bold;
-	color:black;
-	letter-spacing:2px;
 }
 h2
 {
@@ -292,7 +290,6 @@ h4
     }
     .cls_desc_prod_busqueda a
     {
-		 font-family: 'Nunito', sans-serif;
         font-size:12px;
         color:black;
         
@@ -464,6 +461,14 @@ h4
 					width: 90%;
 					margin-left: 5%;
 					margin-top: 5%;				
+			}
+			.cls_encabezado_bloque
+			{
+				margin:0 auto;
+				text-align:center;
+				color:gray; 
+				font-family: 'Nunito', sans-serif;
+				font-size:40px;
 			}
 			
 			@media  screen  and (min-width:736px)

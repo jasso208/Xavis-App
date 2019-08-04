@@ -1,39 +1,27 @@
 
-<div class="pure-g">
-	<div class="pure-u-1" style="width:90%;margin-left:5%;">
-		<div class="pure-g">
-			<div class="pure-u-1">
-				<div class="pure-form">
-					<fieldset>
-						<legend><a style="font-family: 'Nunito', sans-serif;">Resultados de tu busqueda:</a></legend>
-					</fieldset>
-				
-				</div>
+
+<div class="container">
+		<div class="row">
+			<div class="page-header">
+			<h1>Resultados de tu busqueda.</h1>
 			</div>
 		</div>
-		<div class="pure-g">
-			<div class="pure-u-1-2 pure-u-md-1-5" *ngFor="let prod of productos">
-				<div class="pure-g pure-form cls_cont_img" >
-					<div class="pure-u-1 cls_cont_img_2" >
-						<img src="../assets/img/productos/{{prod.str_id}}_1.png" class="cls_img_prod_busqueda">
-					</div>
-					<div class="pure-u-1 cls_desc_prod_busqueda" >
-						<a>{{prod.nombre}}</a>
-					</div>
-					<div class="pure-u-1 cls_precio_prom_prod_busqueda">
-						<a *ngIf="prod.muestra_descuento">Antes: {{prod.precio_antes}}</a>
-					</div>
-					<div class="pure-u-1 cls_precio_prod_busqueda">
-						<a>$ {{prod.precio}} <span>(MXN)</span></a>
-					</div>
-				<!--
-					<div class="pure-u-1 cls_tallas_prod_busqueda">
-						<a>Tallas: <span>CH</span> <span>M</span> <span>G</span> </a>
-					</div>
-				-->
-					<button type="submit" class="pure-button pure-input-1  cls_boton_primary"   routerLink="/producto/detalle/{{prod.id}}">Ver</button>
-				</div>
+		<div class="row">
+			<div class="col-6 col-sm-3 col-md-3" *ngFor="let prod of productos">				
+					<div class="thumbnail">
+					  <a routerLink="/producto/detalle/{{prod.id}}">
+						<img src="../assets/img/productos/{{prod.str_id}}_1.png"  alt="Lights" style="width:100%">
+						<div class="caption">
+						  <p class="cls_desc_prod_busqueda">{{prod.nombre}}</p>
+						</div>
+						<div class="cls_precio_prom_prod_busqueda">
+							<a *ngIf="prod.muestra_descuento">Antes: {{prod.precio_antes}}</a>
+						</div>
+						<div class="cls_precio_prod_busqueda">
+							<a>$ {{prod.precio}} <span>(MXN)</span></a>
+						</div>
+					  </a>
+					</div>				
 			</div>
 		</div>
-	</div>
 </div>
