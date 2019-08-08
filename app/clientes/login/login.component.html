@@ -1,62 +1,62 @@
-		<div id="div_hover_tipo_compra" class="cls_hover cls_login_id" >
+		<div id="btn_cancelar" class="cls_hover cls_login_id" >
 
 		</div>
-		<div class="cls_form_hover cls_login_id">			
-			
-			<form [formGroup]="login"  id="div_form_tipo_compra" class="pure-form pure-form-stacked ">						
-				<fieldset>
-					<legend>
-						<h1>INICIAR SESSION</h1>
-					</legend>
-					<div class="pure-u-1 ">
-						<label >
+		
+
+		
+	
+		<div class="container cls_form_hover cls_login_id">			
+			<div class="row">
+				<div class="page-header">
+						<h1>
+							Iniciar Session
+						</h1>
+				</div>
+				<form [formGroup]="login"  id="div_form_tipo_compra"  class="form-horizontal">															
+					<div class="col-12 form-group">
+						<label>
 							Usuario		        
 						</label>
-						<input class="pure-u-1" id="e_mail_login" formControlName="e_mail_login" type="text" name="e_mail_login" >			        
+						<input class="form-control" id="e_mail_login" formControlName="e_mail_login"  name="e_mail_login" type="text" name="e_mail_login" >			        
 						<div
-							class=" pure-u-23-24 error"
+							class="col-12 error"
 							*ngIf="login.get('e_mail_login').hasError('required') && login.get('e_mail_login').touched">
 							<a>El campo usuario no puede ser vacio</a>
 						</div>
 					</div>
-					
-					<div class="pure-u-1">
-						<label >
-							Password			        
-						</label>
-						<input  class="pure-u-1" id="psw_login" formControlName="psw_login" type="password" name="psw_login" >					
-						<div
-							class=" pure-u-23-24 error"
-							*ngIf="login.get('psw_login').hasError('required') && login.get('psw_login').touched">
-							<a>El campo contraseña no puede ser vacio</a>
+						
+						<div class="col-12 form-group">
+							<label >
+								Password			        
+							</label>
+							<input class="form-control" id="psw_login" formControlName="psw_login" type="password" name="psw_login" >					
+							<div
+								class="col-12 error"
+								*ngIf="login.get('psw_login').hasError('required') && login.get('psw_login').touched">
+								<a>El campo contraseña no puede ser vacio</a>
+							</div>
 						</div>
-					</div>
-					
-					<div class="pure-u-1-2 cls_final_form" >					
-						<button class="pure-button "  id="btn_cancelar" >
-							Cancelar
-						</button>
-					</div>
-					
-					<div class="pure-u-1-2 cls_final_form" >					
-						<button class="pure-button pure-button-primary " [disabled]="login.invalid" (click)="fn_login()">
-							Entrar
-						</button>
-					</div>
-					<div class="pure-u-1">
-						<a href="#" style="font-size:10px;">Recupera tu contraseña?</a>
-					</div>
-					
-					<legend>
-						<h1>Aun no estas registrado?</h1>
-					</legend>
-					
-					<div class="pure-u-1 cls_final_form">
-							<button id="btn_registrate_login" class="pure-button pure-button-primary">Registrate</button>
-					</div>
-				</fieldset>
-			</form>
-			
+						
+						
+						
+						<div class="col-12 cls_final_form" >					
+							<button class="btn btn-primary btn-lg btn-block" [disabled]="login.invalid" (click)="fn_login()">
+								Entrar
+							</button>
+						</div>
+						<div class="col-12">
+							<a href="#" style="font-size:10px;">Recupera tu contraseña?</a>
+						</div>
+						
+						<legend>
+							<h1>Aun no estas registrado?</h1>
+						</legend>
+						
+						<div class="col-as cls_final_form">
+								<button id="btn_registrate_login" class="btn btn-default btn-lg btn-block">Registrate</button>
+						</div>					
+				</form>
+			</div>
 		</div>
 		
 <div *ngIf="mostrar" class="cls_div_hover">

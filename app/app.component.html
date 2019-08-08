@@ -73,6 +73,39 @@
 	</div>
 </div>
 -->
+<div class="container">
+	<nav class="navbar navbar-default" style="background-color:white;border:0px;">
+			<div class="container-fluid">		
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a  id="btn_muestra_carrito" (click)="recarga_carrito();">
+							<span class="glyphicon glyphicon-shopping-cart">
+							</span> 
+						</a>
+					</li>
+					<li *ngIf="logueado" id="btn_micuenta">
+						<a routerLink="./cliente/panel-control">
+							<span class="glyphicon glyphicon-cog"></span> Mi Cuenta
+						</a>
+					</li>
+					<li *ngIf="logueado" id="btn_micuenta">
+						<a (click)="fn_cerrar_session()" routerLink="./">
+							<span class="glyphicon glyphicon-off">
+							</span> Cerrar Session
+						</a>
+					</li>
+					<li *ngIf="!logueado">
+						<a id="btn_login">
+							<span class="glyphicon glyphicon-log-in"></span> Login
+						</a>
+					</li>
+				</ul>
+			</div>
+	</nav>
+</div>
+
+
+
 <div class="container" >
 		<div class="row" >
 			<div class="col-sm-12">
@@ -113,7 +146,7 @@
 		</li>
 		
 	  </ul>
-  
+	
 	</div>
 	<br>
 <app-carrito-compras></app-carrito-compras>

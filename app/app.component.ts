@@ -17,7 +17,7 @@ import { EMailNotificacionService } from './e-mail-notificacion.service';
 export class AppComponent {
 	public msj:string="";
 	public mostrar:boolean;
-	
+	public logueado:boolean;
 	title = 'xavis-app';
 	public nombre_empresa:string="";
 	public btn_login_txt:string="Entrar";
@@ -43,20 +43,13 @@ export class AppComponent {
 			{				
 				if (data[0].estatus=="1")
 				{
-					
-					this.esta_logueado=1;
-					this.btn_login_txt=data[0].nombre+" ˅";
-					this.btn_salir_txt="Salir";
-					//this.usuario_logueado="Bienvenido: "+data[0].nombre+' '+data[0].apellido_m+' '+data[0].apellido_p;
 					localStorage.setItem("esta_logueado","1");
+					this.logueado=true;
 				}
 				else
-				{
-					this.esta_logueado=0;
-					this.btn_login_txt="Entrar";
-					this.btn_salir_txt="";
-					this.usuario_logueado="Bienvenido: No ha iniciado session";
+				{					
 					localStorage.setItem("esta_logueado","0");
+					this.logueado=false;
 				}
 			}
 		) ;
@@ -74,21 +67,30 @@ export class AppComponent {
   }
   public fn_cerrar_menu()
   {
+	  
 	 	$("#menu_encabezado").animate({left:'-70%'});
+		
 		$("#cerrar_menu_encabezado").hide();
+		
   }
   public recarga_carrito()
   {
+	  
     this.c_c.consultaCarrito();
+	
   }
   public fn_cerrar_session()
   {
+	
+		
 	//solo generamos un nuevo token cuando el usuario este logueado.
-	  if(this.esta_logueado==1)
+	  if(localStorage.getItem("esta_logueado")=="1")
 	  {
 		  
 		this.session.fn_kill_session();
+		this.logueado=false;
 		window.location.reload();
+		
 	  }
 	  
   }
@@ -101,6 +103,7 @@ export class AppComponent {
 			$("#btn_login").click(
 				function()
 				{
+					//alert(localStorage.getItem("esta_logueado"));
 					if (localStorage.getItem("esta_logueado")=="1")
 					{		
 						//this.router.navigate(['cliente/panel-control']);		 

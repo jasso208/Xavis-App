@@ -12,7 +12,10 @@
 		
 		
 	}
-
+	.container
+	{
+		max-width:1000px;
+	}
 	.cls_div_hover
 	{
 		position:fixed;
@@ -52,18 +55,17 @@
 	{
 
 		padding-top:5px;
-		padding-bottom:5px;
-		background-color:red;
-		color:white;		
+		padding-bottom:5px;		
+			
 		
 	}
 	.error a
 	{
 		margin-left:5px;
-		margin-right:5px;			
-		font-family: arial;
-		font-size:15px;
+		margin-right:5px;	
+		font-size:10px;
 		font-weight:bold;
+		color:red;
 	}
 	.pure-form label
 	{
