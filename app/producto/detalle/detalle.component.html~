@@ -116,12 +116,12 @@
 						Productos Relacionados
 					</h1>
 				</div>
-				<div class="col-xs-6 col-sm-3 col-md-2"  *ngFor="let prod of productos.prod_relacionado">				
+				<div class="col-xs-4 col-sm-2"  *ngFor="let prod of productos.prod_relacionado">				
 						<div class="thumbnail">
 						  <a routerLink="/de_paso_detalle_prod/2/{{prod.id_producto_relacionado}}">
 							<img src="../assets/img/productos/{{prod.img_producto_rel}}_1.png"  alt="Lights" style="width:100%">
-							<div class="caption cls_desc_prod_busqueda">
-							  <a class="">{{prod.nombre_producto}}</a>
+							<div class="caption">
+							  <a class="cls_desc_prod_busqueda">{{prod.nombre_producto}}</a>
 							</div>
 							<div *ngIf="prod.muestra_descuento" class="cls_precio_prom_prod_busqueda">
 								<a >Antes: {{prod.precio_antes}}</a>

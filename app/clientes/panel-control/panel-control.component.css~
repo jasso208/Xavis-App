@@ -114,10 +114,41 @@
 {
 		
 }
-.cls_margen_top_formulario
-{
-	margin-top: 20px;
-}
+	/* .cls_col_1
+	{
+		width:49%;
+	}
+	.cls_col_2
+	{
+		width:49%;
+		
+	}
+	.cls_col_3
+	{
+		width:0%;
+		display:none;
+		overflow:hidden;
+	}
+	.cls_col_4
+	{
+		width:0%;
+		display:none;
+	}
+	.cls_col_5
+	{
+		width:0%;
+		display:none;
+	}
+	.cls_col_6
+	{
+		width:0%;
+		display:none;
+	}
+	.cls_col_7
+	{
+		width:0%;
+		display:none;
+	}*/
 @media  screen  and (min-width:500px)
 {
 

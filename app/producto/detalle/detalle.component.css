@@ -41,11 +41,7 @@ border:1px solid gray;
 }
 /*Galeria de imagenes*/
 
-.cls_detalle_producto
-{
-  width:90%;
-  margin-left: 5%;
-}
+
 #form_detalle_producto >div>*
 {
   margin-top:10px;
