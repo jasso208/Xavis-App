@@ -79,7 +79,7 @@
 								</div>					
 								
 								<div class="pure-u-1">
-									<button class="pure-button pure-button-primary" (click)="agregaProductoCarrito()" id="btn_agregar_carrito_detalle_prod">Agregar al carrito</button>
+									<button class="btn btn-primary" (click)="agregaProductoCarrito()" id="btn_agregar_carrito_detalle_prod">Agregar al carrito</button>
 								</div>
 								<div class="pure-u-1">
 									<div class="pure-g">
@@ -145,3 +145,12 @@
 		
 
 
+	<ul class="loading" *ngIf="cargando">
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	  <li></li>
+	</ul>
+
+<div class="clsfondologin" id="fondo_login" *ngIf="cargando"></div>

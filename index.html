@@ -86,60 +86,19 @@
 		<link rel="stylesheet" href="assets/css/general.css">
 		
 	<!--pure css-->
-	<style>
-	#div_cargando
-		{
-			position: fixed;
-			z-index: 20;
-			top:0;
-			left:0;
-			width: 100%;
-			height: 100%;
-			background-color:black;
-			opacity: 0.7;
-		}
-		#div_text_cargando
-		{
-			width: 100%;
-			position:fixed;
-			top:30%;
-			left: 0;
-			z-index: 21;
-			text-align: center;
-			font-size:20px;
-			color:white;
-			font-weight: bold;
-		}
 
-        /*Tablet Vertical*/
-        @media only screen  and (min-width: 768px)
-        {
-		#div_text_cargando
-			{
-				width: 30%;
-				position:fixed;
-				top:30%;
-				left: 40%;
-				z-index: 21;
-				text-align: center;
-				font-size:40px;
-				color:white;
-				font-weight: bold;
-			}
-		}
-	</style>
 </head>
 <body >
 	<div>
 		
 			<app-root>
-				<div id="div_cargando">
-					
-				</div>
-				<div id="div_text_cargando">Cargando . . .</div>
+				
 			</app-root>
 		
-	</div>			
+	</div>	
+
+
+			
 <script>
 $(document).ready(
 function(){

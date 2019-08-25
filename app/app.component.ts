@@ -26,11 +26,12 @@ export class AppComponent {
 	contador_carrito:number=0;
 	public esta_logueado:number=0;
 	public usuario_logueado:string="";
+	public cargando:boolean;
 	constructor(private dbs:EMailNotificacionService,private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private globales_service:VarGlobalesService)
 	{}
 	ngOnInit()
 	{
-	 
+	 	this.cargando=true;
 		this.fn_funciones_jquery();
 		this.nombre_empresa=this.globales_service.get_nombre_empresa()
       //esta funcion ejecuta el algoritmo para generar la session, solo en caso de que no exista
@@ -51,18 +52,23 @@ export class AppComponent {
 					localStorage.setItem("esta_logueado","0");
 					this.logueado=false;
 				}
+
+				this.cont_prod_carrito.cont_prod_carritocont_prod_carrito()
+				.subscribe(
+					data=>
+					{
+						console.log(data[0].cantidad__sum);
+						this.contador_carrito=data[0].cantidad__sum;
+						this.cargando=false;
+					}
+				) ;
+
 			}
 		) ;
 		
 	  
-	  this.cont_prod_carrito.cont_prod_carritocont_prod_carrito()
-		.subscribe(
-			data=>
-			{
-				console.log(data[0].cantidad__sum);
-				this.contador_carrito=data[0].cantidad__sum;
-			}
-		) ;
+	  
+
 		
   }
   public fn_cerrar_menu()
@@ -142,6 +148,7 @@ export class AppComponent {
 	
   fn_guarda_e_mail_notificacion()
   {
+  	this.cargando=true;
 		this.dbs.fn_guarda_e_mail_notificacion(this.e_mail)
 		.subscribe(
 			data=>
@@ -149,6 +156,7 @@ export class AppComponent {
 				this.msj=data[0].msj;
 				this.mostrar=true;
 				this.e_mail="";
+				this.cargando=false;
 			}
 			
 		);

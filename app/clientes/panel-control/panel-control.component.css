@@ -4,7 +4,7 @@
 		{
 			padding:10px;
 			border:1px solid lightblue;
-			margin:5px;
+			margin-top:5px;
 		}
 		.cls_item_compras span
 		{
@@ -21,7 +21,6 @@
 
 .btn_panel_control
 {
-	background-color:#F0F8FF;
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:10px;
@@ -32,14 +31,16 @@
 	display:block;
 	margin-top:10px;
 	text-decoration:none;
-	color:gray;
+
 	z-index:51;
-	
+	color: black;
+
 }
 .btn_panel_control:hover
 {
-	color:black;
 	font-weight:bold;
+	
+	color:black;
 }
 
 #contenedor_detalle_venta
@@ -118,9 +119,30 @@
 {
 	margin-top: 20px;
 }
-@media  screen  and (min-width:500px)
-{
 
+#div_panel_control_movil
+{
+	
+	display: block;
+	max-width: 90%;
+	margin: 0 auto;
+}
+#div_panel_control_lg
+{
+	display: none;
+}
+@media  screen  and (min-width:737px)
+{
+	#div_panel_control_movil
+	{
+		display: none;
+
+	}
+
+	#div_panel_control_lg
+	{
+		display: block;
+	}
 	
 /*	.cls_col_1
 {
@@ -158,5 +180,18 @@
     
 @media  screen  and (min-width:768px)
 {
- 
+	 #contenedor_detalle_venta
+	{
+		position:fixed;
+		z-index:51;
+		top:10%;
+		width:50%;		
+		left:25%;
+		background-color:white;	
+		padding:20px;
+		overflow-y:scroll;
+		max-width: 1000px;
+
+	}
 }
+	

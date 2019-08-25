@@ -13,7 +13,7 @@ declare var $:any;
 })
 export class DetalleComponent implements OnInit {
 	public mostrar:boolean;
-	
+	public cargando:boolean;
   prod:any;
   
   rutaActiva:any;
@@ -49,6 +49,8 @@ export class DetalleComponent implements OnInit {
   
   ngOnInit() {
 		
+		this.cargando=true;
+
 	this.mostrar=false;	
 	   this.id_producto=this.rutaActiva.snapshot.params.id;
 	  this.prod.getProductos(this.id_producto).subscribe(data=>{
@@ -72,7 +74,7 @@ export class DetalleComponent implements OnInit {
         this.descuento=false;
         this.precio_venta=parseFloat((this.productos.precio).toString()).toFixed(2);
       }
-      
+      this.cargando=false;
     }
     )
     
@@ -80,6 +82,7 @@ export class DetalleComponent implements OnInit {
 
   agregaProductoCarrito()
   {	
+
 		this.mostrar=true;
 		if (this.id_talla=="0")
 		{
@@ -109,6 +112,7 @@ export class DetalleComponent implements OnInit {
 			return 0;
 		}
 		
+		this.cargando=true;
 	  this.carrito.insertaCarrito((this.id_producto).toString(),(this.cantidad).toString(),(this.id_talla).toString()).subscribe
 	  (
 		data=>
@@ -117,10 +121,12 @@ export class DetalleComponent implements OnInit {
 				if (data[0].estatus==0)
 				{
 						//alert(data[0].msj);
+						this.cargando=false;
 						this.msj=data[0].msj;
 				}
 				else
 				{
+					this.cargando=false;
 					this.id_talla="0";
 					this.cantidad=0;
 					//alert("El producto se agrego correctamente");										

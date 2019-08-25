@@ -7,7 +7,7 @@
 					<span *ngIf="!mostrar_ventas"> ˅</span>
 				</a>
 			</div>
-			<br>
+			
 			<div *ngIf="mostrar_ventas">			
 			</div>
 
@@ -92,7 +92,7 @@
 		<div class="row" >
 			<div class="col-12">
 				<a  class="btn_panel_control" (click)="fn_mostrar_cuenta()">
-					Tu Cuenta
+					Informacion de Envio
 					<span *ngIf="mostrar_cuenta"> -</span>
 					<span *ngIf="!mostrar_cuenta"> ˅</span>
 				</a>
@@ -106,147 +106,170 @@
 					<div class="page-header">
 					  <h1>Informacion Personal</h1>
 					</div>
+						<div class="row">
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Nombre (s).</label>
 								<input id="nombre" class="form-control"  type="text" formControlName="nombre" name="nombre">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('nombre').hasError('required') && cliente.get('nombre').touched">
 								  <a>Nombre requerido</a>
+								</div>
 								</div>
 							</div>
 							
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Apellido Paterno</label>
 								<input id="apellido_p" class="form-control"  type="text" formControlName="apellido_p" name="apellido_p">
+								
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('apellido_p').hasError('required') && cliente.get('apellido_p').touched">
 								  <a>El apellido paterno es requerido</a>
+								  </div>
 								</div>
 							</div>
 							
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Apellido Materno</label>
 								<input id="apellido_m" class="form-control"  type="text" formControlName="apellido_m" name="apellido_m">
-								<div
-								  class=" pure-u-23-24 error"
-								  *ngIf="cliente.get('apellido_m').hasError('required') && cliente.get('apellido_m').touched">
-								  <a>El apellido Materno es requerido</a>
-								</div>
+								
 							</div>	
 
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Telefono</label>
 								<input class="form-control" type="text"  formControlName="telefono" 
 								name="telefono">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('telefono').hasError('required') && cliente.get('telefono').touched">
 								  <a>El telefono es requerido</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>RFC</label>
 								<input class="form-control" type="text"  formControlName="rfc" 
-								name="rfc">
-								
+								name="rfc">	
+								<div class="row">
+									<div>
+								  			<a>Obligatorio en caso de requrir factura</a>
+								  </div>
+								</div>							
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>E-Mail</label>
 								<input class="form-control" type="text" formControlName="e_mail" name="e_mail">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('e_mail').hasError('required') && cliente.get('e_mail').touched">
 								  <a>El e-Mail es requerido</a>
+								  </div>
 								</div>
 							</div>
 						
-						
-						<div class="col-xs-12" >
-							<br>
 						</div>
-					
 					<div class="page-header">
 					  <h1>Informacion de Envio</h1>
 					</div>
+					<div class="row">
 							<div class="col-xs-12 col-sm-12 cls_margen_top_formulario" >
 								<label>Calle</label>
 								<input id="calle" class="form-control"  type="text" formControlName="calle" name="calle">				
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('calle').hasError('required') && cliente.get('calle').touched">
 								  <a>La calle es requerida</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>Numero Interior</label>
 								<input type="text" name="numero_interior" class="form-control" formControlName="numero_interior">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('numero_interior').hasError('required') && cliente.get('numero_interior').touched">
 								  <a>El numero es requerido</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>Numero Exterior</label>
 								<input type="text" name="numero_exterior" class="form-control" formControlName="numero_exterior">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('numero_exterior').hasError('required') && cliente.get('numero_exterior').touched">
 								  <a>El numero es requerido</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>C.P.</label>
 								<input id="codigo_postal" class="form-control"  type="text" formControlName="cp" name="cp">
+								<div class="row">
 								<div
-								  class="pure-u-1-3 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('cp').hasError('required') && cliente.get('cp').touched">
 								  <a>El codigo postal es requerido</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>Municipio</label>
 								<input type="text" class="form-control"  formControlName="municipio" name="municipio">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('municipio').hasError('required') && cliente.get('municipio').touched">
 								  <a>El municipio es requerido</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>Estado</label>
 								<input type="text" class="form-control"  formControlName="estado" name="estado">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('estado').hasError('required') && cliente.get('estado').touched">
 								  <a>El estado es requerido</a>
+								  </div>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>Pais</label>
 								<input type="text" class="form-control"  formControlName="pais" name="pais">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('pais').hasError('required') && cliente.get('pais').touched">
 								  <a>El pais es requerido</a>
+								  </div>
 								</div>
 							</div>
 							
 							<div class="col-xs-12  cls_margen_top_formulario" >
 								<label>Referencias de Domicilio</label>
 								<input type="text" class="form-control" formControlName="referencia" name="referencia">
+								<div class="row">
 								<div
-								  class=" pure-u-23-24 error"
+								  class="col-xs-12 error"
 								  *ngIf="cliente.get('referencia').hasError('required') && cliente.get('referencia').touched">
 								  <a>Debe indicar las referencias de la direccion</a>
+								  </div>
 								</div>
 							</div>
-					
+						</div>
 						
 						<div class="col-xs-12 cls_margen_top_formulario" >
-							<button class="btn btn-primary btn-block"   [disabled]="cliente.invalid" (click)="fn_actualiza_cliente()" >
+							<button class="btn btn-primary "   [disabled]="cliente.invalid" (click)="fn_actualiza_cliente()" >
 								Guardar
 							</button>		
 						</div>
@@ -256,6 +279,42 @@
 			</div>
 		</div>			
 		</div>	
+		
+		
+		<div class="row" >
+			<div class="col-12">
+				<a  class="btn_panel_control" (click)="fn_mostrar_cambio_contrasena()">
+					Cambio Contraseña
+					<span *ngIf="mostrar_cambio_contrasena"> -</span>
+					<span *ngIf="!mostrar_cambio_contrasena"> ˅</span>
+				</a>
+			</div>
+
+			<div class="col-xs-12" *ngIf="mostrar_cambio_contrasena">	
+					<div class="row">
+						<form  [formGroup]="cambio_contrasena"  class="form-horizontal">
+								<div class="col-xs-4  cls_margen_top_formulario" >
+									<label>Contraseña Actual</label>
+									<input type="text" class="form-control" formControlName="psw_actual" name="referencia">								
+								</div>
+								<div class="col-xs-4  cls_margen_top_formulario" >
+									<label>Nueva Contraseña</label>
+									<input type="text" class="form-control" formControlName="psw_nueva" name="referencia">								
+								</div>
+								<div class="col-xs-4  cls_margen_top_formulario" >
+									<label>Confirma Contraseña</label>
+									<input type="text" class="form-control" formControlName="psw_confirma_psw" name="referencia">								
+								</div>
+								
+								<div class="col-xs-12 cls_margen_top_formulario" >
+									<button class="btn btn-primary "  >
+										Guardar
+									</button>		
+								</div>
+						</form>
+					</div>				
+			</div>
+		</div>				
 </div>
 <div *ngIf="mostrar_detalle" class="cls_div_hover" (click)="fn_cerrar_detalle()">
 </div>

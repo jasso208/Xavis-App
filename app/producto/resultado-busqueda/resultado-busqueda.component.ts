@@ -11,12 +11,13 @@ export class ResultadoBusquedaComponent implements OnInit {
 
 public descuento:number=1;
 	public productos:any=[];
+	public cargando:boolean;
   constructor(private busca_prod_service:BuscaProductosService,private ruta_activa:ActivatedRoute) { }
 
   ngOnInit() {
 	  var tipo_busqueda:string;
 	  var id_categoria:string;
-	  
+	  this.cargando=true;
 	  tipo_busqueda=this.ruta_activa.snapshot.params.tipo_busqueda;
 	  
 	  //tipo_busqueda=1 india que es busqueda por categoria
@@ -28,7 +29,8 @@ public descuento:number=1;
 		.subscribe(
 			data=>
 			{
-				this.productos=data;							
+				this.productos=data;
+				this.cargando=false;							
 			}
 		);
 	  //}

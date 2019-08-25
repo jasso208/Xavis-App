@@ -4,7 +4,7 @@
 		{
 			padding:10px;
 			border:1px solid lightblue;
-			margin:5px;
+			margin-top:5px;
 		}
 		.cls_item_compras span
 		{
@@ -21,7 +21,6 @@
 
 .btn_panel_control
 {
-	background-color:#F0F8FF;
 	padding-top:10px;
 	padding-bottom:10px;
 	padding-left:10px;
@@ -32,14 +31,18 @@
 	display:block;
 	margin-top:10px;
 	text-decoration:none;
-	color:gray;
+
 	z-index:51;
 	
+	background-color: #00FFFF;
+	color: black;
+	max-width: 300px;
 }
 .btn_panel_control:hover
 {
-	color:black;
 	font-weight:bold;
+	
+	color:black;
 }
 
 #contenedor_detalle_venta
@@ -114,41 +117,10 @@
 {
 		
 }
-	/* .cls_col_1
-	{
-		width:49%;
-	}
-	.cls_col_2
-	{
-		width:49%;
-		
-	}
-	.cls_col_3
-	{
-		width:0%;
-		display:none;
-		overflow:hidden;
-	}
-	.cls_col_4
-	{
-		width:0%;
-		display:none;
-	}
-	.cls_col_5
-	{
-		width:0%;
-		display:none;
-	}
-	.cls_col_6
-	{
-		width:0%;
-		display:none;
-	}
-	.cls_col_7
-	{
-		width:0%;
-		display:none;
-	}*/
+.cls_margen_top_formulario
+{
+	margin-top: 20px;
+}
 @media  screen  and (min-width:500px)
 {
 

@@ -14,7 +14,9 @@ export class PanelControlComponent implements OnInit {
 	public ventas:any;
 	public mostrar_ventas:boolean;
 	public mostrar_cuenta:boolean;
+	public mostrar_cambio_contrasena:boolean;
 	public mostrar_detalle:boolean;
+	public cargando:boolean;
 	public cliente:FormGroup;
 	public detalle_venta:any;
 	public nombre:string="";
@@ -37,12 +39,15 @@ export class PanelControlComponent implements OnInit {
   ngOnInit() {
 	this.mostrar_ventas=true;
 	this.mostrar_detalle=false;
+	this.mostrar_cambio_contrasena=false;
+	this.cargando=true;
 	this.cvs.fn_consulta_ventas()
 	.subscribe(
 		data=>
 		{			
 			
 			this.ventas=data;
+			this.cargando=false;
 		}
 	)
 	;	 
@@ -50,7 +55,7 @@ export class PanelControlComponent implements OnInit {
 	this.cliente=new FormGroup({
 		nombre:new FormControl(this.nombre,[Validators.required]),
 		apellido_p:new FormControl(this.apellido_p,[Validators.required]),
-		apellido_m:new FormControl(this.apellido_m,[Validators.required]),
+		apellido_m:new FormControl(this.apellido_m),
 		telefono:new FormControl(this.telefono,[Validators.required]),
 		calle:new FormControl(this.calle,[Validators.required]),
 		cp:new FormControl(this.cp,[Validators.required]),
@@ -72,13 +77,17 @@ export class PanelControlComponent implements OnInit {
   //la venta.
   fn_consulta_detalle_ventas(id_venta:string)
   {
+
+			this.cargando=true;
 		this.mostrar_detalle=true;
 		this.cvs.fn_consulta_detalle_ventas(id_venta)
 		.subscribe(
 			data=>
 			{		
-				console.log(data[0]);
+				
 				this.detalle_venta=data;
+
+			this.cargando=false;
 			}
 			
 		);
@@ -86,6 +95,8 @@ export class PanelControlComponent implements OnInit {
   
   fn_actualiza_cliente()
   {
+
+			this.cargando=true;
 	  this.registra_cliente.fn_actualiza_cliente(this.cliente)
 	  .subscribe(
 		data=>
@@ -97,8 +108,11 @@ export class PanelControlComponent implements OnInit {
 			}
 			else
 			{
-				alert("Tu informacion se actualizo correctamente");
+
+				
+				//alert("Tu informacion se actualizo correctamente");
 			}
+			this.cargando=false;
 		}
 	  );
   }
@@ -109,6 +123,7 @@ export class PanelControlComponent implements OnInit {
   fn_get_informacion_cuenta()
   {
 	  			
+	  			this.cargando=true;
 			this.vul.fn_valida_usr_logueado()
 			.subscribe(
 				data=>
@@ -132,7 +147,7 @@ export class PanelControlComponent implements OnInit {
 						this.cliente=new FormGroup({
 							nombre:new FormControl(this.nombre,[Validators.required]),
 							apellido_p:new FormControl(this.apellido_p,[Validators.required]),
-							apellido_m:new FormControl(this.apellido_m,[Validators.required]),
+							apellido_m:new FormControl(this.apellido_m),
 							telefono:new FormControl(this.telefono,[Validators.required]),
 							calle:new FormControl(this.calle,[Validators.required]),
 							cp:new FormControl(this.cp,[Validators.required]),
@@ -145,6 +160,8 @@ export class PanelControlComponent implements OnInit {
 							numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 							rfc:new FormControl(this.rfc)
 						});	
+
+						this.cargando=false;
 					
 					
 					
@@ -156,7 +173,13 @@ export class PanelControlComponent implements OnInit {
   fn_mostrar_cuenta()
   {
 	  
-	  if (this.mostrar_cuenta)
+
+
+  	this.mostrar_ventas=false;
+  	this.mostrar_cuenta=true;
+  	this.mostrar_cambio_contrasena=false;
+
+	/*  if (this.mostrar_cuenta)
 	  {
 		  this.mostrar_cuenta=false;
 	  }
@@ -164,19 +187,83 @@ export class PanelControlComponent implements OnInit {
 	  {
 		  this.mostrar_cuenta=true;
 	  }
+	  */
   }
-  fn_mostrar_ventas()
+  fn_mostrar_cuenta_2()
   {
-	  if (this.mostrar_ventas)
+	   if (this.mostrar_cuenta)
 	  {
-		  this.mostrar_ventas=false;
+		  this.mostrar_cuenta=false;
 	  }
 	  else
 	  {
-		  this.mostrar_ventas=true;
+		  this.mostrar_cuenta=true;
+	  }
+	  
+  }
+
+    fn_mostrar_cambio_contrasena()
+  {
+	  
+
+  	this.mostrar_ventas=false;
+  	this.mostrar_cuenta=false;
+  	this.mostrar_cambio_contrasena=true;
+
+
+	/*  if (this.mostrar_cambio_contrasena)
+	  {
+		  this.mostrar_cambio_contrasena=false;
+	  }
+	  else
+	  {
+		  this.mostrar_cambio_contrasena=true;
+	  }*/
+  }
+
+  fn_mostrar_cambio_contrasena_2()
+  {
+	 if (this.mostrar_cambio_contrasena)
+	  {
+		  this.mostrar_cambio_contrasena=false;
+	  }
+	  else
+	  {
+		  this.mostrar_cambio_contrasena=true;
 	  }
   }
-  
+  fn_mostrar_ventas()
+  {
+  		this.mostrar_ventas=true;
+  		this.mostrar_cuenta=false;
+  		this.mostrar_cambio_contrasena=false;
+
+	  	/*
+		  if (this.mostrar_ventas)
+		  {
+			  this.mostrar_ventas=false;
+		  }
+		  else
+		  {
+			  this.mostrar_ventas=true;
+		  }
+		*/
+  }
+  fn_mostrar_ventas_2()
+  {
+  	
+
+	  	
+		  if (this.mostrar_ventas)
+		  {
+			  this.mostrar_ventas=false;
+		  }
+		  else
+		  {
+			  this.mostrar_ventas=true;
+		  }
+		
+  }
   fn_funciones_jquery()
   {
 	  

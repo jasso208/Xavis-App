@@ -6,6 +6,12 @@
 
 	}
 
+
+.btn-primary
+{
+	background-color: black;
+}
+
 	body>div
 	{
 		margin:0 auto;
@@ -128,6 +134,90 @@
 	}
 	
 	
+
+
+/*diseño de div cargando*/
+.clsfondologin
+{
+	background-color:black;
+	opacity:0.4;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:99;
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -75px 0 0 -35px;
+  width: 70px;
+  height: 150px;
+  z-index:100;
+
+}
+
+.loading *, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+
+ .loading {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+
+@keyframes loading {
+  0%, 100% {
+    height: 10px;
+    margin-top: 25px;
+  }
+
+  50%{
+    height: 50px;
+    margin-top: 0px;
+  }
+}
+
+.loading li {
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  float: left;
+  margin-right: 5px;
+  box-shadow: 0px 100px 20px rgba(0, 0, 0, 0.2);
+  animation: loading 1s ease-in-out infinite;
+}
+
+.loading li:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading li:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.loading li:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+.loading li:nth-child(4) {
+  animation-delay: -0.6s;
+}
+
+.loading li:nth-child(5) {
+  margin-right: 0;
+  animation-delay: -0.8s;
+}
+/*Diseño de div de cargando*/
+
 	
 
         /*Iphone horizontal*/
