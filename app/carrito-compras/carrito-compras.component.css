@@ -1,4 +1,5 @@
 /*css del carrito de compras*/
+/*
 #contenedor_carrito_compras
 {
 	position:relative;
@@ -10,11 +11,11 @@
     width:360px;
     height:78%;
     background-color:white;
-    border-left:1px solid gray;		
+    border-left:1px solid gray;
     position:fixed;
     top:0;
     right:-400px;
-    overflow:scroll;	
+    overflow:scroll;
     padding:5px;
     box-shadow:-5px 0px 5px gray;
 }
@@ -36,13 +37,13 @@
     position:fixed;
     right:-400px;
     top:80%;
-    z-index:23;	
-    border-left:1px solid gray;		
+    z-index:23;
+    border-left:1px solid gray;
     padding:5px;
     border-top:1px solid gray;
     box-shadow:-5px 0px 5px gray;
     background-color:white;
-    
+
 }
 #pie_carrito >form
 {
@@ -53,7 +54,7 @@
     margin-top:5px;
     padding-bottom:5px;
     border-bottom:1px solid gray;
-    
+
 }
 .cls_img_prod_carrito
 {
@@ -61,7 +62,7 @@
     height:100px;
     border:1px solid gray;
     padding:2px;
-    
+
 }
 .cls_nom_prod_carrito>a
 {
@@ -69,7 +70,7 @@
     font-size:12px;
     text-decoration:none;
     color:blue;
-    
+
 }
 .cls_precio_prod_carito
 {
@@ -88,7 +89,7 @@
 .cls_cantidad_prod_carrito
 {
     color:gray;
-    font-size:10px;		
+    font-size:10px;
     margin-top:10px;
 }
 .cls_cantidad_prod_carrito span
@@ -97,7 +98,7 @@
     padding-top:4px;
     padding-left:5px;
     padding-right:5px;
-    padding-bottom:4px;		
+    padding-bottom:4px;
 }
 #btn_cerrar_carrito
 {
@@ -118,19 +119,19 @@
 
 @media  screen  and (min-width:736px)
     {
-    
+
         #carrito_compras
         {
             width:390px;
             height:77%;
         }
-        
+
         #pie_carrito
         {
             width:390px;
         }
     }
-    
+
     @media  screen  and (min-width:768px)
     {
         #carrito_compras
@@ -146,7 +147,108 @@
         {
             margin-top:20px;
         }
-        
+
     }
+		*/
 /*css del carrito de compras*/
 /****************************************************************************************************/
+
+
+#form_carrito_compras
+{
+	position:fixed;
+	top:10%;
+	left:5%;
+	width:90%;
+	max-height:80%;
+
+	z-index:100;
+	text-align:center;
+	background-color:white;
+	overflow-y:scroll;
+}
+#titulo_carrito
+{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+	padding-top:5px;
+	padding-bottom:5px;
+	display:block;
+	font-size:17px;
+}
+#tiempo_carrito
+{
+	text-decoration:none;
+	color:black;
+	font-weight:bold;
+	font-size:10px;
+	padding-bottom:5px;
+	display:block;
+}
+#tiempo_carrito>span
+{
+	color:red;
+}
+#entrega_estimada
+{
+	text-decoration:none;
+	color:gray;
+
+	display:block;
+	text-align:left;
+
+}
+#nombre_producto
+{
+	text-decoration:none;
+	color:gray;
+	font-size: 10px;
+}
+#cantidad_prod
+{
+	text-decoration:none;
+	color:black;
+	font-size:15px;
+	display:block;
+	text-align:right;
+}
+#precio_prod
+{
+	font-weight:bold;
+	color:black;
+	text-decoration:none;
+	font-size:15px;
+}
+.cls_item_carrito
+{
+	margin-bottom:30px;
+}
+@media  screen  and (min-width:736px)
+    {
+			#form_carrito_compras
+			{
+
+				top:10%;
+				left:20%;
+				width:60%;
+				max-height:80%;
+
+			}
+		}
+		@media  screen  and (min-width:1000px)
+		    {
+					#form_carrito_compras
+					{
+
+						top:10%;
+						left:35%;
+						width:30%;
+						max-height:80%;
+						max-width:350px;
+					}
+					#titulo_carrito
+					{
+						font-size: 25px;
+					}
+				}

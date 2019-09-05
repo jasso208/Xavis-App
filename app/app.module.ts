@@ -13,6 +13,8 @@ import { LoginComponent } from './clientes/login/login.component';
 import { RegistraClientesComponent } from './clientes/registra-clientes/registra-clientes.component';
 import { FormasPagoComponent } from './clientes/formas-pago/formas-pago.component';
 
+import { ConfirmaInformacionComponent } from './clientes/confirma-informacion/confirma-informacion.component';
+
 import { DetalleComponent} from './producto/detalle/detalle.component';
 import {CarritoComprasComponent} from './carrito-compras/carrito-compras.component';
 import { ResultadoBusquedaComponent } from './producto/resultado-busqueda/resultado-busqueda.component';
@@ -40,6 +42,7 @@ const rutas: Routes = [
 	{ path: 'producto/resultado_busqueda/:tipo_busqueda/:param_1',component:ResultadoBusquedaComponent},
 	{ path: 'cliente/panel-control',component: PanelControlComponent},
 	{ path: 'formas-pago',component: FormasPagoComponent},
+	{ path: 'confirma-informacion',component: ConfirmaInformacionComponent},
 	
 	//rutas de paso
 	{ path:'de_paso_busqueda/:tipo_paso/:param_0/:param_1',component:ComponenteDePasoComponent },

@@ -1,0 +1,194 @@
+	<div class="container" >
+		<div class="row">
+			<div class="col-xs-4" style="background-color: gray;;padding-top:10px;padding-bottom:10px;">
+				<a style="color: white;">Paso 1 de 3: Actualiza tu informacion</a>
+			</div>
+			<div class="col-xs-4" style="background-color: black;;padding-top:10px;padding-bottom:10px;">				
+				<a style="color: white;">Paso 2 de 3: Confirma tu informacion</a>
+			</div>
+			<div class="col-xs-4" style="background-color: gray;;padding-top:10px;padding-bottom:10px;">
+				<a style="color: white;">Paso 3 de 3: Selecciona una forma de pago</a>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+					<br>
+						<button (click)="fn_regresar()" class="btn btn-primary" style="float: right;" >Regresar</button>
+				</div>
+				<br>
+				<div class="col-xs-12 col-sm-6">
+					<h1>Resumen de tu Compra</h1>
+					<br><br>
+					<div class="col-xs-12">
+						<div id="carrito_compras">
+							<div class="row">					
+								<div *ngIf="cont_productos">					
+									<div class="col-xs-12 cls_item_carrito" *ngFor="let prod of productos " >
+										<div class="col-xs-4">
+											<img src="../assets/img/productos/{{prod.nom_img}}_1.png" class="cls_img_prod_carrito">
+										</div>
+										<div class="col-xs-8">
+											<div class="row">
+												<div class="col-xs-12 cls_nom_prod_carrito">
+														<a>{{prod.nombre}}</a>
+												</div>
+												<div class="col-xs-12 col-sm-6 cls_precio_prod_carito">
+														<a>${{prod.precio}}</a>
+												</div>							
+												<div class="col-xs-12 col-sm-6 cls_cantidad_prod_carrito">
+														<a>Talla: {{prod.talla}}  </a>
+												</div>
+												<div class="col-xs-12  cls_cantidad_prod_carrito">
+														<a>Cantidad: <span>{{prod.cantidad}}</span>  </a>
+												</div>							
+											</div>
+										</div>
+									</div>					
+								</div>	
+								<div *ngIf="!cont_productos">
+									<div class="col-xs-12">
+										<h2>No Has agregado productos</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					
+					<div class="col-xs-12">					
+						
+						<div clas="row">
+							<!--<div class="col-xs-8 cls_row_pie_carrito">
+								<label><h3>Sub-Total</h3></label>
+							</div>
+							<div class="col-xs-4cls_row_pie_carrito">
+								<label><h3>${{subtotal.toFixed(2)}}</h3></label>
+							</div>
+
+							<div class="col-xs-8 cls_row_pie_carrito">
+								<label><h3>Iva</h3></label> 
+							</div>
+							<div class="col-xs-4 cls_row_pie_carrito">
+									<label><h3>${{iva.toFixed(2)}}</h3></label>
+							</div>
+							-->
+							<div class="col-xs-8 cls_row_pie_carrito">
+								<label><h2>Total a pagar:</h2> </label>
+							</div>
+							<div class="col-xs-4 cls_row_pie_carrito">
+								<label><h2>${{total.toFixed(2)}}</h2></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+				
+					<form  [formGroup]="cliente" class="form-horizontal">
+					
+						<h1>Informacion de Cliente</h1>
+						<br><br>
+						<div class="row">
+
+							<div class="col-xs-12 ">
+								<label>Nombre (s).</label>
+								<br>
+								{{nombre}}
+							</div>
+
+							<div class="col-xs-6 col-sm-6">
+								<label>Apellido Paterno</label>
+								<br>
+								{{apellido_p}}							
+							</div>
+
+							<div class="col-xs-6 col-sm-6">
+								<label>Apellido Materno</label>
+								<br>
+								{{apellido_m}}
+													
+							</div>	
+
+							<div class="col-xs-6 col-sm-4">
+								<label>Telefono</label>
+									<br>
+								{{telefono}}
+												
+							</div>
+
+							<div class="col-xs-6 col-sm-4">
+								<label>RFC</label>
+								<br>
+								{{rfc}}
+								
+
+							</div>
+							
+
+							
+
+							<div class="col-xs-12">
+								<label>Calle</label>
+								<br>
+								{{calle}}
+
+											
+								
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<label>Numero Interior</label>
+								<br>
+								{{numero_interior}}
+								
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<label>Numero Exterior</label>
+								<br>
+								{{numero_exterior}}
+								
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<label>C.P.</label>
+								<br>
+								{{cp}}
+								
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<label>Municipio</label>
+								<br>
+								{{municipio}}
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<label>Estado</label>
+								<br>
+								{{estado}}							
+								
+							</div>
+							<div class="col-xs-6 col-sm-4">
+								<label>Pais</label>
+								<br>
+								{{pais}}	
+								
+							</div>
+							<div class="col-xs-12 ">
+								<label>E-Mail</label>
+								<br>
+								{{e_mail}}	
+							</div>
+							<div class="col-xs-12 ">
+								<label>Referencias de Domicilio</label>
+								<br>
+								{{referencia}}	
+							</div>
+						</div>
+					</form>
+				</div>
+				
+
+				<div class="col-xs-12" style="text-align: center;">
+					<br>
+					<button class="btn btn-primary"  (click)="fn_forma_pago()">Selecciona Forma de Pago.</button>				
+				
+				</div>
+		
+		</div>
+	</div>

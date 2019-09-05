@@ -9,6 +9,7 @@ import { DireccionEnvioTemporalService } from './../direccion-envio-temporal.ser
 import {GuardaVentaService} from './../guarda-venta.service';
 import { FormControl, FormGroup,Validators ,ReactiveFormsModule   } from '@angular/forms';
 import { ValidaUsrLogueadoService } from './../valida-usr-logueado.service';
+import { and } from '@angular/router/src/utils/collection';
 @Component({
 		selector: 'app-alta-clientes',
 		templateUrl: './alta-clientes.component.html',
@@ -24,6 +25,7 @@ export class AltaClientesComponent implements OnInit {
 	}
 	constructor(private det:DireccionEnvioTemporalService,private municipiosService: MunicipioService,private estadoService:EstadoService,private paisService: PaisService,private direccion_envio:DireccionEnvioService,public router:Router,private guarda_venta:GuardaVentaService,private vul:ValidaUsrLogueadoService) { }
 	public mostrar:boolean;
+	public cargando:boolean;
 	public nombre:string="";
 	public apellido_p:string="";
 	public apellido_m:string="";
@@ -38,8 +40,84 @@ export class AltaClientesComponent implements OnInit {
 	public numero_interior:string="";
 	public numero_exterior:string="";
 	public rfc:string="";
-	ngOnInit() {	
+
+	public show_error_nombre:boolean;
+	public cls_nombre:string;
+	public show_error_apellido_p:boolean;
+	public cls_apellido_p:string;
+	public show_error_telefono:boolean;
+	public cls_telefono:string;
+	public show_error_calle:boolean;
+	public cls_calle:string;
+	public show_error_no_ext:boolean;
+	public cls_no_ext:string;
+	public show_error_cp:boolean;
+	public cls_cp:string;
+	public show_error_mun:boolean;
+	public cls_mun:string;
+
+	public show_error_est:boolean;
+	public cls_est:string;
+
+
+	public show_error_pais:boolean;
+	public cls_pais:string;
+
+
+	public show_error_email:boolean;
+	public cls_email:string;
+
+	public show_error_referencia:boolean;
+	public cls_referencia:string;
+
+
+	fn_reinicia_styles()
+	{
+		this.cls_nombre="form-control";
+		this.show_error_nombre=false;
+
+		this.cls_apellido_p="form-control";
+		this.show_error_apellido_p=false;
+
+
+		this.cls_telefono="form-control";
+		this.show_error_telefono=false;
+
+		this.cls_calle="form-control";
+		this.show_error_calle=false;
+
+
+		this.show_error_no_ext=false;
+		this.cls_no_ext="form-control";
+
+
+		this.show_error_cp=false;
+		this.cls_cp="form-control";
+
+		this.show_error_mun=false;
+		this.cls_mun="form-control";
+
+
+		this.show_error_est=false;
+		this.cls_est="form-control";
+
+		this.show_error_pais=false;
+		this.cls_pais="form-control";
+
+		this.show_error_email=false;
+		this.cls_email="form-control";
+
+
+		this.show_error_referencia=false;
+		this.cls_referencia="form-control";
+
+//		this.mostrar_error_login=false;
+	}
+
+	ngOnInit() {
 		this.mostrar=false;
+		this.cargando=true;
+
 		//si es uno es porque si esta logueado.
 		if (localStorage.getItem("esta_logueado")=="1")
 		{
@@ -47,14 +125,14 @@ export class AltaClientesComponent implements OnInit {
 			this.vul.fn_valida_usr_logueado()
 			.subscribe(
 				data=>
-				{		
-					
-					
-					
-					//si esta logueado
-					if (data[0].estatus=="1")
+				{
+
+
+
+					//si esta logueado			y no ha agregado direccion nueva
+					if (data[0].estatus=="1" && localStorage.getItem("nueva_direccion")!="1")
 					{
-						
+
 						this.nombre=data[0].nombre;
 						this.apellido_p=data[0].apellido_p;
 						this.apellido_m=data[0].apellido_m;
@@ -69,7 +147,7 @@ export class AltaClientesComponent implements OnInit {
 						this.numero_interior=data[0].numero_interior;
 						this.numero_exterior=data[0].numero_exterior;
 						this.rfc=data[0].rfc;
-						
+
 						this.cliente=new FormGroup({
 							nombre:new FormControl(this.nombre,[Validators.required]),
 							apellido_p:new FormControl(this.apellido_p,[Validators.required]),
@@ -85,16 +163,16 @@ export class AltaClientesComponent implements OnInit {
 							numero_interior:new FormControl(this.numero_interior,[Validators.required])			,
 							numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 							rfc:new FormControl(this.rfc)
-						});	
+						});
+						this.cargando=false;
 					}
 					else//si no esta logueado, buscamos si tiene direccion temporal insertada
 					{
-						console.log("jasso");
 						this.det.fn_direccion_envio_temporal_get()
 						.subscribe(
 							data=>
 							{
-								
+
 								this.nombre=data[0].nombre;
 								this.apellido_p=data[0].apellido_p;
 								this.apellido_m=data[0].apellido_m;
@@ -109,7 +187,7 @@ export class AltaClientesComponent implements OnInit {
 								this.numero_interior=data[0].numero_interior;
 								this.numero_exterior=data[0].numero_exterior;
 								this.rfc=data[0].rfc;
-								
+
 								this.cliente=new FormGroup({
 								nombre:new FormControl(this.nombre,[Validators.required]),
 								apellido_p:new FormControl(this.apellido_p,[Validators.required]),
@@ -126,25 +204,25 @@ export class AltaClientesComponent implements OnInit {
 								numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 								rfc:new FormControl(this.rfc)
 							});
-								
+
 							}
 						);
-						
+						this.cargando=false;
 					}
-					
-					
+
+
 				}
 			) ;
-			
+
 		}
 		else
 		{
-			
+
 						this.det.fn_direccion_envio_temporal_get()
 						.subscribe(
 							data=>
 							{
-								
+
 								this.nombre=data[0].nombre;
 								this.apellido_p=data[0].apellido_p;
 								this.apellido_m=data[0].apellido_m;
@@ -159,7 +237,7 @@ export class AltaClientesComponent implements OnInit {
 								this.numero_interior=data[0].numero_interior;
 								this.numero_exterior=data[0].numero_exterior;
 								this.rfc=data[0].rfc;
-								
+
 								this.cliente=new FormGroup({
 								nombre:new FormControl(this.nombre,[Validators.required]),
 								apellido_p:new FormControl(this.apellido_p,[Validators.required]),
@@ -172,16 +250,18 @@ export class AltaClientesComponent implements OnInit {
 								pais:new FormControl(this.pais,[Validators.required]),
 								e_mail:new FormControl(this.e_mail,[Validators.required]),
 								referencia:new FormControl(this.referencia,[Validators.required]),
-								numero_interior:new FormControl(this.numero_interior,[Validators.required])	,		
+								numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
 								numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 								rfc:new FormControl(this.rfc)
 								}
 							);
-								
+
+
+								this.cargando=false;
 							}
 						);
 		}
-		
+
 								this.cliente=new FormGroup({
 								nombre:new FormControl(this.nombre,[Validators.required]),
 								apellido_p:new FormControl(this.apellido_p,[Validators.required]),
@@ -194,16 +274,120 @@ export class AltaClientesComponent implements OnInit {
 								pais:new FormControl(this.pais,[Validators.required]),
 								e_mail:new FormControl(this.e_mail,[Validators.required]),
 								referencia:new FormControl(this.referencia,[Validators.required]),
-								numero_interior:new FormControl(this.numero_interior,[Validators.required])	,		
+								numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
 								numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 								rfc:new FormControl(this.rfc)
 								})
-		
+					this.fn_reinicia_styles();
+
 	}
-	
+
 	insertaDireccionEnvio()
-	{			
-			this.mostrar=true;
+	{
+		
+		this.fn_reinicia_styles();
+
+		var form_ok=0;
+
+		if (this.cliente.value.nombre=="" || this.cliente.value.nombre==null)
+		{
+			this.cls_nombre="form-control error_form";
+			this.show_error_nombre=true;
+			form_ok=1;
+
+		}
+
+		if (this.cliente.value.apellido_p=="" || this.cliente.value.apellido_p==null)
+		{
+			this.cls_apellido_p="form-control error_form";
+			this.show_error_apellido_p=true;
+			form_ok=1;
+
+		}
+
+		if (this.cliente.value.telefono=="" || this.cliente.value.telefono==null)
+		{
+			this.cls_telefono="form-control error_form";
+			this.show_error_telefono=true;
+			form_ok=1;
+
+		}
+
+		if (this.cliente.value.calle=="" || this.cliente.value.calle==null)
+		{
+			this.cls_calle="form-control error_form";
+			this.show_error_calle=true;
+			form_ok=1;
+
+		}
+
+
+		if (this.cliente.value.numero_exterior=="" || this.cliente.value.numero_exterior==null)
+		{
+			this.cls_no_ext="form-control error_form";
+			this.show_error_no_ext=true;
+			form_ok=1;
+
+		}
+
+		if (this.cliente.value.cp=="" || this.cliente.value.cp==null)
+		{
+			this.cls_cp="form-control error_form";
+			this.show_error_cp=true;
+			form_ok=1;
+
+		}
+
+		if (this.cliente.value.municipio=="" || this.cliente.value.municipio==null)
+		{
+			this.cls_mun="form-control error_form";
+			this.show_error_mun=true;
+			form_ok=1;
+
+		}
+
+
+		if (this.cliente.value.estado=="" || this.cliente.value.estado==null)
+		{
+
+
+			this.cls_est="form-control error_form";
+			this.show_error_est=true;
+			form_ok=1;
+
+		}
+
+			if (this.cliente.value.pais=="" || this.cliente.value.pais==null)
+			{
+				this.cls_pais="form-control error_form";
+				this.show_error_pais=true;
+				form_ok=1;
+
+			}
+
+			if (this.cliente.value.e_mail=="" || this.cliente.value.e_mail==null)
+			{
+				this.cls_email="form-control error_form";
+				this.show_error_email=true;
+				form_ok=1;
+
+			}
+
+			if (this.cliente.value.referecia=="" || this.cliente.value.referencia==null)
+			{
+				this.cls_referencia="form-control error_form";
+				this.show_error_referencia=true;
+				form_ok=1;
+
+			}
+
+
+			if (form_ok==1)
+			{
+				return 0;
+			}
+
+			this.cargando=true;
 			this.det.fn_direccion_envio_temporal_inserta(this.cliente)
 			.subscribe
 			(
@@ -212,21 +396,25 @@ export class AltaClientesComponent implements OnInit {
 					//si el estatus es cero, es que fallo al guardar la direccion temporal.
 					if (data[0].estatus=="0")
 					{
+
+						this.cargando=false;
 						this.mostrar=false;
 						alert(data[0].msj);
-						
+
 					}
 					else
 					{
-						
-						this.router.navigate(['/formas-pago']);
+						//el 1 en la variable de session nueva_direccion indica que ya se ha modificado la direccion
+						//por lo cual debera cargar siempre esta.
+						localStorage.setItem("nueva_direccion","1");
+						this.router.navigate(['/confirma-informacion']);
 					}
-					
-					
+
+
 
 				}
-			);			
-			
-				
+			);
+
+
 	}
 }

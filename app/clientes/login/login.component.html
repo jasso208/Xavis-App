@@ -2,67 +2,70 @@
 
 		</div>
 		
-
-		
-	
-		<div class="container cls_form_hover cls_login_id">			
+		<div class="container cls_form_hover cls_login_id">	
 			<div class="row">
-				<div class="page-header">
-						<h1>
-							Iniciar Session
-						</h1>
+				<div class="col-xs-12">
+						<div class="row">
+								<form [formGroup]="login"  id="form_login"  class="form-horizontal">															
+										<div class="page-header">
+												<h1>
+													Iniciar Session
+												</h1>
+										</div>
+									<div class=" col-xs-12 ">
+										<label>
+											Usuario		        
+										</label>
+										<input  [className]="cls_email_login" id="e_mail_login" formControlName="e_mail_login"  name="e_mail_login" type="text" name="e_mail_login" >			        
+										<div
+											class="error"
+											*ngIf="mostrar_error_email_login">
+											<a>El campo usuario no puede ser vacio</a>
+										</div>
+									</div>
+										
+										<div class=" col-xs-12">
+											<label >
+												Password			        
+											</label>
+											<input [className]="cls_psw_login" id="psw_login" formControlName="psw_login" type="password" name="psw_login" >					
+											<div
+												class=" error"
+												*ngIf="mostrar_error_psw_login">
+												<a>El campo contraseña no puede ser vacio</a>
+											</div>
+										</div>
+										<div class="col-xs-12 cls_final_form" >	
+											
+											<div
+												class=" error"
+												*ngIf="mostrar_error_login">
+												<br>
+												<a>{{msj}}</a>
+											</div>	
+											<br *ngIf="!mostrar_error_login">	
+											<button class="btn btn-primary btn-lg btn-block" (click)="fn_login()">
+												Entrar
+											</button>
+										</div>
+										<div class="col-xs-12">
+											<a href="#" style="font-size:10px;">Recupera tu contraseña?</a>
+											
+										</div>	
+
+										<div class="col-xs-12">
+											<h1>Aun no estas registrado?</h1>
+										</div>
+										
+										<div class="col-xs-12 cls_final_form text-center" >
+												<!--<button id="btn_registrate_login" class="btn btn-default btn-lg btn-block">Registrate</button>
+													-->
+												<a  id="btn_registrate_login" class="btn btn-primary stretched-link">Registrate</a>
+										</div>	
+								</form>
+					</div>	
 				</div>
-				<form [formGroup]="login"  id="div_form_tipo_compra"  class="form-horizontal">															
-					<div class="col-12 form-group">
-						<label>
-							Usuario		        
-						</label>
-						<input class="form-control" id="e_mail_login" formControlName="e_mail_login"  name="e_mail_login" type="text" name="e_mail_login" >			        
-						<div
-							class="col-12 error"
-							*ngIf="login.get('e_mail_login').hasError('required') && login.get('e_mail_login').touched">
-							<a>El campo usuario no puede ser vacio</a>
-						</div>
-					</div>
-						
-						<div class="col-12 form-group">
-							<label >
-								Password			        
-							</label>
-							<input class="form-control" id="psw_login" formControlName="psw_login" type="password" name="psw_login" >					
-							<div
-								class="col-12 error"
-								*ngIf="login.get('psw_login').hasError('required') && login.get('psw_login').touched">
-								<a>El campo contraseña no puede ser vacio</a>
-							</div>
-						</div>
-						
-						
-						
-						<div class="col-12 cls_final_form" >					
-							<button class="btn btn-primary btn-lg btn-block" [disabled]="login.invalid" (click)="fn_login()">
-								Entrar
-							</button>
-						</div>
-						<div class="col-12">
-							<a href="#" style="font-size:10px;">Recupera tu contraseña?</a>
-						</div>
-						
-						<legend>
-							<h1>Aun no estas registrado?</h1>
-						</legend>
-						
-						<div class="col-as cls_final_form">
-								<button id="btn_registrate_login" class="btn btn-default btn-lg btn-block">Registrate</button>
-						</div>					
-				</form>
-			</div>
+				
+			</div>		
 		</div>
-		
-<div *ngIf="mostrar" class="cls_div_hover">
-</div>
-<div *ngIf="mostrar" class="cls_div_msj_hover" >
-	<h1>{{msj}}</h1>
-	<button class="pure-button pure-button-primary" (click)="fn_aceptar_msj()">Aceptar</button>
-</div>
 		

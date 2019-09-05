@@ -1,4 +1,5 @@
 
+
 <div id="div_hover_reg_cliente" class="cls_hover cls_reg_cliente_id">
 
 </div>
@@ -6,173 +7,77 @@
 		
 		
 		
-		<div class="container cls_form_hover cls_reg_cliente_id">		
+		<div class="container cls_form_hover  cls_reg_cliente_id" >		
 			<div class="row">
+				
+
+			<form [formGroup]="registra_cliente"  id="div_form_registra_cliente" class="form-horizontal">
+
+				<div class="col-xs-12">
+						<br>
+					<a id="btn_regresar_login"> < Regresar</a>
+				</div>
+				<br>
 				<div class="page-header">
 						<h1>
 							Registro Cliente
 						</h1>
 				</div>
-			<form [formGroup]="registra_cliente"  id="div_form_registra_cliente" class="form-horizontal">						
-			
-				<div class="col-12 form-group">
-					<label >
-						Nombre		        
-					</label>
-					<input class="form-control" id="nombre_reg_cliente" formControlName="nombre_reg_cliente" type="text" name="nombre_reg_cliente" >			        					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('nombre_reg_cliente').hasError('required') && registra_cliente.get('nombre_reg_cliente').touched">
-						<a>El nombre es obligatorio</a>
-					</div>
-				</div>
-				
-				<div class="col-12 form-group">
-					<label >
-						Apellido Paterno			        
-					</label>
-					<input  class="form-control" id="apellido_p_reg_cliente" formControlName="apellido_p_reg_cliente" type="text" name="apellido_p_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('apellido_p_reg_cliente').hasError('required') && registra_cliente.get('apellido_p_reg_cliente').touched">
-						<a>El apellido paterno es obligatorio</a>
-					</div>
-				</div>			
-				<div class="col-12 form-group">
-					<label >
-						Apellido Materno
-					</label>
-					<input  class="form-control" id="apellido_m_reg_cliente" formControlName="apellido_m_reg_cliente" type="text" name="apellido_m_reg_cliente" >										
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						Telefono
-					</label>
-					<input  class="form-control" id="telefono_reg_cliente" formControlName="telefono_reg_cliente" type="text" name="telefono_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('telefono_reg_cliente').hasError('required') && registra_cliente.get('telefono_reg_cliente').touched">
-						<a>Debe indicar un telefono de contacto</a>
-					</div>
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						RFC (Solo si requiere Factura)
-					</label>
-					<input class="form-control" id="rfc_reg_cliente" formControlName="rfc_reg_cliente" type="text" name="rfc_reg_cliente" >					
-					
-				</div>	
-				<div class="col-12 form-group">
+				<div class="col-xs-12">
 					<label >
 						Correo Electronico
 					</label>
-					<input  class="form-control"  id="e_mail_reg_cliente" formControlName="e_mail_reg_cliente" type="text" name="e_mail_reg_cliente" >					
+					<input  [className]="cls_email_reg"  id="e_mail_reg_cliente" formControlName="e_mail_reg_cliente" type="text" name="e_mail_reg_cliente" >					
 					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('e_mail_reg_cliente').hasError('required') && registra_cliente.get('e_mail_reg_cliente').touched">
+						class="error"
+						*ngIf="show_email_reg">
 						<a>
 							Debe indicar el correo electronico
 						</a>
 					</div>
 				</div>
-				<div class="col-12 form-group">
+				<div class="col-xs-12">
 					<label>
 						Contraseña
 					</label>
-					<input class="form-control" id="psw_reg_cliente" formControlName="psw_reg_cliente" type="password" name="psw_reg_cliente">
+					<input [className]="cls_psw_reg" id="psw_reg_cliente" formControlName="psw_reg_cliente" type="password" name="psw_reg_cliente">
 					<div
 						class="col-12 error"
-						*ngIf="registra_cliente.get('psw_reg_cliente').hasError('required') && registra_cliente.get('psw_reg_cliente').touched">
+						*ngIf="show_psw_reg">
+						<a>
+							Debe indicar una contraseña para acceder al sistema
+						</a>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<label>
+						Confirmar Contraseña
+					</label>
+					<input [className]="cls_psw_reg_conf" id="psw_reg_cliente_conf" formControlName="psw_reg_cliente_conf" type="password" name="psw_reg_cliente_conf">
+					<div
+						class="col-12 error"
+						*ngIf="show_psw_reg_conf">
 						<a>
 							Debe indicar una contraseña para acceder al sistema
 						</a>
 					</div>
 				</div>
 				
-				<div class="col-12 form-group">
-					<label >
-						Calle
-					</label>
-					<input class="form-control"  id="calle_reg_cliente" formControlName="calle_reg_cliente" type="text" name="calle_reg_cliente" >					
+				<div class="col-xs-12 cls_final_form" >	
 					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('calle_reg_cliente').hasError('required') && registra_cliente.get('calle_reg_cliente').touched">
-						<a>Debe indicar la calle del domicilio</a>
-					</div>
-				</div>	
-				<div class="col-12 form-group">
-					<label >
-						Numero Interior
-					</label>
-					<input class="form-control" id="numero_interior_reg_cliente" formControlName="numero_interior_reg_cliente" type="text" name="numero_interior_reg_cliente" >					
-					
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						Numero Exterior
-					</label>
-					<input   class="form-control"  id="numero_exterior_reg_cliente" formControlName="numero_exterior_reg_cliente" type="text" name="numero_exterior_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('numero_exterior_reg_cliente').hasError('required') && registra_cliente.get('numero_exterior_reg_cliente').touched">
-						<a>Debe indicar el numero exterior del domicilio</a>
-					</div>
-				</div>
-				<div class="col-12 form-group">
-					<label>
-						C P
-					</label>
-					<input class="form-control" id="cp_reg_cliente" formControlName="cp_reg_cliente" type="text" name="cp_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('cp_reg_cliente').hasError('required') && registra_cliente.get('cp_reg_cliente').touched">
-						<a>Debe indicar un Codigo Postal</a>
-					</div>
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						Municipio
-					</label>
-					<input  class="form-control" id="municipio_reg_cliente" formControlName="municipio_reg_cliente" type="text" name="municipio_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('municipio_reg_cliente').hasError('required') && registra_cliente.get('municipio_reg_cliente').touched">
-						<a>Debe indicar un municipio</a>
-					</div>
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						Estado
-					</label>
-					<input class="form-control" id="estado_reg_cliente" formControlName="estado_reg_cliente" type="text" name="estado_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('estado_reg_cliente').hasError('required') && registra_cliente.get('estado_reg_cliente').touched">
-						<a>Debe indicar un estado</a>
-					</div>
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						Pais
-					</label>
-					<input  class="form-control" id="pais_reg_cliente" formControlName="pais_reg_cliente" type="text" name="pais_reg_cliente" >					
-					<div
-						class="col-12 error"
-						*ngIf="registra_cliente.get('pais_reg_cliente').hasError('required') && registra_cliente.get('pais_reg_cliente').touched">
-						<a>Debe indicar un pais</a>
-					</div>
-				</div>
-				<div class="col-12 form-group">
-					<label >
-						Referencia Domicilio
-					</label>
-					<input  class="form-control" id="referencia_reg_cliente" formControlName="referencia_reg_cliente" type="text" name="referencia_reg_cliente" >									
-				</div>
-				<div class="col-12 cls_final_form" >					
-					<button class="btn btn-primary btn-lg btn-block" [disabled]="registra_cliente.invalid" (click)="fn_registra_cliente()">
+						class=" error"
+						*ngIf="show_error_reg">
+						<br>
+						<a>{{msj}}</a>
+					</div>	
+					<br *ngIf="!show_error_reg">				
+					<button class="btn btn-primary btn-lg btn-block"  (click)="fn_registra_cliente()">
 						Guardar
 					</button>
 				</div>
 			</form>
 			</div>
 		</div>
+
+
+		

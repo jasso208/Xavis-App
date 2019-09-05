@@ -1,0 +1,23 @@
+.cls_img_prod_carrito
+{
+    width:100px;
+    height:100px;
+    border:1px solid gray;
+    padding:2px;
+    
+}
+.cls_nom_prod_carrito>a
+{
+    font-weight:bold;
+    font-size:12px;
+    text-decoration:none;
+    color:black;
+    
+}
+.cls_precio_prod_carito
+{
+    color:black;
+    font-size:20px;
+    margin-top:20px;
+    font-weight:bold;
+}

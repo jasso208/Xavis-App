@@ -1,13 +1,20 @@
 	body
 	{
-		
-		background-color:#edeef2;		
+
+		background-color:#edeef2;
 		background-color:white;
 
 	}
 
-
+.error_form
+{
+	border-color:red;
+}
 .btn-primary
+{
+	background-color: black;
+}
+.btn-primary:hover
 {
 	background-color: black;
 }
@@ -15,8 +22,8 @@
 	body>div
 	{
 		margin:0 auto;
-		
-		
+
+
 	}
 	.container
 	{
@@ -32,43 +39,47 @@
 		background-color:black;
 		opacity:0.7;
 		z-index:50;
-		
+
 	}
 	.cls_form_component
 	{
-		width:90%; 
+		width:90%;
 		margin-left:5%;
 	}
 	.cls_div_msj_hover
 	{
-		position:fixed;		
-		
+		position:fixed;
+		background-color: white;
 		z-index:55;
-		width:50%;
-		left:25%; 
-		top:30px;
+		width:70%;
+		left:15%;
+		top:30%;
 		text-align:center;
-		border:1px solid white;
+		border:1px solid black;
 		padding:20px;
 	}
 	.cls_div_msj_hover >h1
 	{
-		color:white;
-		
-		
+		color:black;
 	}
+	.cls_div_msj_hover a
+	{
+		color:black;
+		font-weight: bold;
+	}
+
 	.error
 	{
 
 		padding-top:5px;
-		padding-bottom:5px;		
-			
-		
+		padding-bottom:5px;
+
+
 	}
 	.error a
 	{
 		margin-left:5px;
-		margin-right:5px;	
+		margin-right:5px;
 		font-size:10px;
 		font-weight:bold;
 		color:red;
@@ -84,7 +95,7 @@
 	.cls_contenedor>div
 	{
 		width:90%;
-		margin-left:5%;	
+		margin-left:5%;
 	}
 
 	.clsLink1
@@ -115,7 +126,7 @@
 	#login/*css del menu login*/
 	{
 		width: 80%;
-		margin: 0 auto;           
+		margin: 0 auto;
 		box-shadow: 1px 1px 1px black;
 		padding: 10px;
 		position: fixed;
@@ -125,15 +136,15 @@
 		background-color: white;
 		border-radius: 10px;
 		display: none;
-	}   
+	}
 
 	.clsLink_a
 	{
 		font-size:10px;
 		text-decoration:none;
 	}
-	
-	
+
+
 
 
 /*diseño de div cargando*/
@@ -218,24 +229,30 @@
 }
 /*Diseño de div de cargando*/
 
-	
+
 
         /*Iphone horizontal*/
-        @media only screen and (min-width: 667px )
+        @media only screen and (min-width: 736px )
         {
-        	
+					.cls_div_msj_hover
+					{
+
+						width:30%;
+						left:35%;
+						top:10%;
+											}
         }
         /*Tablet Vertical*/
         @media only screen  and (min-width: 768px)
         {
-            
-        
+
+
 			.clsLegendaEncabezado
 			{
 				display:block;
 			}
-		
-			
+
+
         }
 /* You can add global styles to this file, and also import other style files */
 
@@ -298,17 +315,17 @@ h4
     max-width:90%;
     margin-left:5%;
     margin-top:10px;
-    
+
 }
 
 .clsParrafo
-{    
+{
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size:17px;
-	color:gray;	
+	color:black;
     text-align:justify;
-	
-    
+
+
 }
 .clsParrafo>img
 {
@@ -325,7 +342,7 @@ h4
     margin-top:100px;
 }
 .clsParrafo2
-{    
+{
     font-family: 'Archivo Narrow', sans-serif;
     font-size:10px;
 }
@@ -333,14 +350,14 @@ h4
 .input_checkbox
 {
 	font-family: arial;
-	font-size:10px;   
+	font-size:10px;
 	color:gray;
 }
 .clsPrecioProdPromo
 {
 	font-family: arial;
 	font-size:10px;
-   text-decoration: line-through;	
+   text-decoration: line-through;
 	color:gray;
 }
 
@@ -355,12 +372,12 @@ h4
 {
     font-family: arial;
 	font-size:10px;
-    
+
 }
 .cls-form-component
 {
-		
-	
+
+
     font-size:15px;
 }
 
@@ -379,10 +396,10 @@ h4
 			font-size:10px;
 			text-align: center;
 			text-decoration: none;
-		
+
 
     }
-    
+
     .cls_precio_prod_busqueda
     {
         text-align:center;
@@ -403,13 +420,13 @@ h4
     {
         text-align:center;
 		min-height:20px;
-        
+
     }
     .cls_precio_prom_prod_busqueda a
     {
         font-size:10px;
-        color:gray;			
-        
+        color:gray;
+
     }
     .cls_tallas_prod_busqueda
     {
@@ -420,7 +437,7 @@ h4
         font-weight:bold;
         color:gray;
         font-size:10px;
-        
+
     }
     .cls_tallas_prod_busqueda a span
     {
@@ -434,11 +451,11 @@ h4
     /*******************************************************************************/
     /*Estilos para el mensaje de error*/
     #div_msj_error
-    {			
+    {
         display: none;
         position:fixed;
         border:1px solid gray;
-        text-align:center;			
+        text-align:center;
         background-color:white;
         padding-bottom:10px;
         padding-top:10px;
@@ -447,16 +464,16 @@ h4
         font-size:10px;
         font-weight:bold;
         z-index:30;
-        
+
 
         background: white;
-        border-radius: 15px;			
+        border-radius: 15px;
         padding: 1em;
         position: absolute;
-        text-align: center;			
+        text-align: center;
         max-width:500px;
         color:black;
-    }	
+    }
     #div_msj_error:after
     {
          bottom: -15px;
@@ -468,8 +485,8 @@ h4
          content: " ";
          position: absolute;
     }
-      
-    #div_cerrar_msj_error	
+
+    #div_cerrar_msj_error
     {
         position:fixed;
         top:0;
@@ -481,9 +498,9 @@ h4
     }
     /*Estilos para el mensaje de error*/
     /*******************************************************************************/
-    
-	
-	
+
+
+
 	/*
 	Estilos para pantalla emergente
 	************************************************************************************************
@@ -499,20 +516,22 @@ h4
 				opacity: 0.7;
 				z-index: 30;
 				display:none;
-			}	
+			}
 			.cls_form_hover
-			{				
+			{
 				display:none;
-				width: 90%;								
+				width: 90%;
+				max-height:80%;
+
 				position: fixed;
 				top:5%;
 				left:5%;
-				background-color: white;								
+				background-color: white;
 				z-index: 31;
 				border-radius: 5px 5px 5px;
 				box-shadow: -5px 5px 5px gray;
-				
-				
+
+
 			}
 			.cls_row_form_hover
 			{
@@ -535,70 +554,43 @@ h4
 				padding-top:3px;
 				width:100%;
 			}
-			
-			.cls_form_hover > *
-			{		
-			
-				width: 90%;
-				margin-left: 5%;
-				margin-top: 5%;
-				
-			}
-			
-			.cls_form_hover .pure-button
-			{
-					width: 90%;
-					margin-left: 5%;
-					margin-top: 5%;				
-			}
+
+
 			.cls_encabezado_bloque
 			{
 				margin:0 auto;
 				text-align:center;
-				color:gray; 
+				color:gray;
 				font-family: 'Nunito', sans-serif;
 				font-size:40px;
 			}
-			
+
 			@media  screen  and (min-width:736px)
 			{
 				.cls_form_hover
 				{
-					
-					width: 50%;						
-					left:25%;
+
+					width: 40%;
+					left:30%;
+
 				}
 			}
-			
+
+
+			@media  screen  and (min-width:768px)
+			{
+			}
+
 			@media  screen  and (min-width:1100px)
 			{
 				.cls_form_hover
-				{				
-					width: 30%;												
-					left:35%;
-				}
-				.cls_form_hover .pure-button
 				{
-						
-						margin-left: 3%;
-						margin-top: 3%;				
+					width: 26%;
+					left:37%;
 				}
+
 			}
 	/*
 	Estilos para pantalla emergente
 	************************************************************************************************
 	*/
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-	

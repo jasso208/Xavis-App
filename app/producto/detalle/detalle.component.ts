@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DetalleService } from './../detalle.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import {CarritoComprasService} from './../carrito-compras.service';
+import { ContProductosCarritoService } from './../../cont-productos-carrito.service';
+
+
 // Declaramos las variables para jQuery
 declare var jQuery:any;
 declare var $:any;
@@ -40,7 +43,10 @@ export class DetalleComponent implements OnInit {
   
   public msj:string="";
 
-  constructor( producto:DetalleService,private ruta: ActivatedRoute,private carrito_c:CarritoComprasService) 
+
+
+
+  constructor( producto:DetalleService,private ruta: ActivatedRoute,private carrito_c:CarritoComprasService,private cont_prod_carrito:ContProductosCarritoService) 
   {
       this.prod=producto;
       this.rutaActiva=ruta;
@@ -130,6 +136,9 @@ export class DetalleComponent implements OnInit {
 					this.id_talla="0";
 					this.cantidad=0;
 					//alert("El producto se agrego correctamente");										
+
+
+
 					this.msj="El producto se agrego correctamente";
 					window["angularComponentReference"].componentFn();
 					
@@ -196,8 +205,17 @@ export class DetalleComponent implements OnInit {
 			}
 		);
 	}
-	public fn_aceptar_msj()
+
+	fn_aceptar_msj()
 	{
+		this.cont_prod_carrito.fn_cont_prod_carrito()
+			.subscribe(
+				data=>
+				{						
+					this.cont_prod_carrito.fn_establece_cont(data[0].cantidad__sum);
+					//this.c_c.fn_actualiza_cantidad_carrito(data[0].cantidad__sum);
+				}
+			) ;
 		this.mostrar=false;
 	}
 }

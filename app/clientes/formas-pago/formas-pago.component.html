@@ -1,208 +1,31 @@
-<div class="pure-g" style="width:90%; margin-left:5%;" >
-	<div class="pure-u-1">
-	<form class="pure-form pure-form-stacked">
-		<fieldset>
-			<legend><h1>Resumen de Compra</h1></legend>
-			
-			<div class="pure-g" >
-				<div class="pure-u-1">
-					<div id="carrito_compras">
-						<div class="pure-g">							
-							<div *ngIf="cont_productos">					
-								<div class="pure-u-1 cls_item_carrito" *ngFor="let prod of productos " >
-									<div class="pure-u-2-5">
-										<img src="../assets/img/productos/{{prod.nom_img}}_1.png" class="cls_img_prod_carrito">
-									</div>
-									<div class="pure-u-3-5">
-										<div class="pure-u-1 pure-md-2-5 cls_nom_prod_carrito"><a>{{prod.nombre}}</a></div>
-										<div class="pure-u-1 pure-md-1-5 cls_precio_prod_carito"><a>${{prod.precio}}</a></div>							
-										<div class="pure-u-1 pure-md-1-5 cls_cantidad_prod_carrito"><a>Talla: {{prod.talla}}  </a></div>
-										<div class="pure-u-1 pure-md-1-5 cls_cantidad_prod_carrito"><a>Cantidad: <span>{{prod.cantidad}}</span>  </a></div>							
-										
-									</div>
-								</div>					
-							</div>	
-								<div *ngIf="!cont_productos">
-									<div class="pure-u-1">
-										<h2>No Has agregado productos</h2>
-									</div>
-									
-								</div>
+	<div class="container" >
+		<div class="row">
+			<div class="col-xs-4" style="background-color: gray;;padding-top:10px;padding-bottom:10px;">
+				<a style="color: white;">Paso 1 de 3: Actualiza tu informacion</a>
+			</div>
+			<div class="col-xs-4" style="background-color: gray;padding-top:10px;padding-bottom:10px;">				
+				<a style="color: white;">Paso 2 de 3: Confirma tu informacion</a>
+			</div>
+			<div class="col-xs-4" style="background-color: black;padding-top:10px;padding-bottom:10px;">
+				<a style="color: white;">Paso 3 de 3: Selecciona una forma de pago</a>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-xs-12">
+					<br>
+						<button (click)="fn_regresar()" class="btn btn-primary" style="float: right;" >Regresar</button>
+				</div>
+				<br>
+
+				<div class="col-xs-12" style="text-align: center;">			
+				
+					<h1>Selecciona una forma de pago</h1>
+					<div class="row">				
+						<div class="col-xs-12" style="text-align: center;">
+							<ngx-paypal [config]="payPalConfig"></ngx-paypal>							
 						</div>
 					</div>
-					
-					
 				</div>
-			</div>
-			
-			<legend><h2>Resumen Importe</h2></legend>
-			<div class="pure-g">					
-			
-					<div class="pure-u-2-3 cls_row_pie_carrito"><label><h3>Sub-Total</h3></label> </div>
-					<div class="pure-u-1-3 cls_row_pie_carrito"><label><h3>${{subtotal.toFixed(2)}}</h3></label></div>
-					
-					<div class="pure-u-2-3 cls_row_pie_carrito"><label><h3>Iva</h3></label> </div>
-					<div class="pure-u-1-3 cls_row_pie_carrito"><label><h3>${{iva.toFixed(2)}}</h3></label></div>
-					
-					<div class="pure-u-2-3 cls_row_pie_carrito"><label><h2>Total Estimado: (Antes de envio)</h2> </label></div>
-					<div class="pure-u-1-3 cls_row_pie_carrito"><label><h2>${{total.toFixed(2)}}</h2></label></div>
-					
-			</div>
-		</fieldset>
-	</form>
-
-	<form  [formGroup]="cliente" class="pure-form pure-form-stacked">
-		<fieldset>
-				<legend><h1>Informacion de Cliente</h1></legend>
-			<div class="pure-g">
 		
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Nombre (s).</label>
-				<input readonly="readonly" id="nombre" class="pure-u-23-24" type="text" formControlName="nombre" name="nombre">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('nombre').hasError('required') && cliente.get('nombre').touched">
-				  <a>Nombre requerido</a>
-				</div>
-			</div>
-			
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Apellido Paterno</label>
-				<input readonly="readonly"  id="apellido_p" class="pure-u-23-24" type="text" formControlName="apellido_p" name="apellido_p">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('apellido_p').hasError('required') && cliente.get('apellido_p').touched">
-				  <a>El apellido paterno es requerido</a>
-				</div>
-			</div>
-			
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Apellido Materno</label>
-				<input readonly="readonly"  id="apellido_m" class="pure-u-23-24" type="text" formControlName="apellido_m" name="apellido_m">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('apellido_m').hasError('required') && cliente.get('apellido_m').touched">
-				  <a>El apellido Materno es requerido</a>
-				</div>
-			</div>		
-			<div class="pure-u-1 pure-u-md-1-3" >
-				<label>Telefono</label>
-				<input  readonly="readonly"  class="pure-u-23-24" type="text"  formControlName="telefono" name="telefono">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('telefono').hasError('required') && cliente.get('telefono').touched">
-				  <a>El telefono es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3" >
-				<label>RFC</label>
-				<input readonly="readonly"  class="pure-u-23-24" type="text"  formControlName="rfc" name="rfc">
-				
-			</div>
 		</div>
-		
-		<div class="pure-g">
-			
-			<div class="pure-u-1 pure-u-md-3-3">
-				<label>Calle</label>
-				<input  readonly="readonly"  id="calle" class="pure-u-23-24" type="text" formControlName="calle" name="calle">				
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('calle').hasError('required') && cliente.get('calle').touched">
-				  <a>La calle es requerida</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Numero Interior</label>
-				<input readonly="readonly"  type="text" name="numero_interior" class="pure-u-23-24" formControlName="numero_interior">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('numero_interior').hasError('required') && cliente.get('numero_interior').touched">
-				  <a>El numero es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Numero Exterior</label>
-				<input readonly="readonly"  type="text" name="numero_exterior" class="pure-u-23-24" formControlName="numero_exterior">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('numero_exterior').hasError('required') && cliente.get('numero_exterior').touched">
-				  <a>El numero es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>C.P.</label>
-				<input readonly="readonly"  id="codigo_postal" class="pure-u-1-3" type="text" formControlName="cp" name="cp">
-				<div
-				  class="pure-u-1-3 error"
-				  *ngIf="cliente.get('cp').hasError('required') && cliente.get('cp').touched">
-				  <a>El codigo postal es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Municipio</label>
-				<input readonly="readonly"  type="text" class="pure-u-23-24" formControlName="municipio" name="municipio">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('municipio').hasError('required') && cliente.get('municipio').touched">
-				  <a>El municipio es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Estado</label>
-				<input readonly="readonly"  type="text" class="pure-u-23-24" formControlName="estado" name="estado">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('estado').hasError('required') && cliente.get('estado').touched">
-				  <a>El estado es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-1-3">
-				<label>Pais</label>
-				<input readonly="readonly"  type="text" class="pure-u-23-24" formControlName="pais" name="pais">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('pais').hasError('required') && cliente.get('pais').touched">
-				  <a>El pais es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1 pure-u-md-3-3">
-				<label>E-Mail</label>
-				<input readonly="readonly"  class="pure-u-23-24" type="text" formControlName="e_mail" name="e_mail">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('e_mail').hasError('required') && cliente.get('e_mail').touched">
-				  <a>El e-Mail es requerido</a>
-				</div>
-			</div>
-			<div class="pure-u-1">
-				<label>Referencias de Domicilio</label>
-				<input readonly="readonly"  type="text" class="pure-u-23-24" formControlName="referencia" name="referencia">
-				<div
-				  class=" pure-u-23-24 error"
-				  *ngIf="cliente.get('referencia').hasError('required') && cliente.get('referencia').touched">
-				  <a>Debe indicar las referencias de la direccion</a>
-				</div>
-			</div>
-		</div>
-		
-		
-		<legend><h1>Selecciona una forma de pago</h1></legend>
-		<div class="pure-u-1">
-			<div class="pure-g">				
-				<div class="pure-u-1">
-					<ngx-paypal [config]="payPalConfig"></ngx-paypal>	
-					<!-- <div id="paypal-button-container"></div>	-->
-				</div>
-			</div>
-		</div>
-		
-		</fieldset>
-		
-		
-		
-		</form>
 	</div>
-		
-
-</div>

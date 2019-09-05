@@ -14,20 +14,20 @@ export class RegistraClienteService {
   fn_registra_cliente(cliente:any)
   {
 	  let urlSearchParams=new URLSearchParams();
-	  urlSearchParams.append("nombre",cliente.value.nombre_reg_cliente);
-	  urlSearchParams.append("apellido_p",cliente.value.apellido_p_reg_cliente);
-	  urlSearchParams.append("apellido_m",cliente.value.apellido_m_reg_cliente);
-	  urlSearchParams.append("telefono",cliente.value.telefono_reg_cliente);
+	  urlSearchParams.append("nombre","");
+	  urlSearchParams.append("apellido_p","");
+	  urlSearchParams.append("apellido_m","");
+	  urlSearchParams.append("telefono","");
 	  urlSearchParams.append("e_mail",cliente.value.e_mail_reg_cliente);
-	  urlSearchParams.append("rfc",cliente.value.rfc_reg_cliente);
-	  urlSearchParams.append("calle_reg",cliente.value.calle_reg_cliente);
-	  urlSearchParams.append("numero_interior",cliente.value.numero_interior_reg_cliente);
-	  urlSearchParams.append("numero_exterior",cliente.value.numero_exterior_reg_cliente);
-	  urlSearchParams.append("cp",cliente.value.cp_reg_cliente);
-	  urlSearchParams.append("municipio",cliente.value.municipio_reg_cliente);
-	  urlSearchParams.append("estado",cliente.value.estado_reg_cliente);
-	  urlSearchParams.append("pais",cliente.value.pais_reg_cliente);
-	  urlSearchParams.append("referencia",cliente.value.referencia_reg_cliente);
+	  urlSearchParams.append("rfc","");
+	  urlSearchParams.append("calle_reg","");
+	  urlSearchParams.append("numero_interior","");
+	  urlSearchParams.append("numero_exterior","");
+	  urlSearchParams.append("cp","");
+	  urlSearchParams.append("municipio","");
+	  urlSearchParams.append("estado","");
+	  urlSearchParams.append("pais","");
+	  urlSearchParams.append("referencia","");
 	  urlSearchParams.append("psw",cliente.value.psw_reg_cliente)
 	  return this.http.post(environment.api_url+'alta_cliente/',
 			urlSearchParams

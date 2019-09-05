@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Output,EventEmitter } from '@angular/core';
 import { Http,Response} from '@angular/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
@@ -8,11 +8,18 @@ import { URLSearchParams } from '@angular/http';
 })
 export class CarritoComprasService {
 
-	
-  
-				
+
+  mostrar=false;
+
+  @Output() change:EventEmitter<boolean>=new EventEmitter();
+
   constructor(private http:Http) { }
 
+  fn_muestra_carrito()
+  {
+    this.mostrar=true;
+  	this.change.emit(this.mostrar);
+  }
   consultaCarrito()
   {
     return this.http.get(environment.api_url+'ventas/carrito_compras/',
@@ -28,7 +35,7 @@ export class CarritoComprasService {
     )
   }
   eliminaProductoCarrito(id:string)
-  {	  
+  {
 	let urlSearchParams=new URLSearchParams();
 	urlSearchParams.append("id",id);
 		//django no acepta el metodo delete, por eso se elimina el producto por el metodo POST.
@@ -48,7 +55,7 @@ export class CarritoComprasService {
 		urlSearchParams.append('cantidad', cantidad);
 		urlSearchParams.append('id_talla', id_talla);
 		urlSearchParams.append('session', localStorage.getItem("session"));
-		
+
 	  return this.http.post(environment.api_url+'ventas/carrito_compras/',
 		urlSearchParams
 	  )

@@ -12,6 +12,7 @@ import { RegistraClientesComponent } from './registra-clientes/registra-clientes
 import { PanelControlComponent } from './panel-control/panel-control.component';
 import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 import { NgxPayPalModule } from 'ngx-paypal';
+import { ConfirmaInformacionComponent } from './confirma-informacion/confirma-informacion.component';
 
 @NgModule({
   imports: [
@@ -34,7 +35,8 @@ import { NgxPayPalModule } from 'ngx-paypal';
 		LoginComponent,
 		RegistraClientesComponent,
 		PanelControlComponent,
-		FormasPagoComponent
+		FormasPagoComponent,
+		ConfirmaInformacionComponent
 	],
 	exports:[
 	

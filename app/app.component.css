@@ -26,6 +26,23 @@
     
     
 }
+
+#menu_configuracion
+{
+	color: black;
+}
+#menu_configuracion>li
+{
+	
+	display: inline-block;
+}
+
+#menu_configuracion a
+{
+	font-size: 15px;
+	color: black;
+}
+
 .cls_btn_cerrar
 {
 	float:right;
