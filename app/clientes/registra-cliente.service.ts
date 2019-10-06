@@ -8,9 +8,26 @@ import { environment } from '../../environments/environment';
 })
 export class RegistraClienteService {
 
-  constructor( private http:Http) 
+  constructor( private http:Http)
   { }
-  
+
+  fn_actualiza_psw(psw:any)
+  {
+  	  let urlSearchParams=new URLSearchParams();
+      urlSearchParams.append("session",localStorage.getItem("session"));
+      urlSearchParams.append("psw_actual",psw.value.psw_actual);
+      urlSearchParams.append("psw_nueva",psw.value.psw_nueva);
+
+      return this.http.post(environment.api_url+'actualiza_psw/',
+       urlSearchParams
+     )
+     .pipe(
+       map(
+         (res:Response)=>res.json()
+       )
+     );
+
+  }
   fn_registra_cliente(cliente:any)
   {
 	  let urlSearchParams=new URLSearchParams();
@@ -41,7 +58,7 @@ export class RegistraClienteService {
   fn_actualiza_cliente(cliente:any)
   {
 	 let urlSearchParams=new URLSearchParams();
-	 
+
 	  urlSearchParams.append("session",localStorage.getItem("session"));
 	  urlSearchParams.append("nombre",cliente.value.nombre);
 	  urlSearchParams.append("apellido_p",cliente.value.apellido_p);

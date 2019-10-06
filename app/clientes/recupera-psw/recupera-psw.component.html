@@ -1,0 +1,125 @@
+<div id="btn_cancelar_2" class="cls_hover " *ngIf="mostrar_recupera_psw" (click)="fn_cerrar()">
+
+</div>
+
+<div class="container cls_form_hover" *ngIf="mostrar_recupera_psw">
+    <div class="row">
+
+          <div class="col-xs-12" *ngIf="!show_envia_token">
+            <br>
+              <a  style="float:left" (click)="fn_regresa_genera_token()">< Enviar Token Nuevamente</a>
+
+          </div>
+        <form *ngIf="!show_envia_token" [formGroup]="cambia_psw">
+
+          <div class="page-header col-xs-12">
+              <h3>Introduce la clave que se envio a tu correo y tu nueva contraseña.</h3>
+          </div>
+          <div class="col-xs-12">
+              <label>Token</label>
+              <input type="text" formControlName="token"  name="token" [className]="cls_token" value="">
+              <div
+                class="error"
+                *ngIf="show_err_token">
+                <a>
+                  Indica el token que enviamos a tu e-mail.
+                </a>
+              </div>
+          </div>
+          <div class="col-xs-12">
+            <label for="">Nueva Contraseña</label>
+            <input type="password" formControlName="psw_nueva" [className]="cls_psw_nueva" name="" value="">
+            <div
+              class="error"
+              *ngIf="show_err_psw_nueva">
+              <a>
+                Indica la nueva contraseña.
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <label for="">Confirma Contraseña</label>
+            <input type="password" formControlName="psw_conf" [className]="cls_conf" name="" value="">
+            <div
+              class="error"
+              *ngIf="show_err_psw_conf">
+              <a>
+                Indica la nueva contraseña.
+              </a>
+            </div>
+          </div>
+          <div class="col-xs-12 cls_final_form" >
+
+            <div
+              class=" error"
+              *ngIf="show_err_nueva_psw">
+              <br>
+              <a>{{msj_2}}</a>
+            </div>
+            <br *ngIf="!show_err_nueva_psw">
+            <button class="btn btn-primary btn-lg btn-block" (click)="fn_guarda_psw()">
+              Guarda Nueva Contraseña
+            </button>
+          </div>
+        </form>
+        <div class="col-xs-12" *ngIf="show_envia_token">
+            <br>
+            <a id="btn_regresar_login_2" (click)="fn_iniciar_session()" style="float:left">< Iniciar Session</a>
+            <br>
+        </div>
+        <form *ngIf="show_envia_token" [formGroup]="recupera_psw">
+
+
+              <div class="page-header">
+                  <br>
+                  <h1>Recupera tu Contraseña</h1>
+              </div>
+              <div class="col-xs-12">
+                  <label>E Mail.</label>
+                  <input type="text" id="e_mail" formControlName="e_mail" name="e_mail" value="" [className]="cls_email">
+                  <div
+                    class="error"
+                    *ngIf="show_err_email">
+                    <a>
+                      Debe indicar el correo electronico.
+                    </a>
+                  </div>
+              </div>
+              <div class="col-xs-12 cls_final_form" >
+
+                <div
+                  class=" error"
+                  *ngIf="mostrar_error_e_mail">
+                  <br>
+                  <a>{{msj}}</a>
+                </div>
+                <br *ngIf="!mostrar_error_e_mail">
+                <button class="btn btn-primary btn-lg btn-block" (click)="fn_recupera_psw()">
+                  Enviar Token
+                </button>
+
+              </div>
+              <div class="col-xs-12 cls_final_form">
+                <a (click)="fn_ya_tengo_token()">
+                    Ya tengo un Token
+                </a>
+              </div>
+        </form>
+    </div>
+</div>
+
+<ul class="loading" *ngIf="cargando">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<div class="clsfondologin" id="fondo_login" *ngIf="cargando"></div>
+
+<div *ngIf="mostrar_msj"  class="cls_mensaje_temporal" >
+		<a >
+      {{msj}}
+    </a>
+</div>

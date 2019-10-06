@@ -6,7 +6,8 @@ import { EstadoService} from '../../catalogos/estado.service';
 import { PaisService} from '../../catalogos/pais.service';
 import { DireccionEnvioService } from './../direccion-envio.service';
 import { DireccionEnvioTemporalService } from './../direccion-envio-temporal.service';
-import {GuardaVentaService} from './../guarda-venta.service';
+import { ReiniciaDireccionService } from './../reinicia-direccion.service';
+import {	GuardaVentaService	} from './../guarda-venta.service';
 import { FormControl, FormGroup,Validators ,ReactiveFormsModule   } from '@angular/forms';
 import { ValidaUsrLogueadoService } from './../valida-usr-logueado.service';
 import { and } from '@angular/router/src/utils/collection';
@@ -23,7 +24,7 @@ export class AltaClientesComponent implements OnInit {
 	transaccion={
 		'display':'none'
 	}
-	constructor(private det:DireccionEnvioTemporalService,private municipiosService: MunicipioService,private estadoService:EstadoService,private paisService: PaisService,private direccion_envio:DireccionEnvioService,public router:Router,private guarda_venta:GuardaVentaService,private vul:ValidaUsrLogueadoService) { }
+	constructor(private det:DireccionEnvioTemporalService,private municipiosService: MunicipioService,private estadoService:EstadoService,private paisService: PaisService,private direccion_envio:DireccionEnvioService,public router:Router,private guarda_venta:GuardaVentaService,private vul:ValidaUsrLogueadoService,private rds:ReiniciaDireccionService) { }
 	public mostrar:boolean;
 	public cargando:boolean;
 	public nombre:string="";
@@ -55,22 +56,17 @@ export class AltaClientesComponent implements OnInit {
 	public cls_cp:string;
 	public show_error_mun:boolean;
 	public cls_mun:string;
-
 	public show_error_est:boolean;
 	public cls_est:string;
-
-
 	public show_error_pais:boolean;
 	public cls_pais:string;
-
-
 	public show_error_email:boolean;
 	public cls_email:string;
-
 	public show_error_referencia:boolean;
 	public cls_referencia:string;
-
-
+	public show_error_reinicia_direccion:boolean;
+	public msj_reinicia:string;
+	public mostrar_confirma_salir:boolean;
 	fn_reinicia_styles()
 	{
 		this.cls_nombre="form-control";
@@ -111,180 +107,125 @@ export class AltaClientesComponent implements OnInit {
 		this.show_error_referencia=false;
 		this.cls_referencia="form-control";
 
+		this.show_error_reinicia_direccion=false;
+		this.msj_reinicia="";
 //		this.mostrar_error_login=false;
 	}
 
 	ngOnInit() {
-		this.mostrar=false;
-		this.cargando=true;
-
-		//si es uno es porque si esta logueado.
-		if (localStorage.getItem("esta_logueado")=="1")
-		{
-			//validamos si el usuario esta logueado o no
-			this.vul.fn_valida_usr_logueado()
-			.subscribe(
-				data=>
-				{
+			this.mostrar=false;
+			this.cargando=true;
+			this.mostrar_confirma_salir=false;
+			this.show_error_reinicia_direccion=false;
+			if (localStorage.getItem("esta_logueado")=="0")
+			{
+				window.location.href="/home";
+			}
 
 
-
-					//si esta logueado			y no ha agregado direccion nueva
-					if (data[0].estatus=="1" && localStorage.getItem("nueva_direccion")!="1")
-					{
-
-						this.nombre=data[0].nombre;
-						this.apellido_p=data[0].apellido_p;
-						this.apellido_m=data[0].apellido_m;
-						this.telefono=data[0].telefono;
-						this.calle=data[0].calle;
-						this.cp=data[0].cp;
-						this.municipio=data[0].municipio;
-						this.estado=data[0].estado;
-						this.pais=data[0].pais;
-						this.e_mail=data[0].e_mail;
-						this.referencia=data[0].referencia;
-						this.numero_interior=data[0].numero_interior;
-						this.numero_exterior=data[0].numero_exterior;
-						this.rfc=data[0].rfc;
-
-						this.cliente=new FormGroup({
-							nombre:new FormControl(this.nombre,[Validators.required]),
-							apellido_p:new FormControl(this.apellido_p,[Validators.required]),
-							apellido_m:new FormControl(this.apellido_m,[Validators.required]),
-							telefono:new FormControl(this.telefono,[Validators.required]),
-							calle:new FormControl(this.calle,[Validators.required]),
-							cp:new FormControl(this.cp,[Validators.required]),
-							municipio:new FormControl(this.municipio,[Validators.required]),
-							estado:new FormControl(this.estado,[Validators.required]),
-							pais:new FormControl(this.pais,[Validators.required]),
-							e_mail:new FormControl(this.e_mail,[Validators.required]),
-							referencia:new FormControl(this.referencia,[Validators.required]),
-							numero_interior:new FormControl(this.numero_interior,[Validators.required])			,
-							numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
-							rfc:new FormControl(this.rfc)
-						});
-						this.cargando=false;
-					}
-					else//si no esta logueado, buscamos si tiene direccion temporal insertada
-					{
-						this.det.fn_direccion_envio_temporal_get()
-						.subscribe(
-							data=>
-							{
-
-								this.nombre=data[0].nombre;
-								this.apellido_p=data[0].apellido_p;
-								this.apellido_m=data[0].apellido_m;
-								this.telefono=data[0].telefono;
-								this.calle=data[0].calle;
-								this.cp=data[0].cp;
-								this.municipio=data[0].municipio;
-								this.estado=data[0].estado;
-								this.pais=data[0].pais;
-								this.e_mail=data[0].e_mail;
-								this.referencia=data[0].referencia;
-								this.numero_interior=data[0].numero_interior;
-								this.numero_exterior=data[0].numero_exterior;
-								this.rfc=data[0].rfc;
-
-								this.cliente=new FormGroup({
-								nombre:new FormControl(this.nombre,[Validators.required]),
-								apellido_p:new FormControl(this.apellido_p,[Validators.required]),
-								apellido_m:new FormControl(this.apellido_m,[Validators.required]),
-								telefono:new FormControl(this.telefono,[Validators.required]),
-								calle:new FormControl(this.calle,[Validators.required]),
-								cp:new FormControl(this.cp,[Validators.required]),
-								municipio:new FormControl(this.municipio,[Validators.required]),
-								estado:new FormControl(this.estado,[Validators.required]),
-								pais:new FormControl(this.pais,[Validators.required]),
-								e_mail:new FormControl(this.e_mail,[Validators.required]),
-								referencia:new FormControl(this.referencia,[Validators.required]),
-								numero_interior:new FormControl(this.numero_interior,[Validators.required])			,
-								numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
-								rfc:new FormControl(this.rfc)
-							});
-
-							}
-						);
-						this.cargando=false;
-					}
-
-
-				}
-			) ;
-
-		}
-		else
-		{
-
-						this.det.fn_direccion_envio_temporal_get()
-						.subscribe(
-							data=>
-							{
-
-								this.nombre=data[0].nombre;
-								this.apellido_p=data[0].apellido_p;
-								this.apellido_m=data[0].apellido_m;
-								this.telefono=data[0].telefono;
-								this.calle=data[0].calle;
-								this.cp=data[0].cp;
-								this.municipio=data[0].municipio;
-								this.estado=data[0].estado;
-								this.pais=data[0].pais;
-								this.e_mail=data[0].e_mail;
-								this.referencia=data[0].referencia;
-								this.numero_interior=data[0].numero_interior;
-								this.numero_exterior=data[0].numero_exterior;
-								this.rfc=data[0].rfc;
-
-								this.cliente=new FormGroup({
-								nombre:new FormControl(this.nombre,[Validators.required]),
-								apellido_p:new FormControl(this.apellido_p,[Validators.required]),
-								apellido_m:new FormControl(this.apellido_m,[Validators.required]),
-								telefono:new FormControl(this.telefono,[Validators.required]),
-								calle:new FormControl(this.calle,[Validators.required]),
-								cp:new FormControl(this.cp,[Validators.required]),
-								municipio:new FormControl(this.municipio,[Validators.required]),
-								estado:new FormControl(this.estado,[Validators.required]),
-								pais:new FormControl(this.pais,[Validators.required]),
-								e_mail:new FormControl(this.e_mail,[Validators.required]),
-								referencia:new FormControl(this.referencia,[Validators.required]),
-								numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
-								numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
-								rfc:new FormControl(this.rfc)
-								}
-							);
-
-
-								this.cargando=false;
-							}
-						);
-		}
-
-								this.cliente=new FormGroup({
-								nombre:new FormControl(this.nombre,[Validators.required]),
-								apellido_p:new FormControl(this.apellido_p,[Validators.required]),
-								apellido_m:new FormControl(this.apellido_m,[Validators.required]),
-								telefono:new FormControl(this.telefono,[Validators.required]),
-								calle:new FormControl(this.calle,[Validators.required]),
-								cp:new FormControl(this.cp,[Validators.required]),
-								municipio:new FormControl(this.municipio,[Validators.required]),
-								estado:new FormControl(this.estado,[Validators.required]),
-								pais:new FormControl(this.pais,[Validators.required]),
-								e_mail:new FormControl(this.e_mail,[Validators.required]),
-								referencia:new FormControl(this.referencia,[Validators.required]),
-								numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
-								numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
-								rfc:new FormControl(this.rfc)
-								})
+			this.cliente=new FormGroup({
+			nombre:new FormControl(this.nombre,[Validators.required]),
+			apellido_p:new FormControl(this.apellido_p,[Validators.required]),
+			apellido_m:new FormControl(this.apellido_m,[Validators.required]),
+			telefono:new FormControl(this.telefono,[Validators.required]),
+			calle:new FormControl(this.calle,[Validators.required]),
+			cp:new FormControl(this.cp,[Validators.required]),
+			municipio:new FormControl(this.municipio,[Validators.required]),
+			estado:new FormControl(this.estado,[Validators.required]),
+			pais:new FormControl(this.pais,[Validators.required]),
+			e_mail:new FormControl({value:this.e_mail},[Validators.required]),
+			referencia:new FormControl(this.referencia,[Validators.required]),
+			numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
+			numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
+			rfc:new FormControl(this.rfc)
+			})
 					this.fn_reinicia_styles();
+					this.fn_obtiene_direccion_envio_temporal();
 
+	}
+
+	fn_obtiene_direccion_envio_temporal()
+	{
+		/*
+			cuando el clinte se loguea, se inserta la direccion que tiene capturada en la direccion de envio DireccionEnvioTemporalService
+		*/
+		this.det.fn_direccion_envio_temporal_get()
+		.subscribe(
+			data=>
+			{
+
+				this.nombre=data[0].nombre;
+				this.apellido_p=data[0].apellido_p;
+				this.apellido_m=data[0].apellido_m;
+				this.telefono=data[0].telefono;
+				this.calle=data[0].calle;
+				this.cp=data[0].cp;
+				this.municipio=data[0].municipio;
+				this.estado=data[0].estado;
+				this.pais=data[0].pais;
+				this.e_mail=data[0].e_mail;
+				this.referencia=data[0].referencia;
+				this.numero_interior=data[0].numero_interior;
+				this.numero_exterior=data[0].numero_exterior;
+				this.rfc=data[0].rfc;
+
+				this.cliente=new FormGroup({
+				nombre:new FormControl(this.nombre,[Validators.required]),
+				apellido_p:new FormControl(this.apellido_p,[Validators.required]),
+				apellido_m:new FormControl(this.apellido_m,[Validators.required]),
+				telefono:new FormControl(this.telefono,[Validators.required]),
+				calle:new FormControl(this.calle,[Validators.required]),
+				cp:new FormControl(this.cp,[Validators.required]),
+				municipio:new FormControl(this.municipio,[Validators.required]),
+				estado:new FormControl(this.estado,[Validators.required]),
+				pais:new FormControl(this.pais,[Validators.required]),
+				e_mail:new FormControl(this.e_mail,[Validators.required]),
+				referencia:new FormControl(this.referencia,[Validators.required]),
+				numero_interior:new FormControl(this.numero_interior,[Validators.required])			,
+				numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
+				rfc:new FormControl(this.rfc)
+			});
+			this.cargando=false;
+			}
+		);
+
+	}
+	fn_confirma_reinicio_direccion()
+	{
+		this.mostrar_confirma_salir=true;
+	}
+	fn_no_reinicia_direccion()
+	{
+		this.mostrar_confirma_salir=false;
+
+	}
+
+	fn_reinicia_direccion_temporal()
+	{
+
+			this.fn_reinicia_styles();
+			this.cargando=true;
+			this.rds.fn_reinicia_direccion_temporal().
+			subscribe(data=>
+				{
+						console.log(data);
+						if(data[0].estatus=="1")
+						{
+								this.fn_obtiene_direccion_envio_temporal();
+								this.mostrar_confirma_salir=false;
+						}
+						else
+						{
+								this.msj_reinicia=data[0].msj;
+								this.show_error_reinicia_direccion=true;
+						}
+				}
+			);
 	}
 
 	insertaDireccionEnvio()
 	{
-		
+
 		this.fn_reinicia_styles();
 
 		var form_ok=0;
@@ -406,8 +347,8 @@ export class AltaClientesComponent implements OnInit {
 					{
 						//el 1 en la variable de session nueva_direccion indica que ya se ha modificado la direccion
 						//por lo cual debera cargar siempre esta.
-						localStorage.setItem("nueva_direccion","1");
 						this.router.navigate(['/confirma-informacion']);
+
 					}
 
 

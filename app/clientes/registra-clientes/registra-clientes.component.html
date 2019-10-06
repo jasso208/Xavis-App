@@ -1,21 +1,21 @@
 
 
-<div id="div_hover_reg_cliente" class="cls_hover cls_reg_cliente_id">
+<div id="div_hover_reg_cliente" class="cls_hover " *ngIf="mostrar_nuevo_registro" (click)="fn_cerrar()">
 
 </div>
-		
-		
-		
-		
-		<div class="container cls_form_hover  cls_reg_cliente_id" >		
+
+
+
+
+		<div class="container cls_form_hover " *ngIf="mostrar_nuevo_registro">
 			<div class="row">
-				
+
 
 			<form [formGroup]="registra_cliente"  id="div_form_registra_cliente" class="form-horizontal">
 
 				<div class="col-xs-12">
 						<br>
-					<a id="btn_regresar_login"> < Regresar</a>
+					<a id="btn_regresar_login" (click)="fn_iniciar_session()"> < Regresar</a>
 				</div>
 				<br>
 				<div class="page-header">
@@ -27,7 +27,7 @@
 					<label >
 						Correo Electronico
 					</label>
-					<input  [className]="cls_email_reg"  id="e_mail_reg_cliente" formControlName="e_mail_reg_cliente" type="text" name="e_mail_reg_cliente" >					
+					<input  [className]="cls_email_reg"  id="e_mail_reg_cliente" formControlName="e_mail_reg_cliente" type="text" name="e_mail_reg_cliente" >
 					<div
 						class="error"
 						*ngIf="show_email_reg">
@@ -62,15 +62,15 @@
 						</a>
 					</div>
 				</div>
-				
-				<div class="col-xs-12 cls_final_form" >	
+
+				<div class="col-xs-12 cls_final_form" >
 					<div
 						class=" error"
 						*ngIf="show_error_reg">
 						<br>
 						<a>{{msj}}</a>
-					</div>	
-					<br *ngIf="!show_error_reg">				
+					</div>
+					<br *ngIf="!show_error_reg">
 					<button class="btn btn-primary btn-lg btn-block"  (click)="fn_registra_cliente()">
 						Guardar
 					</button>
@@ -78,6 +78,3 @@
 			</form>
 			</div>
 		</div>
-
-
-		

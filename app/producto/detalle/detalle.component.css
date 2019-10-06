@@ -1,5 +1,6 @@
 /*Galeria de imagenes*/
 
+
 .cls_galeria_detalle_prod
 {
 	width:80%;
@@ -69,7 +70,8 @@ font-weight:bold;
 	width:90%;
 	margin-left:5%;
 }
-@media  screen  and (min-width:420px)
+
+dia  screen  and (min-width:420px)
 {
 
 	#img_mostrar
@@ -95,7 +97,7 @@ font-weight:bold;
 
 	#div_forma_pago
 	{
-	
+
 		border-left:0px;
 
 	}

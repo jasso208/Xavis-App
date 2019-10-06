@@ -1,7 +1,8 @@
 <div class="container" id="div_panel_control_lg"  >
+
 	<div class="row">
 		<div class="col-xs-3">
-			
+
 			<div class="col-12">
 				<a class="btn_panel_control" id="btn_ventas" (click)="fn_mostrar_ventas()" >
 					Ventas
@@ -22,58 +23,64 @@
 					<span *ngIf="mostrar_cambio_contrasena"> -</span>
 					<span *ngIf="!mostrar_cambio_contrasena"> ˅</span>
 				</a>
-			</div>		
+			</div>
 		</div>
-		<div class="col-xs-9">			
-				<div *ngIf="mostrar_ventas" >					
-				<div class=" cls_item_compras" *ngFor="let v of ventas">
+		<div class="col-xs-9">
+				<div *ngIf="mostrar_ventas" >
+					<h1>Tus Ventas</h1>
+							<div *ngIf="!hay_ventas">
+								<h3 style="text-align:center;font-weight:bold;">
+									No has echo compras aun  :(.
+								</h3>
+							</div>
+				<div  class=" cls_item_compras" *ngFor="let v of ventas">
 					<div class="row">
-						<div class="col-xs-4"> 
+						<div class="col-xs-4">
 							<p>Estaus: Entregado</p>
-						</div>				
-						<div class="col-xs-3"> 
+						</div>
+						<div class="col-xs-3">
 							<p>Folio Venta: {{v.id_venta}}</p>
 						</div>
-						<div class="col-xs-2"> 
+						<div class="col-xs-2">
 							<button class="btn btn-primary-default" (click)="fn_consulta_detalle_ventas(v.id_venta)">
 								Detalle
 							</button>
 						</div>
-						<div class="col-xs-3"> 
+						<div class="col-xs-3">
 							<button class="btn btn-primary" >Seguir Envio</button>
 						</div>
 					</div>
-					<div class="row">	
+					<div class="row">
 								<div class="col-xs-12">
 									<p><span>Fecha Venta: </span>{{v.fecha | date:'dd-MM-yyyy'}}</p>
-								</div>							
-								<div class="col-xs-10" style="text-align: right;">							
+								</div>
+								<div class="col-xs-10" style="text-align: right;">
 										<div class="row">
 											<div class="col-12" >
 												<p>
-													<span>Sub-Total</span>										
+													<span>Sub-Total</span>
 												</p>
 											</div>
 											<div class="col-12" >
 												<p>
-													<span>Descuent</span>											
+													<span>Descuent</span>
 												</p>
 											</div>
 											<div class="col-12" >
 											<p><span>IVA</span>
-													
+
 												</p>
 											</div>
 											<div class="col-12" >
 												<p><span>Total</span>
-													
+
 												</p>
 											</div>
 										</div>
-													
+
 								</div>
-							
-									<div class="col-xs-2" >									
+
+									<div class="col-xs-2" >
 											<div class="row">
 												<div class="col-xs-12">
 													<p>
@@ -97,9 +104,9 @@
 												</div>
 											</div>
 									</div>
-						
+
 					</div>
-				</div>	
+				</div>
 			</div>
 
 
@@ -108,9 +115,11 @@
 
 			<div class="col-xs-12" *ngIf="mostrar_cuenta">
 				<div class="row">
-					<form  [formGroup]="cliente"  class="form-horizontal">	
+					<form  [formGroup]="cliente"  class="form-horizontal">
 
-					
+						<h1 >
+								Informacion Personal
+						</h1>
 						<div class="row">
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Nombre (s).</label>
@@ -123,11 +132,11 @@
 								</div>
 								</div>
 							</div>
-							
+
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Apellido Paterno</label>
 								<input id="apellido_p" class="form-control"  type="text" formControlName="apellido_p" name="apellido_p">
-								
+
 								<div class="row">
 								<div
 								  class="col-xs-12 error"
@@ -136,16 +145,16 @@
 								  </div>
 								</div>
 							</div>
-							
+
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Apellido Materno</label>
 								<input id="apellido_m" class="form-control"  type="text" formControlName="apellido_m" name="apellido_m">
-								
-							</div>	
+
+							</div>
 
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Telefono</label>
-								<input class="form-control" type="text"  formControlName="telefono" 
+								<input class="form-control" type="text"  formControlName="telefono"
 								name="telefono">
 								<div class="row">
 								<div
@@ -157,17 +166,13 @@
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>RFC</label>
-								<input class="form-control" type="text"  formControlName="rfc" 
-								name="rfc">	
-								<div class="row">
-									<div>
-								  			<a >Obligatorio en caso de requrir factura</a>
-								  	</div>
-								</div>							
+								<input class="form-control" type="text"  formControlName="rfc"
+								name="rfc">
+
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>E-Mail</label>
-								<input class="form-control" type="text" formControlName="e_mail" name="e_mail">
+								<input class="form-control" type="text" formControlName="e_mail" name="e_mail" disabled>
 								<div class="row">
 								<div
 								  class="col-xs-12 error"
@@ -176,15 +181,15 @@
 								  </div>
 								</div>
 							</div>
-						
+
 						</div>
-					<div class="page-header">
+					<div >
 					  <h1>Informacion de Envio</h1>
 					</div>
 					<div class="row">
 							<div class="col-xs-12 col-sm-12 cls_margen_top_formulario" >
 								<label>Calle</label>
-								<input id="calle" class="form-control"  type="text" formControlName="calle" name="calle">				
+								<input id="calle" class="form-control"  type="text" formControlName="calle" name="calle">
 								<div class="row">
 								<div
 								  class="col-xs-12 error"
@@ -259,7 +264,7 @@
 								  </div>
 								</div>
 							</div>
-							
+
 							<div class="col-xs-12  cls_margen_top_formulario" >
 								<label>Referencias de Domicilio</label>
 								<input type="text" class="form-control" formControlName="referencia" name="referencia">
@@ -272,45 +277,61 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="col-xs-12 cls_margen_top_formulario" style="text-align: center;" >
 							<button class="btn btn-primary "   [disabled]="cliente.invalid" (click)="fn_actualiza_cliente()" >
 								Guardar
-							</button>		
-						</div>										
+							</button>
+						</div>
 					</form>
 				</div>
-			</div>	
+			</div>
 
-
-
-
-
-
-			<div class="col-xs-12" *ngIf="mostrar_cambio_contrasena">	
+			<div class="col-xs-12" *ngIf="mostrar_cambio_contrasena">
 				<div class="row">
 
 					<form  [formGroup]="cambio_contrasena"  class="form-horizontal">
+							<h1 >Cambio de Contraseña</h1>
 								<div class="col-xs-4  cls_margen_top_formulario" >
 									<label>Contraseña Actual</label>
-									<input type="text" class="form-control" formControlName="psw_actual" name="referencia">								
+									<input type="password" class="form-control" formControlName="psw_actual" name="psw_actual">
+									<div
+										class=" error"
+										*ngIf="show_error_psw_actual">
+										<a>Debe la contraseña actual</a>
+									</div>
 								</div>
 								<div class="col-xs-4  cls_margen_top_formulario" >
 									<label>Nueva Contraseña</label>
-									<input type="text" class="form-control" formControlName="psw_nueva" name="referencia">								
+									<input type="password" class="form-control" formControlName="psw_nueva" name="psw_nueva">
+									<div
+										class=" error"
+										*ngIf="show_error_psw">
+										<a>Debe indicar la nueva contraseña</a>
+									</div>
 								</div>
 								<div class="col-xs-4  cls_margen_top_formulario" >
 									<label>Confirma Contraseña</label>
-									<input type="text" class="form-control" formControlName="psw_confirma_psw" name="referencia">								
+									<input type="password" class="form-control" formControlName="psw_nueva_conf" name="psw_nueva_conf">
+									<div
+										class=" error"
+										*ngIf="show_error_psw_conf">
+										<a>Debe indicar la nueva contraseña</a>
+									</div>
 								</div>
-								
+
 								<div class="col-xs-12 cls_margen_top_formulario" style="text-align: center;" >
-									<button class="btn btn-primary "  >
+									<div
+										class=" error"
+										*ngIf="show_error_actualiza">
+										<a>{{msj}}</a>
+									</div>
+									<button class="btn btn-primary "  (click)="fn_actualiza_psw()">
 										Guardar
-									</button>		
+									</button>
 								</div>
 					</form>
-				</div>				
+				</div>
 			</div>
 
 
@@ -327,8 +348,8 @@
 
 
 
-<div clasS="container" id="div_panel_control_movil" >		
-	<div class="row">			
+<div clasS="container" id="div_panel_control_movil" >
+	<div class="row">
 
 		<div class="row">
 			<div class="col-xs-12">
@@ -337,61 +358,61 @@
 					<span *ngIf="mostrar_ventas"> -</span>
 					<span *ngIf="!mostrar_ventas"> ˅</span>
 				</a>
-			</div>		
+			</div>
 		</div>
-			
-		
+
+
 		<div *ngIf="mostrar_ventas" >
 			<div class="cls_item_compras" *ngFor="let v of ventas">
 				<div class="row">
-					<div class="col-xs-8"> 
+					<div class="col-xs-8">
 						<p>Estaus: Entregado</p>
-					</div>				
-					<div class="col-xs-4"> 
-						
+					</div>
+					<div class="col-xs-4">
+
 						<button class="btn btn-primary btn-block">Seguir Envio</button>
 					</div>
-					<div class="col-xs-8"> 
+					<div class="col-xs-8">
 						<p>Folio Venta: {{v.id_venta}}</p>
 					</div>
-					<div class="col-xs-4"> 
+					<div class="col-xs-4">
 						<button class="btn btn-primary-default btn-block" (click)="fn_consulta_detalle_ventas(v.id_venta)">
 							Detalle
 						</button>
-						
+
 					</div>
 				</div>
-				<div class="row">	
+				<div class="row">
 							<div class="col-xs-12">
 								<p><span>Fecha Venta: </span>{{v.fecha | date:'dd-MM-yyyy'}}</p>
-							</div>							
-							<div class="col-xs-10" style="text-align: right;">							
+							</div>
+							<div class="col-xs-10" style="text-align: right;">
 									<div class="row">
 										<div class="col-12" >
 											<p>
-												<span>Sub-Total</span>										
+												<span>Sub-Total</span>
 											</p>
 										</div>
 										<div class="col-12" >
 											<p>
-												<span>Descuent</span>											
+												<span>Descuent</span>
 											</p>
 										</div>
 										<div class="col-12" >
 										<p><span>IVA</span>
-												
+
 											</p>
 										</div>
 										<div class="col-12" >
 											<p><span>Total</span>
-												
+
 											</p>
 										</div>
 									</div>
-												
+
 							</div>
-						
-								<div class="col-xs-2" >									
+
+								<div class="col-xs-2" >
 										<div class="row">
 											<div class="col-xs-12">
 												<p>
@@ -415,13 +436,13 @@
 											</div>
 										</div>
 								</div>
-					
-				</div>
-			</div>	
-		</div>
-		
 
-		
+				</div>
+			</div>
+		</div>
+
+
+
 		<div class="row" >
 			<div class="col-xs-12">
 				<a  class="btn_panel_control" (click)="fn_mostrar_cuenta_2()">
@@ -435,12 +456,12 @@
 		<div  *ngIf="mostrar_cuenta">
 			<div class="row">
 				<form  [formGroup]="cliente"  class="form-horizontal">
-				
 
-					<div class="page-header">
+
+					<div >
 					  <h1>Informacion Personal</h1>
 					</div>
-						
+
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Nombre (s).</label>
 								<input id="nombre" class="form-control"  type="text" formControlName="nombre" name="nombre">
@@ -452,11 +473,11 @@
 								</div>
 								</div>
 							</div>
-							
+
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Apellido Paterno</label>
 								<input id="apellido_p" class="form-control"  type="text" formControlName="apellido_p" name="apellido_p">
-								
+
 								<div class="row">
 								<div
 								  class="col-xs-12 error"
@@ -465,16 +486,16 @@
 								  </div>
 								</div>
 							</div>
-							
+
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Apellido Materno</label>
 								<input id="apellido_m" class="form-control"  type="text" formControlName="apellido_m" name="apellido_m">
-								
-							</div>	
+
+							</div>
 
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario">
 								<label>Telefono</label>
-								<input class="form-control" type="text"  formControlName="telefono" 
+								<input class="form-control" type="text"  formControlName="telefono"
 								name="telefono">
 								<div class="row">
 								<div
@@ -486,17 +507,13 @@
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>RFC</label>
-								<input class="form-control" type="text"  formControlName="rfc" 
-								name="rfc">	
-								<div class="row">
-									<div style="text-align: center;">
-								  			<a>Obligatorio en caso de requrir factura</a>
-								  </div>
-								</div>							
+								<input class="form-control" type="text"  formControlName="rfc"
+								name="rfc">
+
 							</div>
 							<div class="col-xs-12 col-sm-4 cls_margen_top_formulario" >
 								<label>E-Mail</label>
-								<input class="form-control" type="text" formControlName="e_mail" name="e_mail">
+								<input class="form-control" type="text" formControlName="e_mail" name="e_mail" disabled>
 								<div class="row">
 								<div
 								  class="col-xs-12 error"
@@ -505,18 +522,18 @@
 								  </div>
 								</div>
 							</div>
-						
+
 						<br><br>
-					
+
 
 							<div class="col-xs-12 col-sm-12 cls_margen_top_formulario" >
-								<div class="page-header">
+								<div >
 								  <h1>Informacion de Envio</h1>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-12 cls_margen_top_formulario" >
 								<label>Calle</label>
-								<input id="calle" class="form-control"  type="text" formControlName="calle" name="calle">				
+								<input id="calle" class="form-control"  type="text" formControlName="calle" name="calle">
 								<div class="row">
 								<div
 								  class="col-xs-12 error"
@@ -591,7 +608,7 @@
 								  </div>
 								</div>
 							</div>
-							
+
 							<div class="col-xs-12  cls_margen_top_formulario" >
 								<label>Referencias de Domicilio</label>
 								<input type="text" class="form-control" formControlName="referencia" name="referencia">
@@ -603,22 +620,22 @@
 								  </div>
 								</div>
 							</div>
-						
-						
+
+
 						<div class="col-xs-12 cls_margen_top_formulario" style="text-align: center;" >
 							<button class="btn btn-primary "   [disabled]="cliente.invalid" (click)="fn_actualiza_cliente()" >
 								Guardar
-							</button>		
+							</button>
 						</div>
 
-										
+
 				</form>
 			</div>
-		</div>		
-		
-		
-		
-		
+		</div>
+
+
+
+
 		<div class="row" >
 			<div class="col-xs-12">
 				<a  class="btn_panel_control" (click)="fn_mostrar_cambio_contrasena_2()">
@@ -629,73 +646,98 @@
 			</div>
 		</div>
 
-			<div class="col-xs-12" *ngIf="mostrar_cambio_contrasena">	
+			<div class="col-xs-12" *ngIf="mostrar_cambio_contrasena">
 					<div class="row">
 						<form  [formGroup]="cambio_contrasena"  class="form-horizontal">
 								<div class="col-xs-4  cls_margen_top_formulario" >
 									<label>Contraseña Actual</label>
-									<input type="text" class="form-control" formControlName="psw_actual" name="referencia">								
+									<input type="password" class="form-control" formControlName="psw_actual" name="psw_actual">
+									<div
+										class=" error"
+										*ngIf="show_error_psw_actual">
+										<a>Debe la contraseña actual</a>
+									</div>
 								</div>
 								<div class="col-xs-4  cls_margen_top_formulario" >
 									<label>Nueva Contraseña</label>
-									<input type="text" class="form-control" formControlName="psw_nueva" name="referencia">								
+									<input type="password" class="form-control" formControlName="psw_nueva" name="psw_nueva">
+									<div
+										class=" error"
+										*ngIf="show_error_psw">
+																			<a>Debe indicar la nueva contraseña</a>
+									</div>
 								</div>
 								<div class="col-xs-4  cls_margen_top_formulario" >
 									<label>Confirma Contraseña</label>
-									<input type="text" class="form-control" formControlName="psw_confirma_psw" name="referencia">								
+									<input type="password" class="form-control" formControlName="psw_nueva_conf" name="psw_nueva_conf">
+									<div
+										class=" error"
+										*ngIf="show_error_psw_conf">
+
+										<a>Debe indicar la nueva contraseña</a>
+									</div>
 								</div>
-								
+
 								<div class="col-xs-12 cls_margen_top_formulario" style="text-align: center;" >
-									<button class="btn btn-primary "  >
+									<div
+										class=" error"
+										*ngIf="show_error_actualiza">
+										<a>{{msj}}</a>
+									</div>
+									<button class="btn btn-primary "  (click)="fn_actualiza_psw()">
 										Guardar
-									</button>		
+									</button>
 								</div>
 						</form>
-					</div>				
-			</div>									
+					</div>
+			</div>
 	</div>
 </div>
 <div *ngIf="mostrar_detalle" class="cls_div_hover" (click)="fn_cerrar_detalle()">
 </div>
 
-<div class="container" *ngIf="mostrar_detalle" id="contenedor_detalle_venta"  >
-	<div class="row">
-		<div class="col-xs-12">				
-			<div class="page-header">
-				<h1>
-					Detalle Venta
-				</h1>
-			</div>
-			<div class="row">	
-				<div class="col-xs-12 cls_item_detalle_venta" *ngFor="let prod of detalle_venta " >
-					<div class="row">
-						<div class="col-xs-6">
-							<img src="../assets/img/productos/{{prod.nom_img}}_1.png" class="cls_img_prod_detalle_venta">
-						</div>
-						<div class="col-xs-6">
-							<div class="row">
-								<div class="col-xs-12 cls_nom_prod_detalle_venta">
-										<a >{{prod.nombre}}</a>
-								</div>
-								<div class="col-xs-12 cls_precio_prod_detalle_venta">
-									<a>${{prod.precio_unitario}}</a>
-								</div>							
-								<div class="col-xs-12 cls_cantidad_prod_detalle_venta">
-									<a>Talla: {{prod.talla}}  </a>
-								</div>
-								<div class="col-xs-6 cls_cantidad_prod_detalle_venta">
-									<a>Cantidad: <span>{{prod.cantidad}}</span>  </a>
-								</div>															
-							</div>
-						</div>
+
+
+<div class="container" id="form_detalle_venta" *ngIf="mostrar_detalle" >
+		<div style="height:30%">
+				<a id="titulo_carrito">Detalle de Venta.</a>
+		</div>
+		<hr>
+		<div class="row">
+			<div  class="cls_item_carrito col-xs-12" *ngFor="let prod of detalle_venta " >
+
+				<div class="col-xs-3">
+					<img src="../assets/img/productos/{{prod.nom_img}}_1.png" style="width:150%">
+				</div>
+				<div clasS="col-xs-6">
+					<div class="col-xs-12" style="text-align:left;">
+							<a class="cls_marca_carrito">{{prod.talla}}</a>
 					</div>
-				</div>															
+					<div clasS="col-xs-12" style="text-align:left;">
+						<a class="cls_nombre_producto" (click)="fn_detalle_prod(prod.id_producto)" >{{prod.nombre}} </a>
+					</div>
+					<div clasS="col-xs-12">
+						<br>
+						<a class="cls_cantidad_prod">cant:<span>{{prod.cantidad}}</span></a>
+					</div>
+				</div>
+				<div class="col-xs-3">
+					<a style="display:block;text-align:right" (click)="eliminaProductoCarrito(prod.id)">X</a>
+					<br>
+					<a id="precio_prod">${{prod.precio_unitario}}</a>
+				</div>
 			</div>
 		</div>
-	</div>
+	  <br>
+		<br>
 </div>
 
-		
+
+
+
+
+
+
 	<ul class="loading" *ngIf="cargando">
 	  <li></li>
 	  <li></li>
@@ -705,3 +747,11 @@
 	</ul>
 
 <div class="clsfondologin"  *ngIf="cargando"></div>
+
+
+
+<div *ngIf="mostrar_msj"  class="cls_mensaje_temporal" >
+		<a  >
+		{{msj_temporal}}
+		</a>
+</div>

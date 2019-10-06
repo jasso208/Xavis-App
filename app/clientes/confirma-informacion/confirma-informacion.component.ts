@@ -43,10 +43,14 @@ export class ConfirmaInformacionComponent implements OnInit {
 
 
   ngOnInit() {
+    if (localStorage.getItem("esta_logueado")=="0")
+    {
+      window.location.href="/home";
+    }
   //para mostrar o ocultar el div hover
 			this.mostrar=false;
-			
-			
+
+
 			this.consultaCarrito();
 			this.cliente=new FormGroup(
 					{
@@ -61,11 +65,11 @@ export class ConfirmaInformacionComponent implements OnInit {
 						pais:new FormControl(this.pais,[Validators.required]),
 						e_mail:new FormControl(this.e_mail,[Validators.required]),
 						referencia:new FormControl(this.referencia,[Validators.required]),
-						numero_interior:new FormControl(this.numero_interior,[Validators.required])	,		
+						numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
 						numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 						rfc:new FormControl(this.rfc)
 					});
-					
+
 			//como ya solo se va a confirmar la venta, no consultamos la informacion
 			//de la cuenta, si no la confirmo en el paso anterior.
 			this.det.fn_direccion_envio_temporal_get()
@@ -100,7 +104,7 @@ export class ConfirmaInformacionComponent implements OnInit {
 						pais:new FormControl(this.pais,[Validators.required]),
 						e_mail:new FormControl(this.e_mail,[Validators.required]),
 						referencia:new FormControl(this.referencia,[Validators.required]),
-						numero_interior:new FormControl(this.numero_interior,[Validators.required])	,		
+						numero_interior:new FormControl(this.numero_interior,[Validators.required])	,
 						numero_exterior:new FormControl(this.numero_exterior,[Validators.required])			,
 						rfc:new FormControl(this.rfc)
 					}
@@ -111,35 +115,35 @@ export class ConfirmaInformacionComponent implements OnInit {
   }
 
    public consultaCarrito()
-  {	  
-	
+  {
+
     this.car_service.consultaCarrito()
     .subscribe(data=>{
-		
+
 		this.productos=data;
 			this.cont_productos=this.productos.length;
-		var x=0;		
+		var x=0;
 		this.subtotal_aux=0;
-		
+
 		for(x=0;x<this.productos.length;x++)
 		{
 			this.subtotal_aux=this.subtotal_aux+this.productos[x].precio*this.productos[x].cantidad;
-		}		
-		
+		}
+
 		//this.subtotal_aux=this.subtotal_aux;
 		//this.iva_aux=this.subtotal_aux/0.16;
 		//this.total_aux=this.subtotal_aux+this.iva_aux+this.envio;
-		
+
 		this.total=(this.subtotal_aux);
 		this.subtotal=((this.subtotal_aux/1.16));
 		this.iva=((this.total-this.subtotal));
-	
+
     });
   }
-  
+
   fn_regresar()
   {
-  
+
     this.r.navigate(['/alta_cliente']);
   }
   fn_forma_pago()

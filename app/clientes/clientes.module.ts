@@ -13,6 +13,7 @@ import { PanelControlComponent } from './panel-control/panel-control.component';
 import { FormasPagoComponent } from './formas-pago/formas-pago.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { ConfirmaInformacionComponent } from './confirma-informacion/confirma-informacion.component';
+import { RecuperaPswComponent } from './recupera-psw/recupera-psw.component';
 
 @NgModule({
   imports: [
@@ -22,13 +23,13 @@ import { ConfirmaInformacionComponent } from './confirma-informacion/confirma-in
 		NgxPayPalModule
 	],
   providers:[
-  
+
 		MunicipioService,
-		
+
 		EstadoService,
-		
+
 		PaisService
-		
+
 	],
   declarations:   [
 		AltaClientesComponent,
@@ -36,13 +37,15 @@ import { ConfirmaInformacionComponent } from './confirma-informacion/confirma-in
 		RegistraClientesComponent,
 		PanelControlComponent,
 		FormasPagoComponent,
-		ConfirmaInformacionComponent
+		ConfirmaInformacionComponent,
+		RecuperaPswComponent
 	],
 	exports:[
-	
-		AltaClientesComponent,		
+
+		AltaClientesComponent,
 		LoginComponent,
-		RegistraClientesComponent
+		RegistraClientesComponent,
+    RecuperaPswComponent
 	]
 })
 export class ClientesModule { }

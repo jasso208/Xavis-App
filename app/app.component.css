@@ -11,7 +11,7 @@
 {
     position:fixed;
     top:0;
-    left:-70%;				
+    left:-70%;
 	height:100%;
     width:70%;
     z-index:21;
@@ -20,11 +20,11 @@
 }
 #menu_encabezado #menu_encabezado2
 {
-    margin-left:0;						
+    margin-left:0;
     background-color:#F0F8FF;
 	margin-top:10px;
-    
-    
+
+
 }
 
 #menu_configuracion
@@ -33,14 +33,15 @@
 }
 #menu_configuracion>li
 {
-	
+
 	display: inline-block;
+	float:right;
 }
 
 #menu_configuracion a
 {
-	font-size: 15px;
-	color: black;
+	font-size: 30px;
+	color:black;
 }
 
 .cls_btn_cerrar
@@ -50,36 +51,36 @@
 .cls_btn_cerrar >a
 {
     border:1px solid white;
-    
+
 }
 
 .clsBotonMenu
-{			
-    text-align:left;			    
+{
+    text-align:left;
     padding-top:10px;
-	
-    
+
+
 }
 .clsBotonMenu a
 {
 	font-family: 'Nunito', sans-serif;
-	padding-bottom:10px;	
+	padding-bottom:10px;
 	color:black;
 	letter-spacing:2px;
-    text-decoration:none;    
+    text-decoration:none;
     padding-left:5%;
      display:block;
 }
 .clsBotonMenu a:hover
 {
-	
+
 	font-weight:bold;
 
 }
 
 .clsBotonMenu:hover
-{		    
-    color:#c0c0c0;		    
+{
+    color:#c0c0c0;
 }
 .clsBotonMenu:hover a
 {
@@ -91,24 +92,24 @@
 #encabezado_menu
 {
     border-bottom:1px solid black;
-    border-bottom:1px solid #c0c0c0;		
+    border-bottom:1px solid #c0c0c0;
 }
 
 
 #control_menu_disp_movil
 {
-    
+
     height:25px;
 	margin-left:20px;
 	padding:2px;
-    
+
 }
 #control_menu_disp_movil >div
 {
     width:26px;
     height:26px;
     border:2px solid black;
-    
+
 }
 #control_menu_disp_movil >div>div
 {
@@ -124,7 +125,7 @@
     width: 90%;
     height: 30px;
     margin-left: 5%;
-    
+
     opacity: 0.3;
     margin-top:30px;
     margin-bottom: 30px;
@@ -134,7 +135,7 @@
     max-width: 90%;
     margin-left:5%;
 	margin-bottom:20px;
-	
+
 }
 #div_subscribete
 {
@@ -166,7 +167,7 @@
 	border:1px solid black;
 	width:90%;
 	margin-left:5%;
-	
+
 }
 .cls_pie_pagina legend
 {
@@ -180,7 +181,7 @@
 .cls_pie_pagina .cls_item
 {
 	max-width:80%;
-	margin-left:30px;	
+	margin-left:30px;
 }
 .cls_pie_pagina .cls_item a
 {
@@ -196,7 +197,7 @@
 		position:fixed;
 		top:0;
 		left:0;
-		z-index:20;		
+		z-index:20;
 		display:none;
 		background-color:black;
 		opacity:0.7;
@@ -213,14 +214,14 @@
 
 /*************************************************************************************************/
 
-	
-	
+
+
 	.cls_links_encabezado
 	{
 		font-size:10px;
 		text-decoration:none;
 		color:gray;
-		
+
 		font-weight:bold;
 	}
 	.cls_links_encabezado:hover
@@ -242,7 +243,7 @@
 	{
 		text-align:right;
 	}
-	
+
     /*css de encabezado logo*/
     /*************************************************************************************************/
 
@@ -253,12 +254,12 @@
 		width:100%;
 		background-color:#F0F8FF;
 	}
-	
+
 	.cls_links_encabezado
 	{
 		font-size:10px;
 		text-decoration:none;
-		color:gray;		
+		color:gray;
 		font-weight:bold;
 	}
 	.cls_links_encabezado:hover
@@ -279,36 +280,36 @@
 	{
 		text-align:right;
 	}
-	
+
 	#div_btn_carrito
 	{
-		text-align:right;		
+		text-align:right;
 	}
 	#div_btn_busqueda
 	{
-		text-align:right;		
+		text-align:right;
 	}
-	
+
 	.cls_div_logo,.cls_div_logo2
 	{
-		/*text-align:center;		
+		/*text-align:center;
 		margin-top:-10px;
 		padding-bottom:10px;
 		*/
-		
+
 		font-family: 'Lobster', cursive;
 		font-weight:bold;
-		font-size:40px;	
-		letter-spacing:3px;				
+		font-size:40px;
+		letter-spacing:3px;
 		margin-top:-25px;
-		
-	}	
+
+	}
     .cls_div_logo,.cls_div_logo2 a
     {
         text-decoration:none;
         color:black;
-		
-		
+
+
     }
 	.cls_div_logo,.cls_div_logo2 a >span
 	{
@@ -316,7 +317,7 @@
 	}
 	.cls_div_logo2
 	{
-		
+
 	}
 	.cls_div_logo
 	{
@@ -324,9 +325,9 @@
 		margin-bottom:10px;
 		display:block;
 		text-align:center;
-		
+
 	}
-	
+
 	.cls_div_logo >a
 	{
 		text-decoration:none;
@@ -342,16 +343,16 @@
 		position:absolute;
 		background-color:white;
 		box-shadow:2px 2px 2px black;
-		width:100%;		
+		width:100%;
 		text-align:left;
-		display:none;		
+		display:none;
 		z-index:30;
 		margin-left:-15px;
 		right:0;
 	}
 	#btn_login:hover>div
 	{
-		display:block;		
+		display:block;
 	}
 	#btn_login>div>a
 	{
@@ -363,18 +364,45 @@
 	{
 		background-color:white;
 		color:black;
-		
+
 	}
-	@media  screen  and (min-width:414px)
+	#btn_menu_navegacion
 	{
-		
-		.cls_div_logo a >span
-		{
-			display:inline-block;
-		}
-		
+			font-size:30px;
+			color:black;
+			float: right;
 	}
 
+	#menu_navegacion
+	{
+		position: fixed;
+		top:0;
+		right: 0;
+		background-color:white;
+		z-index: 100;
+		width: 400px;
+		max-width: 90%;
+		height: 100%;
+		overflow-y: scroll;
+	}
+
+	#img_logo
+	{
+		width: 200px;
+	}
+
+	#div_confirma_salir
+	{
+		width: 50%;
+		height: 200px;
+		border-radius: 5px;
+		background-color:white;
+		z-index: 51;
+		position: fixed;
+		left:25%;
+		top:30%;
+		height: 160px;
+	}
 	#h1_logo
 	{
 		text-align:center;
@@ -385,10 +413,94 @@
 	{
 		color:red;
 	}
-	
+
+	.cls_btn_menu
+	{
+		text-align:center;
+		margin:0 auto;
+	}
+
+	.cls_carrito_compras
+	{
+
+		top:-10;
+		font-size:17px;
+	}
+
+	#reg_notificaciones_emergente
+	{
+		width: 100%;
+		position: fixed;;
+		bottom: 0;
+		left: 0;
+		height: 300px;
+		z-index: 50;
+		background-color: #f8f8f8;
+		background-size: cover;
+	}
+	#btn_muesstra_reg_notificaciones
+	{
+
+		position: fixed;
+		left: 0;
+		bottom: 0;
+
+
+	}
+	#btn_muesstra_reg_notificaciones>nav
+	{
+		border:1px solid black;
+		color:black;
+	}
+	#btn_muesstra_reg_notificaciones a
+	{
+		color:black;
+	}
+	@media  screen  and (min-width:414px)
+	{
+		.cls_div_logo a >span
+		{
+			display:inline-block;
+		}
+
+	}
+
+
 	@media  screen  and (min-width:736px)
 	{
-	
+		#reg_notificaciones_emergente
+		{
+			width: 300px;;
+		}
+		.cls_carrito_compras
+		{
+			font-size:30px;
+		}
+
+		.cls_desc_boton
+		{
+			display: block;
+		}
+		#div_confirma_salir
+		{
+			width: 30%;
+			left: 35%;
+		}
+		#menu_configuracion
+		{
+			margin-top:10px;
+			color: black;
+		}
+		#menu_configuracion>li
+		{
+			display: inline-block;
+			float:right;
+		}
+		#menu_configuracion a
+		{
+			font-size: 25px;
+
+		}
 		#logo_encabezado
 		{
 			width:90%;
@@ -401,25 +513,29 @@
 			width:100%;
 			height:40px;
 			background-color:black;
-			
+
 		}
 		#baner-superior>h1
 		{
 			color:white;
 			text-align:center;
 		}
-	
 
-		
+
+
 		#baner-superior>h1> span
 		{
 			color:red;
 		}
-		
-		
+		#img_logo
+		{
+			width: 300px;
+
+		}
+
 	}
-    
-	
+
+
 
 
 	@media  screen  and (min-width:768px)
@@ -427,15 +543,15 @@
 		#menu_encabezado
 		{
 			position:static;
-			height:auto;        
+			height:auto;
 			width:100%;
 		}
 		#menu_encabezado #menu_encabezado2
 		{
 			width:100%;
-			
+
 			color:white;
-			
+
 		}
 		#cerrar_menu_encabezado
 		{
@@ -444,72 +560,72 @@
 		#encabezado_menu
 		{
 			display:none;
-			
+
 		}
 		.clsBotonMenu
 		{
 			text-align:center;
-			
-			
+
+
 		}
 		.clsBotonMenu a
 		{
-			
+
 			text-decoration:none;
-			
-			
+
+
 			padding-left:10px;
 			padding-right:10px;
-			
+
 		}
 		.clsBotonMenu a span
 		{
 			display:none;
 		}
 		.clsBotonMenu a:hover
-		{		
-			
-			color:#c0c0c0;		
+		{
+
+			color:#c0c0c0;
 			color:black;
 		}
 		#control_menu_disp_movil
 		{
 			display:none;
 		}
-		
-		
+
+
 		#div_btn_carrito
 		{
-			text-align:right;		
+			text-align:right;
 		}
 		#div_btn_busqueda
 		{
-			text-align:left;		
+			text-align:left;
 		}
-		
+
 		#div_encabezado_2
 		{
 			margin-top:15px;
 		}
 		.cls_div_logo
 		{
-			display:block;		
+			display:block;
 			font-weight:bold;
 			text-align:left;
 			margin-left:0px;
-			
+
 		}
-		
+
 			.cls_div_logo2
 			{
 				display:none;
 			}
-			
+
 		.cls_div_logo >a
 		{
 			color:black;
 		}
-		
+
 		#logo_encabezado
 		{
 			margin-top:2px;
@@ -521,16 +637,21 @@
 		}
 		#btn_login>div
 		{
-			
+
 			width:200px;
 			margin-left:0;
 		}
 	}
-	
-	
-	
-    /*css de encabezado logo*/
-    
 
-	
-	
+	@media  screen  and (min-width:1000px)
+	{
+		#div_confirma_salir
+		{
+			width: 20%;
+			left: 40%;
+			max-width:  500px;
+
+		}
+	}
+
+    /*css de encabezado logo*/

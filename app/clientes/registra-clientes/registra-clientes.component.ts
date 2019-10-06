@@ -1,7 +1,10 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,HostBinding} from '@angular/core';
 import { FormControl, FormGroup,Validators ,ReactiveFormsModule   } from '@angular/forms';
 import { RegistraClienteService } from './../registra-cliente.service';
+
+import { MuestraLoginService } from './../../muestra-login.service';
+import { MuestraRegistraClienteService } from './../../muestra-registra-cliente.service';
 
 @Component({
   selector: 'app-registra-clientes',
@@ -37,25 +40,41 @@ export class RegistraClientesComponent implements OnInit {
 	public show_email_reg:boolean;
 	public show_psw_reg:boolean;
 	public show_psw_reg_conf:boolean;
+  public mostrar_nuevo_registro:boolean;
 
-  constructor( private rc:RegistraClienteService) { }
+
+  constructor( private rc:RegistraClienteService,private m_l:MuestraLoginService,private m_r_c:MuestraRegistraClienteService) { }
 
   ngOnInit() {
+
+      this.m_r_c.change.subscribe(mostrar_nuevo_registro=>{this.mostrar_nuevo_registro=mostrar_nuevo_registro});
+
+
+
   		this.mostrar=false;
-	  	this.fn_inicia_form();	 
+	  	this.fn_inicia_form();
 
-	  	this.fn_reinicia_styles(); 
+	  	this.fn_reinicia_styles();
   }
-
+  fn_iniciar_session()
+  {
+    this.m_l.fn_login(true);
+    this.m_r_c.fn_nuevo_registro(false);
+  }
+  fn_cerrar()
+  {
+    this.m_l.fn_login(false);
+    this.m_r_c.fn_nuevo_registro(false);
+  }
   fn_inicia_form()
   {
 	  this.registra_cliente=new FormGroup(
 			{
-				
+
 				e_mail_reg_cliente:new FormControl('',[Validators.required]),
 				psw_reg_cliente:new FormControl('',[Validators.required]),
 				psw_reg_cliente_conf:new FormControl('',[Validators.required])
-				
+
 			}
 		);
   }
@@ -65,10 +84,10 @@ export class RegistraClientesComponent implements OnInit {
 		this.cls_email_reg="form-control";
 		this.show_email_reg=false;
 
-		this.cls_psw_reg="form-control";		
+		this.cls_psw_reg="form-control";
 		this.show_psw_reg=false;
 
-		this.cls_psw_reg_conf="form-control";		
+		this.cls_psw_reg_conf="form-control";
 		this.show_psw_reg_conf=false;
 
 		this.show_error_reg=false;
@@ -76,7 +95,7 @@ export class RegistraClientesComponent implements OnInit {
 
   fn_registra_cliente()
   {
-		this.fn_reinicia_styles();	
+		this.fn_reinicia_styles();
 
 
 
@@ -84,21 +103,21 @@ export class RegistraClientesComponent implements OnInit {
 
   		if(this.registra_cliente.value.e_mail_reg_cliente=="")
   		{
-  			this.cls_email_reg="form-control error_form";		
+  			this.cls_email_reg="form-control error_form";
 			this.show_email_reg=true;
 			form_ok=1;
   		}
 
 		if(this.registra_cliente.value.psw_reg_cliente=="")
   		{
-  			this.cls_psw_reg="form-control error_form";		
+  			this.cls_psw_reg="form-control error_form";
 			this.show_psw_reg=true;
 			form_ok=1;
   		}
 
 		if(this.registra_cliente.value.psw_reg_cliente_conf=="")
   		{
-  			this.cls_psw_reg_conf="form-control error_form";		
+  			this.cls_psw_reg_conf="form-control error_form";
 			this.show_psw_reg_conf=true;
 			form_ok=1;
   		}
@@ -120,10 +139,10 @@ export class RegistraClientesComponent implements OnInit {
 	  	this.rc.fn_registra_cliente(this.registra_cliente)
 			.subscribe(
 				data=>
-					{		
+					{
 						if (data[0].estatus=="1")
 						{
-						
+
 							window.location.reload();
 						}
 						else
@@ -132,12 +151,12 @@ export class RegistraClientesComponent implements OnInit {
 							this.msj=data[0].msj;
 							this.show_error_reg=true;
 							form_ok=1;
-							
+
 						}
 					}
-			);	  
+			);
   }
 
-  
+
 
 }

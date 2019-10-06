@@ -2,23 +2,40 @@
 	<div class="row">
 
 				<div class="col-xs-4" style="background-color: black;padding-top:10px;padding-bottom:10px;">
-					<a style="color: white;">Paso 1 de 3: Actualiza tu informacion</a>
-				</div>
-				<div class="col-xs-4" style="background-color: gray;padding-top:10px;padding-bottom:10px;">				
-					<a style="color: white;">Paso 2 de 3: Confirma tu informacion</a>
+					<a style="color: white;">Actualiza tu informacion</a>
 				</div>
 				<div class="col-xs-4" style="background-color: gray;padding-top:10px;padding-bottom:10px;">
-					<a style="color: white;">Paso 3 de 3: Selecciona una forma de pago</a>
+					<a style="color: white;">Confirma tu informacion</a>
+				</div>
+				<div class="col-xs-4" style="background-color: gray;padding-top:10px;padding-bottom:10px;">
+					<a style="color: white;">Selec. forma de pago</a>
 				</div>
 
 	</div>
 	<div class="row">
 		<form  [formGroup]="cliente" class="form-horizontal" >
-		
-		
+
+
 		<div class="col-xs-12">
-			<h1>Valida tu informacion (Paso 1 de 2)</h1>
-			<h2>Informacion Personal</h2>
+			<div class="page-header">
+				<h1>Informacion de Envio</h1>
+			</div>
+			<div class="row">
+				<div class="col-xs-12" style="text-align:right">
+					<div
+							class="col-xs-12 error"
+							*ngIf="show_error_reinicia_direccion">
+							<a>{{msj_reinicia}}</a>
+					</div>
+						<button type="button" class="btn btn-primary" (click)="fn_confirma_reinicio_direccion()">Carga informacion de tu cuenta</button>
+					</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div clasS="col-xs-12 page-header">
+						<h3>Persona que recibe Pedido</h3>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-4">
 					<label>Nombre (s).</label>
@@ -32,11 +49,11 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-xs-12 col-sm-4">
 					<label>Apellido Paterno</label>
 					<input id="apellido_p" [className]="cls_apellido_p"  type="text" formControlName="apellido_p" name="apellido_p">
-					
+
 					<div class="row">
 						<div
 								class="col-xs-12 error"
@@ -45,11 +62,11 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="col-xs-12 col-sm-4">
 					<label>Apellido Materno</label>
-					<input id="apellido_m" class="form-control"  type="text" formControlName="apellido_m" name="apellido_m">				
-				</div>		
+					<input id="apellido_m" class="form-control"  type="text" formControlName="apellido_m" name="apellido_m">
+				</div>
 
 
 
@@ -72,22 +89,26 @@
 						<div class="col-xs-12">
 					  			<a>Obligatorio en caso de requrir factura</a>
 					  </div>
-					</div>							
+					</div>
 				</div>
-			
+
 
 			</div>
 		</div>
 
 
 		<div class="col-xs-12">
-			<h2>Informacion de Envio</h2>
 			<div class="row">
-			
+				<div clasS="col-xs-12 page-header">
+						<h3>Direccion de Envio</h3>
+				</div>
+			</div>
+			<div class="row">
+
 			<div class="col-xs-12 ">
 				<label>Calle</label>
-				<input id="calle" [className]="cls_calle" type="text" formControlName="calle" name="calle">		
-				
+				<input id="calle" [className]="cls_calle" type="text" formControlName="calle" name="calle">
+
 					<div class="row">
 					<div
 						class="col-xs-12 error"
@@ -111,16 +132,16 @@
 			<div class="col-xs-12 col-sm-4">
 				<label>Numero Interior</label>
 				<input type="text" name="numero_interior" class="form-control" formControlName="numero_interior">
-				
-				
+
+
 			</div>
-			
+
 			<div class="col-xs-12 col-sm-4">
 				<label>C.P.</label>
 				<input id="codigo_postal" [className]="cls_cp" type="text" formControlName="cp" name="cp">
 				<div class="row">
 					<div
-						class="col-xs-12 error"	
+						class="col-xs-12 error"
 						  *ngIf="show_error_cp">
 						  <a>El codigo postal es requerido</a>
 					</div>
@@ -129,23 +150,23 @@
 			<div class="col-xs-12 col-sm-4">
 				<label>Municipio</label>
 				<input type="text" [className]="cls_mun" formControlName="municipio" name="municipio">
-				
+
 				<div class="row">
 					<div
-						class="col-xs-12 error"	
+						class="col-xs-12 error"
 					  *ngIf="show_error_mun">
 					  <a>El municipio es requerido</a>
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="col-xs-12 col-sm-4">
 				<label>Estado</label>
 				<input type="text" [className]="cls_est" formControlName="estado" name="estado">
-				
+
 				<div class="row">
 					<div
-						class="col-xs-12 error"	
+						class="col-xs-12 error"
 					  *ngIf="show_error_est">
 					  <a>El estado es requerido</a>
 					</div>
@@ -155,10 +176,10 @@
 			<div class="col-xs-12 col-sm-4">
 				<label>Pais</label>
 				<input type="text" [className]="cls_pais" formControlName="pais" name="pais">
-				
+
 				<div class="row">
 					<div
-						class="col-xs-12 error"	
+						class="col-xs-12 error"
 					  *ngIf="show_error_pais">
 					  <a>El pais es requerido</a>
 					</div>
@@ -166,11 +187,11 @@
 			</div>
 			<div class="col-xs-12 col-sm-4">
 				<label>E-Mail</label>
-				<input [className]="cls_email" type="text" formControlName="e_mail" name="e_mail">
-				
+				<input [className]="cls_email" type="text" formControlName="e_mail" name="e_mail" disabled>
+
 				<div class="row">
 					<div
-						class="col-xs-12 error"	
+						class="col-xs-12 error"
 					  *ngIf="show_error_email">
 					  <a>El e-Mail es requerido</a>
 					</div>
@@ -179,28 +200,31 @@
 			<div class="col-xs-12">
 				<label>Referencias de Domicilio</label>
 				<input type="text" [className]="cls_referencia" formControlName="referencia" name="referencia">
-				
+
 				<div class="row">
 					<div
-						class="col-xs-12 error"	
+						class="col-xs-12 error"
 					  *ngIf="show_error_referencia">
 					  <a>Debe indicar las referencias de la direccion</a>
 					</div>
 				</div>
 			</div>
+
+			<div class="col-xs-12" style="text-align:center;">
+				<button class="btn btn-primary"  style="margin:0 auto;margin-top:30px" (click)="insertaDireccionEnvio()" >
+						Confirma tu pedido
+				</button>
+			</div>
 		</div>
 		</div>
-		
-		<button class="btn btn-primary"  style="margin-top:30px;width:30%;margin-left:35%;" (click)="insertaDireccionEnvio()" >
-		Confirma tu pedido
-		</button>
-		
+
+
 </form>
 
 	</div>
-</div>	
-		
-		
+</div>
+
+
 	<ul class="loading" *ngIf="cargando">
 	  <li></li>
 	  <li></li>
@@ -211,3 +235,25 @@
 
 <div class="clsfondologin"  *ngIf="cargando"></div>
 
+
+<div *ngIf="mostrar_confirma_salir" id="div_hover_confirma_salir" class=" cls_div_hover" (click)="fn_no_reinicia_direccion()">
+</div>
+
+		<div *ngIf="mostrar_confirma_salir" id="div_confirma_salir"  class="container">
+
+			<div class="page-header">
+							<h1 style="text-align:center;">Se perdera la informacion que tiene guardada, desea continuar?</h1>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+						<button class="btn btn-default btn-block " (click)="fn_reinicia_direccion_temporal()">
+								Si
+						</button>
+				</div>
+				<div class="col-xs-6">
+						<button class="btn btn-primary  btn-block " (click)="fn_no_reinicia_direccion()">
+								No
+						</button>
+				</div>
+			</div>
+		</div>

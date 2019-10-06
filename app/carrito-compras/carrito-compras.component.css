@@ -199,19 +199,30 @@
 	text-align:left;
 
 }
-#nombre_producto
+.cls_nombre_producto
 {
 	text-decoration:none;
 	color:gray;
-	font-size: 10px;
+	font-size: 10px;	
+	text-align: left;
+	text-decoration:none;
 }
-#cantidad_prod
+
+.cls_marca_carrito
+{
+		color: gray;
+		text-decoration: none;
+		text-align: left;
+		text-decoration:none;
+}
+.cls_cantidad_prod
 {
 	text-decoration:none;
 	color:black;
 	font-size:15px;
 	display:block;
 	text-align:right;
+	text-decoration:none;
 }
 #precio_prod
 {
@@ -241,11 +252,10 @@
 					#form_carrito_compras
 					{
 
-						top:10%;
 						left:35%;
 						width:30%;
+						top:10%;
 						max-height:80%;
-						max-width:350px;
 					}
 					#titulo_carrito
 					{

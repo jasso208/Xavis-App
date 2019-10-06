@@ -1,12 +1,13 @@
-		<div id="btn_cancelar" class="cls_hover cls_login_id" >
+		<div id="btn_cancelar" class="cls_hover " *ngIf="mostrar_login"  (click)="fn_cerrar()">
 
 		</div>
-		
-		<div class="container cls_form_hover cls_login_id">	
+
+		<div class="container cls_form_hover " *ngIf="mostrar_login">
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-12" >
 						<div class="row">
-								<form [formGroup]="login"  id="form_login"  class="form-horizontal">															
+								<form [formGroup]="login"  id="form_login"  class="form-horizontal">
+
 										<div class="page-header">
 												<h1>
 													Iniciar Session
@@ -14,58 +15,67 @@
 										</div>
 									<div class=" col-xs-12 ">
 										<label>
-											Usuario		        
+											Usuario
 										</label>
-										<input  [className]="cls_email_login" id="e_mail_login" formControlName="e_mail_login"  name="e_mail_login" type="text" name="e_mail_login" >			        
+										<input  [className]="cls_email_login" id="e_mail_login" formControlName="e_mail_login"  name="e_mail_login" type="text" name="e_mail_login" >
 										<div
 											class="error"
 											*ngIf="mostrar_error_email_login">
 											<a>El campo usuario no puede ser vacio</a>
 										</div>
 									</div>
-										
+
 										<div class=" col-xs-12">
 											<label >
-												Password			        
+												Password
 											</label>
-											<input [className]="cls_psw_login" id="psw_login" formControlName="psw_login" type="password" name="psw_login" >					
+											<input [className]="cls_psw_login" id="psw_login" formControlName="psw_login" type="password" name="psw_login" >
 											<div
 												class=" error"
 												*ngIf="mostrar_error_psw_login">
 												<a>El campo contraseña no puede ser vacio</a>
 											</div>
 										</div>
-										<div class="col-xs-12 cls_final_form" >	
-											
+										<div class="col-xs-12 cls_final_form" >
+
 											<div
 												class=" error"
 												*ngIf="mostrar_error_login">
 												<br>
 												<a>{{msj}}</a>
-											</div>	
-											<br *ngIf="!mostrar_error_login">	
+											</div>
+											<br *ngIf="!mostrar_error_login">
 											<button class="btn btn-primary btn-lg btn-block" (click)="fn_login()">
 												Entrar
 											</button>
 										</div>
 										<div class="col-xs-12">
-											<a href="#" style="font-size:10px;">Recupera tu contraseña?</a>
-											
-										</div>	
+											<a id="btn_recupera_psw" (click)="fn_recupera_contrasena()" style="font-size:10px;">Recupera tu contraseña?</a>
+
+										</div>
 
 										<div class="col-xs-12">
 											<h1>Aun no estas registrado?</h1>
 										</div>
-										
+
 										<div class="col-xs-12 cls_final_form text-center" >
 												<!--<button id="btn_registrate_login" class="btn btn-default btn-lg btn-block">Registrate</button>
 													-->
-												<a  id="btn_registrate_login" class="btn btn-primary stretched-link">Registrate</a>
-										</div>	
+												<a  id="btn_registrate_login" (click)="fn_nuevo_registro()" class="btn btn-primary stretched-link">Registrate</a>
+										</div>
 								</form>
-					</div>	
+					</div>
 				</div>
-				
-			</div>		
+
+			</div>
 		</div>
-		
+
+		<ul class="loading" *ngIf="cargando">
+		  <li></li>
+		  <li></li>
+		  <li></li>
+		  <li></li>
+		  <li></li>
+		</ul>
+
+		<div class="clsfondologin" id="fondo_login" *ngIf="cargando"></div>

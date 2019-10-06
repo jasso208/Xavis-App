@@ -1,26 +1,37 @@
 
 
 <div class="container">
-		
-		<div class="row">
-			<div class="col-xs-6 col-sm-3 " *ngFor="let prod of productos">				
-					<div class="thumbnail">
-					  <a routerLink="/producto/detalle/{{prod.id}}">
-						<img src="../assets/img/productos/{{prod.str_id}}_1.png"  alt="Lights" style="width:100%">
-						<div class="caption cls_desc_prod_busqueda"  >
-						  <a >{{prod.nombre}}</a>
-						</div>
-						<div *ngIf="prod.muestra_descuento" class="cls_precio_prom_prod_busqueda">
-							<a >Antes: {{prod.precio_antes}}</a>
-						</div>
-						<div class="cls_precio_prod_busqueda">
-						
-							<a>$ {{prod.precio}} <span>(MXN)</span></a>
-						</div>
-					  </a>
-					</div>				
-			</div>
+	<div class="row">
+		<div class="col-xs-12 " style="text-align:center;" *ngIf="!hay_productos">
+				<h2>No se encontraron productos con los criterios de busqueda que indicaste.</h2>
 		</div>
+		<div class="col-xs-6 col-sm-3 " *ngFor="let prod of productos">
+				<div class="thumbnail">
+					<div  *ngIf="prod.muestra_descuento" class="cls_descuento_prod_busqueda" >
+							-{{prod.descuento}}%
+					</div>
+					<a routerLink="/producto/detalle/{{prod.id}}" style="text-decoration:none;color:gray;">
+					<img src="../assets/img/productos/{{prod.str_id}}_1.png"  alt="Lights" style="width:100%">
+					<div class="caption cls_desc_prod_busqueda"  >
+						<a >{{prod.nombre}}</a>
+					</div>
+
+					<div  class="cls_precio_prom_prod_busqueda">
+						<a *ngIf="prod.muestra_descuento" >Antes: {{prod.precio_antes}}</a>
+					</div>
+					<div class="cls_precio_prod_busqueda">
+
+						<a>$ {{prod.precio}} <span>(MXN)</span></a>
+					</div>
+					</a>
+
+				</div>
+		</div>
+
+	</div>
+
+
+
 </div>
 
 

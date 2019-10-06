@@ -11,15 +11,15 @@ import { environment } from '../environments/environment';
 export class ContProductosCarritoService {
 
   constructor(private http:Http) { }
-  
+
   cont_prod="0";
 
   @Output() change:EventEmitter<string>=new EventEmitter();
 
   fn_establece_cont(cont:any)
   {
-  	this.cont_prod=cont;
-  	this.change.emit(this.cont_prod);
+  	this.cont_prod=cont;  	
+    this.change.emit(this.cont_prod);
   }
 
   fn_cont_prod_carrito()
@@ -30,7 +30,7 @@ export class ContProductosCarritoService {
 				'session':localStorage.getItem("session")
 			}
 		}
-	) 
+	)
 	.pipe(
 		map(
 			(res:Response)=>res.json()

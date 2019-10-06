@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Xavis</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  
-  <!--fuentes--> 
- 
+
+  <!--fuentes-->
+
 <link href="https://fonts.googleapis.com/css?family=Gruppo|Source+Sans+Pro|Srisakdi" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Pathway+Gothic+One" rel="stylesheet">
@@ -17,13 +17,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Nunito&display=swap" rel="stylesheet">
 <!--fuente del logo-->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
-<!--Bootstrap-->	
+<!--Bootstrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	
-	
-	
+
+
+
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/detalle.component.js"></script>
 
@@ -37,46 +37,46 @@
 
 		function()
 		{
-			
+
 			$("#div_cerrar_msj_error").click(
 					function()
 					{
 						$("#div_msj_error").hide();
 						$("#div_cerrar_msj_error").hide();
 					}
-				);			
-					
+				);
+
 		}
 		);
 
 			  function fn_muestra_error_boton(boton,mensaje)
-			  {	
-			  
+			  {
+
 			  $("#a_msj_error").text(mensaje);
-			  var elemento=document.getElementById(boton);						
+			  var elemento=document.getElementById(boton);
 			  var ancho_elemento=$("#"+boton).width()+30;
-			  
+
 			  //establecemos el ancho del msj
 			  $("#div_msj_error").width(ancho_elemento);
 			  //obtenemos el alto del mensaje
-			  var alto_msj=$("#div_msj_error").height();						
-			  
-			  var posicion=elemento.getBoundingClientRect();	
+			  var alto_msj=$("#div_msj_error").height();
+
+			  var posicion=elemento.getBoundingClientRect();
 			  //definimos en donde estara el elemento
 			  var top=parseInt(posicion.top)-alto_msj-30;
 			  var left=parseInt(posicion.left);
-			  $("#div_msj_error").css({"top":top.toString()+"px","left":left.toString()+"px"});						
+			  $("#div_msj_error").css({"top":top.toString()+"px","left":left.toString()+"px"});
 			  $("#div_cerrar_msj_error").show();
 			  $("#div_msj_error").show();
-			  
+
 			  }
-			  
-			  
-			  
+
+
+
 		  </script><!--Script para controlar elmensaje de errir-->
 
 	<!--pure css-->
-		<link rel="stylesheet" href="assets/css/pure-min.css">    
+		<link rel="stylesheet" href="assets/css/pure-min.css">
 		<!--[if lte IE 8]>
 			<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-old-ie-min.css">
 		<![endif]-->
@@ -84,21 +84,21 @@
 			<link rel="stylesheet" href="assets/css/grids-responsive-min.css">
 		<!--<![endif]-->
 		<link rel="stylesheet" href="assets/css/general.css">
-		
+
 	<!--pure css-->
 
 </head>
 <body >
 	<div>
-		
+
 			<app-root>
-				
+
 			</app-root>
-		
-	</div>	
+
+	</div>
 
 
-			
+
 <script>
 $(document).ready(
 function(){
@@ -113,7 +113,7 @@ $("#btnCerrarMenu").click(
     function()
     {
         $("#menu_lateral").animate({left:"-90%"},"slow");
-    
+
     }
 );
 $(".clsItemMenuLateral").click(
@@ -125,7 +125,7 @@ $(".clsItemMenuLateral").click(
 );
 }
 );
-//span_1	
+//span_1
 </script>
 
 
@@ -136,7 +136,7 @@ $(".clsItemMenuLateral").click(
 			$("#control_menu_disp_movil>div").click(
 				function()
 				{
-					$("#menu_encabezado").animate({left:'0'}).promise().done(function(){$("#cerrar_menu_encabezado").show();});						
+					$("#menu_encabezado").animate({left:'0'}).promise().done(function(){$("#cerrar_menu_encabezado").show();});
 				}
 			);
 			$("#cerrar_menu_encabezado").click(
@@ -159,27 +159,27 @@ $(".clsItemMenuLateral").click(
 		$("#cerrar_menu_encabezado").hide();
 	}
 	/*funcionalidades delmenu principal*/
-	
-	
-	
+
+
+
 	/*Funcionalidades del carrito de compras*/
 	$(document).ready(
 		function()
 		{
 			$("#btn_muestra_carrito").click(
 				function()
-				{					
+				{
 					$("#carrito_compras").animate({right:'0'}).promise().done(
 						function(){
 							$("#btn_cerrar_carrito").show();
-						
+
 						}
 					);
-					$("#pie_carrito").animate({right:'0'});						
+					$("#pie_carrito").animate({right:'0'});
 				}
 			);
-			
-			
+
+
 			//evento del carrito de compras que requiere ocultarlo
 			$("#btn_cerrar_carrito").click(
 				function()
@@ -203,8 +203,8 @@ $(".clsItemMenuLateral").click(
 			);
 		}
 	);
-	
-	
+
+
 	function fn_oculta_carrito()
 	{
 				$("#carrito_compras").animate({right:'-400px'}).promise().done(
@@ -214,37 +214,11 @@ $(".clsItemMenuLateral").click(
 					);
 					$("#pie_carrito").animate({right:'-400px'});
 	}
-	
-	/*Funcionalidades del carrito de compras*/
-	
-	/* 	funcionalidad para el login */
-	$(document).ready(
-		function()
-		{
-			
-			$("#btn_cancelar").click(
-				function()
-				{
-					$(".cls_login_id").hide();
-				}
-			);
-			$("#btn_registrate_login").click(
-				function()
-				{
-					$(".cls_reg_cliente_id").show();
-					$(".cls_login_id").hide();
-				}
-			);
-			$("#btn_regresar_login").click(
-				function()
-				{
 
-					$(".cls_reg_cliente_id").hide();
-					$(".cls_login_id").show();
-				}
-			);
-		}
-	);
+	/*Funcionalidades del carrito de compras*/
+
+	/* 	funcionalidad para el login */
+
 	/*Funcioanlidad para el login*/
 	/*
 		funcionalidad para form de registro cliente
@@ -256,7 +230,7 @@ $(".clsItemMenuLateral").click(
 				function()
 				{
 					$(".cls_reg_cliente_id").hide();
-					
+
 				}
 			);
 		}
@@ -295,7 +269,7 @@ $(".clsItemMenuLateral").click(
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- 
-	
+
+
 </body>
 </html>

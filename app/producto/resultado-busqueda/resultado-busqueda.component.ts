@@ -12,14 +12,17 @@ export class ResultadoBusquedaComponent implements OnInit {
 public descuento:number=1;
 	public productos:any=[];
 	public cargando:boolean;
+  public hay_productos:boolean;
   constructor(private busca_prod_service:BuscaProductosService,private ruta_activa:ActivatedRoute) { }
 
   ngOnInit() {
+    this.hay_productos=true;
 	  var tipo_busqueda:string;
 	  var id_categoria:string;
+
 	  this.cargando=true;
 	  tipo_busqueda=this.ruta_activa.snapshot.params.tipo_busqueda;
-	  
+
 	  //tipo_busqueda=1 india que es busqueda por categoria
 	  //tipo_busqueda=2 buscar palabras en el detalle
 	  //if (tipo_busqueda=="1" )
@@ -29,12 +32,15 @@ public descuento:number=1;
 		.subscribe(
 			data=>
 			{
+        if (data.length==0){
+          this.hay_productos=false;
+        }
 				this.productos=data;
-				this.cargando=false;							
+				this.cargando=false;
 			}
 		);
 	  //}
-	  
+
   }
 
 }

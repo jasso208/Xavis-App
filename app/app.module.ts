@@ -10,6 +10,7 @@ import { EncabezadoComponentComponent } from './encabezado-component/encabezado-
 import { HomeComponentComponent } from './home-component/home-component.component';
 import { AltaClientesComponent } from './clientes/alta-clientes/alta-clientes.component';
 import { LoginComponent } from './clientes/login/login.component';
+import { RecuperaPswComponent } from './clientes/recupera-psw/recupera-psw.component';
 import { RegistraClientesComponent } from './clientes/registra-clientes/registra-clientes.component';
 import { FormasPagoComponent } from './clientes/formas-pago/formas-pago.component';
 
@@ -21,6 +22,9 @@ import { ResultadoBusquedaComponent } from './producto/resultado-busqueda/result
 import { DetalleService } from './producto/detalle.service';
 import { SessionService } from './session.service';
 import { ContProductosCarritoService } from './cont-productos-carrito.service';
+import { VarGlobalesService } from './var-globales.service';
+
+
 import { HttpModule } from '@angular/http';
 import { ComponenteDePasoComponent } from './componente-de-paso/componente-de-paso.component';
 
@@ -33,9 +37,9 @@ import { PanelControlComponent} from './clientes/panel-control/panel-control.com
 
 const rutas: Routes = [
 
-	{ path: '', redirectTo: '/home',pathMatch:'full'},	
+	{ path: '', redirectTo: '/home',pathMatch:'full'},
 	{ path: 'home', component: HomeComponentComponent },
-	{ path: 'alta_cliente', component: AltaClientesComponent },	
+	{ path: 'alta_cliente', component: AltaClientesComponent },
 	{ path: 'producto/detalle/:id',component: DetalleComponent},
 	{ path: 'blog',component: BlogsComponent},
 	{ path: 'blog/detalle/:id_blog',component: DetalleBlogComponent},
@@ -43,22 +47,22 @@ const rutas: Routes = [
 	{ path: 'cliente/panel-control',component: PanelControlComponent},
 	{ path: 'formas-pago',component: FormasPagoComponent},
 	{ path: 'confirma-informacion',component: ConfirmaInformacionComponent},
-	
+
 	//rutas de paso
 	{ path:'de_paso_busqueda/:tipo_paso/:param_0/:param_1',component:ComponenteDePasoComponent },
 	{ path:'de_paso_detalle_prod/:tipo_paso/:param_0',component:ComponenteDePasoComponent },
 	{ path:'de_paso_detalle_blog/:tipo_paso/:param_0',component:ComponenteDePasoComponent }
-	
+
 ];
 
 @NgModule({
-	
+
   declarations: [
 		AppComponent,
 		EncabezadoComponentComponent,
 		HomeComponentComponent,
 		DetalleComponent,
-		CarritoComprasComponent,	
+		CarritoComprasComponent,
 		ResultadoBusquedaComponent,
 		ComponenteDePasoComponent,
 		BusquedaComponent,
@@ -66,21 +70,20 @@ const rutas: Routes = [
 		DetalleBlogComponent
 
   ],
-  
+
   imports: [
 		BrowserModule,
 		ClientesModule,
-		RouterModule.forRoot(rutas, { useHash: true }),		
-		HttpModule,		
+		RouterModule.forRoot(rutas, { useHash: true }),
+		HttpModule,
 		ReactiveFormsModule,
 		FormsModule,
 		NgxPayPalModule
   ],
   exports:[RouterModule],
-  providers: [DetalleService,SessionService,ContProductosCarritoService,CarritoComprasComponent],
+  providers: [DetalleService,SessionService,ContProductosCarritoService,VarGlobalesService,CarritoComprasComponent],
   bootstrap: [AppComponent]
-  
+
 })
 
 export class AppModule { }
-

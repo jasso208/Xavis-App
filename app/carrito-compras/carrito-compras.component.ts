@@ -1,7 +1,9 @@
 import { Component, OnInit,NgZone } from '@angular/core';
 import {CarritoComprasService} from './../producto/carrito-compras.service';
-import {Router} from '@angular/router';
+import {  Router } from '@angular/router';
 import * as $ from 'jquery';
+import { ContProductosCarritoService } from './../cont-productos-carrito.service';
+import { MuestraLoginService } from '../muestra-login.service';
 
 @Component({
   selector: 'app-carrito-compras',
@@ -21,8 +23,8 @@ export class CarritoComprasComponent implements OnInit {
     public envio:number=0;
     public total_aux:number=0;
     public total:string="0";
-
-  constructor(private car_service:CarritoComprasService,private r:Router,private zone:NgZone) {
+    public hay_prod:boolean;
+  constructor(private m_l:MuestraLoginService,private car_service:CarritoComprasService,private r:Router,private zone:NgZone,private cont_prod_carrito:ContProductosCarritoService) {
 		window['angularComponentReference'] = {
 			zone: this.zone,
 			componentFn: () => this.consultaCarrito(),
@@ -31,11 +33,23 @@ export class CarritoComprasComponent implements OnInit {
 	 }
 
   ngOnInit() {
-	this.fn_jquery();
-  this.car_service.change.subscribe(mostrar=>{this.mostrar=mostrar});
+  	this.fn_jquery();
+    this.hay_prod=false;
+    this.car_service.change.subscribe(mostrar=>{this.mostrar=mostrar});
+  	this.btn_terminar_venta=false;
 
-	this.btn_terminar_venta=false;
+    //esta variable nos indica si antes de loguearnos, se queria terminar la CarritoComprasService
+    //para redireccionar al formulario para terminar la compra.
     this.consultaCarrito();
+
+
+  }
+
+  fn_iniciar_session()
+  {
+      this.fn_seguir_comprando();
+      localStorage.setItem("iniciar_session","1");
+      this.m_l.fn_login(true);
   }
 
   fn_terminar_compra()
@@ -50,33 +64,38 @@ export class CarritoComprasComponent implements OnInit {
   public consultaCarrito()
   {
 
-    this.car_service.consultaCarrito()
-    .subscribe(data=>{
-		console.log(data);
-		this.productos=data;
-		this.cont_productos=this.productos.length;
-		var x=0;
-		this.subtotal_aux=0;
-		for(x=0;x<this.productos.length;x++)
-		{
-			this.subtotal_aux=this.subtotal_aux+this.productos[x].precio*this.productos[x].cantidad;
-		}
+      this.car_service.consultaCarrito()
+      .subscribe(data=>{
+		          this.productos=data;
+		          this.cont_productos=this.productos.length;
+		          var x=0;
+	            this.subtotal_aux=0;
+	            for(x=0;x<this.productos.length;x++)
+              {
+	               this.subtotal_aux=this.subtotal_aux+this.productos[x].precio*this.productos[x].cantidad;
+	             }
+              this.subtotal_aux=this.subtotal_aux;
+          		this.iva_aux=this.subtotal_aux/1.16;
+          		this.total_aux=this.subtotal_aux+this.iva_aux+this.envio;
 
+          		this.subtotal=parseFloat((this.subtotal_aux).toString()).toFixed(2);
+          		this.iva=parseFloat((this.iva_aux).toString()).toFixed(2);
+          		this.total=parseFloat((this.subtotal_aux).toString()).toFixed(2);
+              if(this.total=="0")
+              {
+                this.hay_prod=false;
+              }
+              else
+              {
+                this.hay_prod=true;
+              }
+          		//en caso de estar logueado, mostramos el boton para terminar venta.
+          		if (localStorage.getItem("esta_logueado")=="1")
+          		{
+          			this.btn_terminar_venta=true;
+          		}
 
-		this.subtotal_aux=this.subtotal_aux;
-		this.iva_aux=this.subtotal_aux/1.16;
-		this.total_aux=this.subtotal_aux+this.iva_aux+this.envio;
-
-		this.subtotal=parseFloat((this.subtotal_aux).toString()).toFixed(2);
-		this.iva=parseFloat((this.iva_aux).toString()).toFixed(2);
-		this.total=parseFloat((this.subtotal_aux).toString()).toFixed(2);
-		//en caso de estar logueado, mostramos el boton para terminar venta.
-		if (localStorage.getItem("esta_logueado")=="1")
-		{
-			this.btn_terminar_venta=true;
-		}
-
-    });
+      });
   }
 
 public fn_detalle_prod(id_prod:string)
@@ -98,6 +117,14 @@ public fn_detalle_prod(id_prod:string)
 			{
 				this.msj="Se elimino correctamente.";
 				this.consultaCarrito();
+        this.cont_prod_carrito.fn_cont_prod_carrito()
+          .subscribe(
+            data=>
+            {
+              this.cont_prod_carrito.fn_establece_cont(data[0].cantidad__sum);
+              //this.c_c.fn_actualiza_cantidad_carrito(data[0].cantidad__sum);
+            }
+          ) ;
 
 			}
 		//	this.mostrar=true;

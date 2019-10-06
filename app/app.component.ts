@@ -2,7 +2,7 @@ import { Component,OnInit,HostBinding } from '@angular/core';
 import {SessionService} from './session.service';
 import { ContProductosCarritoService } from './cont-productos-carrito.service';
 import {CarritoComprasComponent} from './carrito-compras/carrito-compras.component';
-import { VarGlobalesService } from './var-globales.service';
+import { MuestraLoginService } from './muestra-login.service';
 import { ValidaUsrLogueadoService } from './clientes/valida-usr-logueado.service';
 import { Router } from '@angular/router';
 import * as $ from 'jquery';
@@ -19,25 +19,38 @@ export class AppComponent {
 	public mostrar:boolean;
 	public logueado:boolean;
 	title = 'xavis-app';
+  public mostrar_buscar:boolean=false;
 	public nombre_empresa:string="";
 	public btn_login_txt:string="Entrar";
 	public btn_salir_txt:string="";
 	public e_mail:string="";
-
+  public mostrar_confirma_salir:boolean;
 	public esta_logueado:number=0;
 	public usuario_logueado:string="";
 	public cargando:boolean;
 	//@HostBinding('class.is-open');
 	public cont_prod:string;
-
-	constructor(private car_service:CarritoComprasService,private dbs:EMailNotificacionService,private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private globales_service:VarGlobalesService)
+  public muestra_reg_notif:boolean;
+  public mostrar_menu_nav:boolean;
+  public mostrar_msj_temporal:boolean;
+  public msj_temporal:string;
+	constructor(private car_service:CarritoComprasService,private dbs:EMailNotificacionService,private router:Router,private vul:ValidaUsrLogueadoService,private session:SessionService,private cont_prod_carrito:ContProductosCarritoService,private c_c:CarritoComprasComponent,private m_l:MuestraLoginService)
 	{}
 	ngOnInit()
 	{
+
+    if (sessionStorage.getItem("primera_vez")==null)
+    {
+      this.muestra_reg_notif=true;
+    }
+    sessionStorage.setItem("primera_vez","1")
+    this.msj_temporal="";
+    this.mostrar_msj_temporal=false;
+    this.mostrar_confirma_salir=false;
+    this.mostrar_menu_nav=false;
 		this.cont_prod_carrito.change.subscribe(cont_prod=>{this.cont_prod=cont_prod});
 	 	this.cargando=true;
 		this.fn_funciones_jquery();
-		this.nombre_empresa=this.globales_service.get_nombre_empresa()
       //esta funcion ejecuta el algoritmo para generar la session, solo en caso de que no exista
 		this.session.setSession();
 		this.mostrar=false;
@@ -50,6 +63,12 @@ export class AppComponent {
 				{
 					localStorage.setItem("esta_logueado","1");
 					this.logueado=true;
+          if (localStorage.getItem("iniciar_session")=="1")
+          {
+
+            localStorage.setItem("iniciar_session","0");
+            window.location.href="./#/alta_cliente";
+          }
 				}
 				else
 				{
@@ -75,6 +94,23 @@ export class AppComponent {
 
 
 
+
+  }
+  fn_muestra_reg_notificaciones()
+  {
+    this.muestra_reg_notif=true;
+  }
+  fn_oculta_reg_emergente()
+  {
+    this.muestra_reg_notif=false;
+  }
+  fn_mostrar_buscar()
+   {
+     this.mostrar_buscar=!this.mostrar_buscar;
+   }
+  fn_menu_navegacion()
+  {
+    this.mostrar_menu_nav=!this.mostrar_menu_nav;
   }
 
   fn_muestra_carrito()
@@ -95,22 +131,36 @@ export class AppComponent {
     this.c_c.consultaCarrito();
 
   }
-  public fn_cerrar_session()
+  public fn_continar_session_abierta()
   {
-
-
-	//solo generamos un nuevo token cuando el usuario este logueado.
-	  if(localStorage.getItem("esta_logueado")=="1")
-	  {
-
-		this.session.fn_kill_session();
-		this.logueado=false;
-		window.location.reload();
-
-	  }
-
+    this.mostrar_confirma_salir=false;
   }
 
+  public fn_confirma_cerrar_session()
+  {
+
+    		this.session.fn_kill_session()
+        .subscribe(
+          data=>{
+            this.logueado=false;
+            localStorage.setItem("esta_logueado","0");
+            localStorage.setItem("nueva_direccion","0");
+            window.location.reload();
+          }
+
+        );
+
+  }
+  public fn_cerrar_session()
+  {
+    this.mostrar_confirma_salir=true;
+    console.log("entro");
+  }
+
+  private fn_muestra_login()
+  {
+    this.m_l.fn_login(true);
+  }
   public fn_funciones_jquery()
   {
 	  $(document).ready(
@@ -163,10 +213,17 @@ export class AppComponent {
 		.subscribe(
 			data=>
 			{
-				this.msj=data[0].msj;
-				this.mostrar=true;
+
 				this.e_mail="";
 				this.cargando=false;
+        this.muestra_reg_notif=false;
+
+        this.msj_temporal=data[0].msj;
+        this.mostrar_msj_temporal=true;
+        setInterval(
+          ()=>{this.fn_oculta_msj()},3000
+
+        );
 			}
 
 		);
@@ -175,5 +232,10 @@ export class AppComponent {
   }
 
 
-
+  fn_oculta_msj()
+  {
+    this.msj_temporal="";
+    this.mostrar_msj_temporal=false;
+    clearInterval();
+  }
 }

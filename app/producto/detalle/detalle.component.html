@@ -65,7 +65,7 @@
 										${{precio_venta }} (MN)
 									</a>
 								</div>
-								<div class="col-xs-12">
+								<div class="col-xs-12 col-md-6">
 									<select style="border:2px solid black;	font-size:13px;	padding:4px;"   class="forms_control"  [(ngModel)]="id_talla" name="id_talla" id="id_talla_detalle_producto" >
 										<option value="0">Talla</option>
 										<option *ngFor="let talla of productos.tallas" [value]="talla.id_talla">
@@ -73,12 +73,21 @@
 										</option>
 									</select>
 								</div>
-								<div class="col-xs-12">
-									<input    id="cantidad_detalle_producto" type="text" placeholder="Cantidad"  [(ngModel)]="cantidad" name="cantidad" style="border:2px solid black;	font-size:13px;	padding:4px;width:50px;">
+								<div class="col-xs-12 col-md-6">
+									<button (click)="fn_resta_cantidad()"type="button" name="button" style="background-color:black;color:white">-</button>
+									<input    id="cantidad_detalle_producto" type="text" placeholder="Cantidad"  [(ngModel)]="cantidad" name="cantidad" style="border:2px solid black;	font-size:13px;padding:3px	;width:20px;text-align:center">
+										<button (click)="fn_suma_cantidad()" type="button" name="button" style="background-color:black ;color:white">+</button>
 								</div>
-
 								<div class="col-xs-12">
-									<button class="btn btn-primary" (click)="agregaProductoCarrito()" id="btn_agregar_carrito_detalle_prod">Agregar al carrito</button>
+										<a style="font-size:10px;color:black;">Este producto es pieza unica.</a>
+									</div>
+								<div class="col-xs-12">
+									<div
+										class=" error"
+										*ngIf="show_error_reg">
+										<a>{{msj}}</a>
+									</div>
+									<button class="btn btn-primary btn-block" (click)="agregaProductoCarrito()" id="btn_agregar_carrito_detalle_prod">Agregar</button>
 								</div>
 								<div class="col-xs-12">
 									<div class="row">
@@ -117,7 +126,11 @@
 				</div>
 				<div class="col-xs-6 col-sm-3 col-md-2"  *ngFor="let prod of productos.prod_relacionado">
 						<div class="thumbnail">
+							<div  *ngIf="prod.muestra_descuento" class="cls_descuento_prod_busqueda" >
+									-{{prod.descuento}}%
+							</div>
 						  <a routerLink="/de_paso_detalle_prod/2/{{prod.id_producto_relacionado}}">
+
 							<img src="../assets/img/productos/{{prod.img_producto_rel}}_1.png"  alt="Lights" style="width:100%">
 							<div class="caption cls_desc_prod_busqueda">
 							  <a class="">{{prod.nombre_producto}}</a>
@@ -165,3 +178,10 @@
 	</ul>
 
 <div class="clsfondologin" id="fondo_login" *ngIf="cargando"></div>
+
+
+<div *ngIf="mostrar_msj"  class="cls_mensaje_temporal" >
+		<a  >
+			El producto se agrego correctamente.
+		</a>
+</div>
